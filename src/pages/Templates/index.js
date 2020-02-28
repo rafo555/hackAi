@@ -2,19 +2,24 @@ import React, { memo, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useDispatch } from 'react-redux';
 import { templates } from './data';
-import { CHANGE_TEMPLATES_SIDEBAR } from '../../store/actionTypes';
+import { SET_TEMPLATE_TYPE } from '../../store/actionTypes';
+import { useHistory } from "react-router-dom";
 
 const Templates = () => {
     const classes = useStyles();
 
     const dispatch = useDispatch();
 
+    const history = useHistory();
+
     const handleTemplateClick = useCallback(() => {
         dispatch({
-            type: CHANGE_TEMPLATES_SIDEBAR,
-            templateType: 'bg'
+            type: SET_TEMPLATE_TYPE,
+            template_type: 'bg'
         });
-    }, [dispatch]);
+
+        history.push("/images");
+    }, [dispatch, history]);
 
     return (
         <div className={classes.mainContainer}>

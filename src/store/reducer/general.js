@@ -5,13 +5,16 @@ import { helpers } from '../helpers';
 import {
     TEST,
     CHANGE_TEMPLATES_SIDEBAR,
-    CHANGE_IMAGES_SIDEBAR
+    CHANGE_IMAGES_SIDEBAR,
+    SET_TEMPLATE_TYPE
 } from '../actionTypes';
 
 const defaultState = {
     test: 'test',
     activeTemplatesSideBar: 'effects',
-    activeImageSidebar: 'selected'
+    activeImageSidebar: 'selected',
+    template_type: '',
+    template_data: []
 };
 
 const reducer = helpers(defaultState, {
@@ -32,7 +35,13 @@ const reducer = helpers(defaultState, {
             ...state,
             activeImageSidebar: action.activeImageSidebar,
         }
-    }
+    },
+    [SET_TEMPLATE_TYPE]: (state, action) => {
+        return {
+            ...state,
+            template_type: action.template_type,
+        }
+    },
 
 });
 
