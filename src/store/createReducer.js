@@ -1,3 +1,4 @@
+import { useSelector as useSelectorGeneric } from 'react-redux';
 
 export function createReducer(initialState, handlers) {
     return function reducer(state = initialState, action) {
@@ -8,3 +9,5 @@ export function createReducer(initialState, handlers) {
         return state;
     };
 }
+
+export const useSelector = useSelectorGeneric;
