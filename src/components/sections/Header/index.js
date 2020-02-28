@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <div className={classes.header}>
             <div className={classes.headerBack}>
-                <img src={PicsArtLogo}/>
+                <img alt={'img'} src={PicsArtLogo}/>
             </div>
 
             <div className={classes.headerNext}>

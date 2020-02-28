@@ -11,8 +11,8 @@ const Templates = () => {
             <div className={classes.mainContainerDiv}>
                 {templates.map((el) => {
                     return (
-                        <div className={classes.outlineDiv}>
-                            <div key={el.id} className={classes.templateImgClass}>
+                        <div key={el.id} className={classes.outlineDiv}>
+                            <div className={classes.templateImgClass}>
                                 <img width={200} height={220} alt='img' className={classes.templateImg} src={el.url}/>
                             </div>
                         </div>
