@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
 import { createUseStyles } from 'react-jss';
+import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
 
 const Header = () => {
     const classes = useStyles();
@@ -8,7 +9,7 @@ const Header = () => {
     return (
         <div className={classes.header}>
             <div className={classes.headerBack}>
-                Back
+                <img src={PicsArtLogo}/>
             </div>
 
             <div className={classes.headerNext}>
