@@ -1,4 +1,5 @@
-import React, {memo} from 'react';
+import React, { memo, useCallback } from 'react';
+import { useHistory } from "react-router-dom";
 
 import {createUseStyles} from 'react-jss';
 import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
@@ -6,6 +7,12 @@ import back from '../../../assets/svg/back.svg';
 
 const Header = ({page}) => {
     const classes = useStyles();
+
+    const history = useHistory();
+
+    const handleBackClick = useCallback(() => {
+        history.goBack();
+    }, [history]);
 
     return (
         <div className={classes.header}>
@@ -18,7 +25,7 @@ const Header = ({page}) => {
                 </>
             ) : (<>
                 <div className={classes.headerBack}>
-                    <img src={back} className={classes.backIcon} alt='img'/>
+                    <img src={back} className={classes.backIcon} alt='img' onClick={handleBackClick}/>
                     Back
                 </div>
 
