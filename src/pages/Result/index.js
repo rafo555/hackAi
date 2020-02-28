@@ -10,8 +10,7 @@ const Result = () => {
             {resultData.map(el => {
                 return (
                     <div
-                        key={`result_${el.id}`}
-                    className={}>
+                        key={`result_${el.id}`}>
                         <img src={el.url} alt=""/>
                     </div>)
             })}
