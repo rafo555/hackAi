@@ -1,31 +1,23 @@
-import React, { memo } from 'react';
+import React, { lazy, memo, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Test from "./pages/Test";
 import Main from "./pages/Main";
-import LilitTest from './pages/LilitTest';
-import ZipDownload from "./pages/ZipDownload";
+
+const Layout = lazy(() => import('./components/sections/Layout'));
 
 const Routes = () => {
     return (
-        <Switch>
-            <Route path="/download">
-                <ZipDownload />
-            </Route>
-
-            <Route path="/test">
-                <Test />
-            </Route>
-
-            <Route path="/lilit-test">
-                <LilitTest />
-            </Route>
-
-            <Route path="/">
-                <Main />
-            </Route>
-
-        </Switch>
+        <Suspense fallback={<div>Loading</div>}>
+            <Switch>
+                <Route exact path="/" render={() => {
+                    return (
+                        <Layout>
+                            <Main/>
+                        </Layout>
+                    )
+                }}/>
+            </Switch>
+        </Suspense>
     )
 }
 
