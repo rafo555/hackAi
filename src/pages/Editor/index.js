@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { createUseStyles } from "react-jss";
+
 import {templates} from "../Templates/data";
 
 const Editor = () => {
@@ -14,9 +15,9 @@ const Editor = () => {
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
-                {templates.map((el) => {
+                {templates.map(el => {
                     return (
-                        <div className={classes.layerImgDiv}>
+                        <div key={el.id} className={classes.layerImgDiv}>
                             <img
                                 width={89}
                                 height={82}
@@ -30,7 +31,15 @@ const Editor = () => {
             </aside>
 
             <main>
-                main
+                <div>
+                    <div className={classes.cancel}>
+                        <p>Cancel</p>
+                    </div>
+
+                    <div className={classes.apply}>
+                        <p>Apply</p>
+                    </div>
+                </div>
             </main>
         </div>
     )
@@ -67,8 +76,37 @@ const useStyles = createUseStyles({
     main: {
         marginLeft: 300,
         marginRight: 50
+    },
+    cancel: {
+        width: 100,
+        height: 36,
+        borderRadius: 4,
+        backgroundColor: '#818ca0',
+        color: '#fff',
+        fontSize: 13,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 8,
+        marginRight: 10,
+        cursor: 'pointer',
+        float: 'left'
+    },
+    apply: {
+        width: 100,
+        height: 36,
+        borderRadius: 4,
+        backgroundColor: '#3a76e8',
+        color: '#fff',
+        fontSize: 13,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 8,
+        marginRight: 10,
+        cursor: 'pointer',
+        float: 'left'
     }
-
 });
 
 export default memo(Editor);
