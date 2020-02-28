@@ -18,7 +18,8 @@ const useStyles = createUseStyles({
         width: 100,
         height: 200,
         paddingLeft: 60,
-        float: 'left'
+        paddingTop: 40,
+        float: 'left',
     },
     currentCategory: {
         fontSize: 14,

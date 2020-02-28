@@ -21,7 +21,7 @@ const SidebarSwitcher = ({ page }) => {
                 >{el.name}</div>
             )
         });
-        case 'freeToEdit':
+        case 'images':
             return sidebarFTCategory.map(el => {
                 return (
                     <div
@@ -36,12 +36,6 @@ const SidebarSwitcher = ({ page }) => {
 };
 
 const useStyles = createUseStyles({
-    sidebar: {
-        width: 100,
-        height: 200,
-        paddingLeft: 60,
-        float: 'left'
-    },
     currentCategory: {
         fontSize: 14,
         color: '#1d2025',
