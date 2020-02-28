@@ -1,8 +1,11 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash/debounce';
 import { createUseStyles } from 'react-jss';
 
 import useFetch from '../../../hooks/Fetch';
+import classNames from 'classnames';
+import selectedIcon from '../../../assets/svg/selected.png';
+
 
 import { PHOTO_SEARCH_URL } from '../../../configs';
 
@@ -10,6 +13,8 @@ const FreeToEdit = () => {
     const classes = useStyles();
 
     const [{ data, nextUrl, isLoading, isError }, passNextURL] = useFetch();
+
+    const [activeIndex, setAtiveIndex] = useState([-1]);
 
     useEffect(() => {
         passNextURL(`${PHOTO_SEARCH_URL}?q=origfte`, { is_remove_old_data: false });
@@ -44,9 +49,15 @@ const FreeToEdit = () => {
 
 
 
-    const selectImage = useCallback(() => {
+    const selectImage = useCallback((index) => {
 
-    }, []);
+        if (activeIndex.includes(index)) {
+            const newArray = activeIndex.filter(el => el !== index);
+            return setaAtiveIndex([...newArray])([...newArray]);
+        }
+
+        setaAtiveIndex([...newArray])([...activeIndex, index]);
+]    }, [activeIndex]);
 
     const photoData = data.map(el => {
         return {
@@ -75,9 +86,11 @@ const FreeToEdit = () => {
                             <img alt='img'
                                  width={250}
                                  height={250}
-                                 className={classes.freeToEditimage}
+                                 className={classNames(classes.freeToEditimage, {
+                                     [classes.selectedfreeToEditimage]: activeIndex.includes(el.id)
+                                 })}
                                  src={`${el.url}?r240x240`}
-                                 onClick={selectImage}
+                                 onClick={() => selectImage(el.id)}
                             />
                         </div>
                     )
@@ -124,16 +137,20 @@ const useStyles = createUseStyles({
         display: 'flex',
         flexWrap: 'wrap',
         marginTop: 30,
-        justifyContent: 'space-between',
-    },
-    freeToEditimageContainer: {
-        marginBottom: 10,
-        marginRight: 10,
     },
     freeToEditimage: {
         cursor: 'pointer',
         objectFit: 'cover',
         borderRadius: 7,
+        marginBottom: 10,
+        marginRight: 10,
+    },
+    selectedfreeToEditimage: {
+        marginBottom: 4,
+        marginRight: 4,
+        borderRadius: 20,
+        border: 'solid 3px blue',
+        backgroundColor: '#d6e8fa',
     }
 });
 
