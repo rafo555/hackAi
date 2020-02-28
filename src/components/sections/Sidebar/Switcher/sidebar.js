@@ -49,7 +49,7 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                         className={classNames(classes.uploadImage, {
                             [classes.active]: activeImageSidebar === 'upload',
                         })}>
-                        <img src={uploadImg} className={classes.uploadIcon}></img>
+                        <img src={uploadImg} className={classes.uploadIcon} alt={''}/>
                         Upload
                     </div>
                 </div>
