@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { saveAs } from 'file-saver';
 
 const ZipDownload = () => {
 
