@@ -102,7 +102,8 @@ const useStyles = createUseStyles({
     uploadIcon: {
         marginRight: 10,
         width: 13,
-        height: 18
+        height: 18,
+
     },
     active: {
         color: '#2874f0'
