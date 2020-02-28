@@ -1,23 +1,27 @@
-import React, {memo, useCallback} from 'react';
+import React, {memo, useCallback, useState} from 'react';
 import {sidebarTemplatesCategory, sidebarFTCategory} from '../data';
 import {createUseStyles} from "react-jss";
-
+import classNames from 'classnames';
 
 const SidebarSwitcher = ({page, sidebarTypeCB}) => {
     const classes = useStyles();
+    const [activeSidebarIndex, setActiveSidebarIndex] = useState(2);
 
-    const changeCategory = useCallback((type) => {
-        sidebarTypeCB(type)
+    const changeCategory = useCallback((type, index) => {
+        sidebarTypeCB(type);
+        setActiveSidebarIndex(index)
     }, [sidebarTypeCB]);
 
     switch (page) {
         case 'templates':
-            return sidebarTemplatesCategory.map(el => {
+            return sidebarTemplatesCategory.map((el, index) => {
                 return (
                     <div
                         key={`sidebar_${el.type}`}
-                        className={classes.currentCategory}
-                        onClick={() => changeCategory(el.type)}
+                        className={classNames(classes.currentCategory, {
+                            [classes.active]: activeSidebarIndex === index ,
+                        })}
+                        onClick={() => changeCategory(el.type, index)}
                     >{el.name}</div>
                 )
             });
@@ -47,6 +51,9 @@ const useStyles = createUseStyles({
             borderRadius: 7,
             color: '#2874f0',
         }
+    },
+    active: {
+        color: '#2874f0'
     }
 });
 
