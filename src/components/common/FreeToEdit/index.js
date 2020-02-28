@@ -73,9 +73,6 @@ const FreeToEdit = () => {
                     className={classes.fteSearchInput}
                     placeholder={'Search free images'}
                     onKeyDown={handleChangeSearch}
-                    // onChange={(e) => setPhotoSearchValue(e.target.value)}
-                    // style={{ width: gridSize * 2 + 16 }}
-                    // value={photoSearchValue}
                 />
             </div>
 

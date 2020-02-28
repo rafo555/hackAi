@@ -13,7 +13,7 @@ const defaultState = {
     test: 'test',
     activeTemplatesSideBar: 'effects',
     activeImageSidebar: 'selected',
-    template_type: '',
+    template_type: 'bg',
     template_data: [{
         type: 'link',
         url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
