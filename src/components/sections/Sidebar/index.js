@@ -16,12 +16,12 @@ const Sidebar = ({page}) => {
 
     return useMemo(() => {
         return (
-            <div className={classes.sidebar}>
+            <aside className={classes.sidebar}>
                 <SidebarSwitcher
                     page={page}
                     activeTemplatesSideBar={activeTemplatesSideBar}
                     activeImageSidebar={activeImageSidebar}/>
-            </div>
+            </aside>
         )
     }, [page, classes, activeTemplatesSideBar, activeImageSidebar])
 };
