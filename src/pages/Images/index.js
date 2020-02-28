@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
-import FreeToEdit from "../../components/common/FreeToEdit";
-import Upload from "../../components/common/Upload";
+// import FreeToEdit from "../../components/common/FreeToEdit";
+// import Upload from "../../components/common/Upload";
+import Selected from "../../components/common/Selected";
 
 const Images = () => {
     const classes = useStyles();
@@ -10,7 +11,7 @@ const Images = () => {
         <div className={classes.images}>
 
             {/*Images*/}
-            <Upload />
+            <Selected />
             {/*<FreeToEdit />*/}
 
         </div>
