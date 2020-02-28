@@ -1,10 +1,10 @@
 
 import cryptoJs from 'crypto-js';
-import uuidV1 from 'uuid/v1';
+const uuidV1 = require('uuid/v1');
 
-const TOKEN = process.env.AI_TOKEN || '';
-const AI_API_BASE_URL = process.env.AI_API_BASE_URL || '';
-const AI_TOKEN_SECRET_KEY = process.env.AI_TOKEN_SECRET_KEY || '';
+const TOKEN = 'U2FsdGVkX1+qD/TGRMZTAxGBvwXmFW2qwOezwMATu9U=';
+const AI_API_BASE_URL = 'https://ai.picsart.com/web-ai';
+const AI_TOKEN_SECRET_KEY = 'exha';
 
 export function genToken(sid = uuidV1()) {
     const decoded = cryptoJs.AES.decrypt(TOKEN, AI_TOKEN_SECRET_KEY).toString(cryptoJs.enc.Utf8);
