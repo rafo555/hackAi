@@ -8,6 +8,7 @@ import FreeToEdit from "./components/common/FreeToEdit";
 const Layout = lazy(() => import('./components/sections/Layout'));
 const Templates = lazy(() => import('./pages/Templates'));
 const Images = lazy(() => import('./pages/Images'));
+const Erase = lazy(() => import('./pages/Erase'));
 const Result = lazy(() => import('./pages/Results'));
 
 const Routes = () => {
@@ -21,6 +22,11 @@ const Routes = () => {
     return (
         <Suspense fallback={<div>Loading</div>}>
             <Switch>
+                <Route exact path="/erase" render={() => {
+                    return (
+                        <Erase />
+                    )
+                }} />
 
                 <Route exact path="/images" render={() => {
                     return (
@@ -28,7 +34,7 @@ const Routes = () => {
                             {activeImageSidebar === 'selected' ?  <Upload/> : (activeImageSidebar === 'freeToEdit' ? <FreeToEdit /> : <Images/>)}
                         </Layout>
                     )
-                }}/>
+                }} />
 
                 <Route exact path="/" render={() => {
                     return (
@@ -44,7 +50,7 @@ const Routes = () => {
                             <Result/>
                         </Layout>
                     )
-                }}/>
+                }} />
             </Switch>
         </Suspense>
     )
