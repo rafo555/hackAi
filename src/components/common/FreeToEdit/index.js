@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import useFetch from '../../../hooks/Fetch';
 import classNames from 'classnames';
-// import selectedIcon from '../../../assets/svg/selected.png';
+import selectedIcon from '../../../assets/svg/select.png';
 
 
 import { PHOTO_SEARCH_URL } from '../../../configs';
@@ -89,6 +89,8 @@ const FreeToEdit = () => {
                                  src={`${el.url}?r240x240`}
                                  onClick={() => selectImage(el.id)}
                             />
+                            {activeIndex.includes(el.id) && <img src={selectedIcon} alt={'image'} className={classes.selectedIcon}/>}
+
                         </div>
                     )
                 })}
@@ -108,6 +110,16 @@ const FreeToEdit = () => {
 };
 
 const useStyles = createUseStyles({
+    freeToEditimageContainer: {
+        position: 'relative'
+    },
+    selectedIcon: {
+        left: 20,
+        bottom: 20,
+        width: 30,
+        height: 30,
+        position: 'absolute'
+    },
     fteSearchInput: {
         border: 'solid 1px #d5d4e3',
         borderRadius: 7,
