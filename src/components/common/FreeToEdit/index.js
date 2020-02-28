@@ -123,7 +123,6 @@ const useStyles = createUseStyles({
         marginRight: 10
     },
     freeToEditimage: {
-        width: '100%',
         cursor: 'pointer',
         objectFit: 'cover',
         borderRadius: 7
