@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useCallback, useState} from 'react';
+import React, {memo, useEffect} from 'react';
 import {createUseStyles} from 'react-jss';
 import { genToken, AiFetch } from '../../helpers/AIFetch';
 import { loadImage, resizeIfNeededImage, upScaleImage } from '../../helpers';
