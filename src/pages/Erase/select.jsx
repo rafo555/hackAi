@@ -106,14 +106,14 @@ export const Select = memo((props) => {
     return (
         <SelectWraper ref={referenceWarper} width={width}>
             <Selected color={color} textColor={textColor} open={isOpen} withImage={Boolean(currentImage)} onClick={handlerClick}>
-                {currentImage && <span ><img src={currentImage} /></span>}
+                {currentImage && <span ><img alt='' src={currentImage} /></span>}
                 {currentText ? (currentText) : ('Select')}
             </Selected>
             <SelectOptionsList key={currentIndex} color={color} textColor={textColor} open={isOpen} >
                 {
                     // eslint-disable-next-line react/jsx-no-bind
                     data.map((item, index) => <SelectOptions textColor={textColor} active={index === currentIndex} key={item.value} withImage={Boolean(item.image)} onClick={selectHendler.bind(this, index)}>
-                        {Boolean(item.image) && <span ><img src={currentImage} /></span>}
+                        {Boolean(item.image) && <span ><img alt='' src={currentImage} /></span>}
                         {item.text}
                     </SelectOptions>)
                 }
