@@ -18,13 +18,13 @@ const Header = ({page}) => {
                 </>
             ) : (<>
                 <div className={classes.headerBack}>
-                    <img src={back} className={classes.backIcon}/>
+                    <img src={back} className={classes.backIcon} alt='img'/>
                     Back
                 </div>
 
                 <div className={classes.headerNext}>
                     Next
-                    <img src={back} className={classes.nextIcon}/>
+                    <img src={back} className={classes.nextIcon} alt='img'/>
                 </div>
             </>)}
 
