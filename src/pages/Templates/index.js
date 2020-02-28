@@ -11,8 +11,10 @@ const Templates = () => {
             <div className={classes.mainContainerDiv}>
                 {templates.map((el) => {
                     return (
-                        <div key={el.id} className={classes.templateImgClass}>
-                            <img width={200} height={220} alt='img' className={classes.templateImg} src={el.url}/>
+                        <div className={classes.outlineDiv}>
+                            <div key={el.id} className={classes.templateImgClass}>
+                                <img width={200} height={220} alt='img' className={classes.templateImg} src={el.url}/>
+                            </div>
                         </div>
                     )
                 })}
@@ -38,11 +40,29 @@ const useStyles = createUseStyles({
         display: 'flex',
         flexDirection: 'row',
         marginRight: 20,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        transform: 'scale(1)',
+        transition: 'all 1s',
+        '&:hover': {
+            transform: 'scale(1.05)',
+        }
+    },
+
+    outlineDiv: {
+        marginRight: 20,
+        marginBottom: 20,
+        backgroundColor: 'white',
+        width: 200,
+        height:220,
+
+'&:hover': {
+            // outline: '3px solid #a5caef',
+            borderRadius: 15,
+}
     },
     templateImg: {
         borderRadius: 12,
-        cursor: 'pointer'
+        cursor: 'pointer',
     }
 });
 
