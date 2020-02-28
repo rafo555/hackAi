@@ -89,7 +89,7 @@ const FreeToEdit = () => {
                                  src={`${el.url}?r240x240`}
                                  onClick={() => selectImage(el.id)}
                             />
-                            {activeIndex.includes(el.id) && <img src={selectedIcon} alt={'image'} className={classes.selectedIcon}/>}
+                            {activeIndex.includes(el.id) && <img src={selectedIcon} alt={'selectIcon'} className={classes.selectedIcon}/>}
 
                         </div>
                     )
