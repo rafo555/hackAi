@@ -1,7 +1,7 @@
 export const templates = [
     {
         id: 1,
-        type: '',
+        type: 'bg',
         url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
     },
     {

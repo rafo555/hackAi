@@ -8,7 +8,6 @@ const Templates = () => {
 
     return (
         <div className={classes.mainContainer}>
-            <p className={classes.heading}>Choose The Template</p>
             <div className={classes.mainContainerDiv}>
                 {templates.map((el) => {
                     return (
@@ -23,6 +22,7 @@ const Templates = () => {
 };
 
 const useStyles = createUseStyles({
+
     mainContainer: {
         display: 'flex',
         flexDirection: 'column'
