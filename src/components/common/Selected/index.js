@@ -11,8 +11,12 @@ const Selected = () => {
         <div className={classes.selectedImages}>
             {data.map((el) => {
                 return (
-                    <div className={classes.selectedContainer}>
-                        <img alt='img'
+                    <div
+                        className={classes.selectedContainer}
+                        key={el.id}
+                    >
+                        <img
+                            alt='img'
                              className={classes.selectedImage} src={el.url}
                         />
                     </div>
