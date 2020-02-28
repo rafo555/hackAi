@@ -1,23 +1,33 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import debounce from 'lodash/debounce';
-import { createUseStyles } from 'react-jss';
+import {createUseStyles} from 'react-jss';
 
 import useFetch from '../../../hooks/Fetch';
 import classNames from 'classnames';
 import selectedIcon from '../../../assets/svg/select.png';
 
 
-import { PHOTO_SEARCH_URL } from '../../../configs';
+import {PHOTO_SEARCH_URL} from '../../../configs';
+import {useDispatch} from "react-redux";
+import {ADD_CHOOSE_IMAGE, TEMPLATE_DATA_COUNT} from "../../../store/actionTypes";
+import {useSelector} from "../../../store/helpers";
+import isEqual from "react-fast-compare";
 
 const FreeToEdit = () => {
     const classes = useStyles();
-
-    const [{ data, nextUrl, isLoading, isError }, passNextURL] = useFetch();
+    const dispatch = useDispatch();
+    const [{data, nextUrl, isLoading, isError}, passNextURL] = useFetch();
 
     const [activeIndex, setAtiveIndex] = useState([-1]);
 
+    const {template_data} = useSelector((state) => {
+        return {
+            template_data: state.general.template_data,
+        };
+    }, isEqual);
+
     useEffect(() => {
-        passNextURL(`${PHOTO_SEARCH_URL}?q=origfte`, { is_remove_old_data: false });
+        passNextURL(`${PHOTO_SEARCH_URL}?q=origfte`, {is_remove_old_data: false});
     }, [passNextURL]);
 
     const onScrollSearch = useCallback(() => {
@@ -44,12 +54,11 @@ const FreeToEdit = () => {
             return;
         }
 
-        passNextURL(`${PHOTO_SEARCH_URL}?q=${e.target.value}&freetoedit=1`, { is_remove_old_data: true });
+        passNextURL(`${PHOTO_SEARCH_URL}?q=${e.target.value}&freetoedit=1`, {is_remove_old_data: true});
     }, [passNextURL]);
 
 
-
-    const selectImage = useCallback((index) => {
+    const selectImage = useCallback((index, url) => {
 
         if (activeIndex.includes(index)) {
             const newArray = activeIndex.filter(el => el !== index);
@@ -57,7 +66,24 @@ const FreeToEdit = () => {
         }
 
         setAtiveIndex([...activeIndex, index]);
-        }, [activeIndex]);
+
+        const id = `image_${Date.now().toString(36)}`;
+
+        dispatch({
+            type: ADD_CHOOSE_IMAGE,
+            imageObject: {
+                type: 'link',
+                id,
+                url
+            }
+        });
+
+        dispatch({
+            type: TEMPLATE_DATA_COUNT,
+            template_data_count: template_data.length
+        })
+
+    }, [activeIndex, dispatch, template_data.length]);
 
     const photoData = data.map(el => {
         return {
@@ -81,15 +107,16 @@ const FreeToEdit = () => {
                     return (
                         <div key={`${el.id}`} className={classes.freeToEditimageContainer}>
                             <img alt='img'
-                                 width={250}
-                                 height={250}
+                                 width={240}
+                                 height={240}
                                  className={classNames(classes.freeToEditimage, {
                                      [classes.selectedfreeToEditimage]: activeIndex.includes(el.id)
                                  })}
                                  src={`${el.url}?r240x240`}
-                                 onClick={() => selectImage(el.id)}
+                                 onClick={() => selectImage(el.id, el.url)}
                             />
-                            {activeIndex.includes(el.id) && <img src={selectedIcon} alt={'selectIcon'} className={classes.selectedIcon}/>}
+                            {activeIndex.includes(el.id) &&
+                            <img src={selectedIcon} alt={''} className={classes.selectedIcon}/>}
 
                         </div>
                     )
@@ -97,7 +124,7 @@ const FreeToEdit = () => {
             </div>
 
             {isLoading && (
-                <div style={{ textAlign: 'center' }}>
+                <div style={{textAlign: 'center'}}>
                     {/*<Loading/>*/}
                     Loading
                 </div>
@@ -111,7 +138,10 @@ const FreeToEdit = () => {
 
 const useStyles = createUseStyles({
     freeToEditimageContainer: {
-        position: 'relative'
+        position: 'relative',
+        width: 240,
+        height: 240,
+        overflow: 'hidden'
     },
     selectedIcon: {
         left: 20,
@@ -150,16 +180,13 @@ const useStyles = createUseStyles({
     freeToEditimage: {
         cursor: 'pointer',
         objectFit: 'cover',
-        borderRadius: 7,
         marginBottom: 10,
         marginRight: 10,
     },
     selectedfreeToEditimage: {
-        marginBottom: 4,
-        marginRight: 4,
-        borderRadius: 20,
-        border: 'solid 3px blue',
-        backgroundColor: '#d6e8fa',
+        transitionDuration: 300,
+        width: 250,
+        height: 250
     }
 });
 

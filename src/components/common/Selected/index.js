@@ -1,19 +1,25 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { data } from './data';
+import {useSelector} from "../../../store/helpers";
+import isEqual from "react-fast-compare";
 
 const Selected = () => {
-
     const classes = useStyles();
+
+    const {template_data} = useSelector((state) => {
+        return {
+            template_data: state.general.template_data,
+        };
+    }, isEqual);
 
     return (
         <div className={classes.selectedImages}>
-            {data.map((el) => {
+            {template_data.map((el) => {
                 return (
                     <div
                         className={classes.selectedContainer}
-                        key={el.id}
+                        key={`${el.id}`}
                     >
                         <img
                             alt='img'

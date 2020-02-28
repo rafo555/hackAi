@@ -7,10 +7,11 @@ import isEqual from 'react-fast-compare';
 const Sidebar = ({page}) => {
     const classes = useStyles();
 
-    const { activeTemplatesSideBar, activeImageSidebar } = useSelector((state) => {
+    const { activeTemplatesSideBar, activeImageSidebar, template_data_count } = useSelector((state) => {
         return {
             activeTemplatesSideBar: state.general.activeTemplatesSideBar,
-            activeImageSidebar: state.general.activeImageSidebar
+            activeImageSidebar: state.general.activeImageSidebar,
+            template_data_count: state.general.template_data_count,
         };
     }, isEqual);
 
@@ -20,10 +21,11 @@ const Sidebar = ({page}) => {
                 <SidebarSwitcher
                     page={page}
                     activeTemplatesSideBar={activeTemplatesSideBar}
-                    activeImageSidebar={activeImageSidebar}/>
+                    activeImageSidebar={activeImageSidebar}
+                    template_data_count={template_data_count}/>
             </aside>
         )
-    }, [page, classes, activeTemplatesSideBar, activeImageSidebar])
+    }, [page, classes, activeTemplatesSideBar, activeImageSidebar, template_data_count])
 };
 
 const useStyles = createUseStyles({

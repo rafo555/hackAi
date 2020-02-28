@@ -9,7 +9,7 @@ import {
     CHANGE_IMAGES_SIDEBAR
 } from '../../../../store/actionTypes';
 
-const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar }) => {
+const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar, template_data_count }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -74,7 +74,7 @@ const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar }) =
                     })}
                     onClick={() => changeImagesCategory('selected')}>
                     <p>
-                        Selected (0)
+                        Selected ({template_data_count})
                     </p>
                 </div>
             </div>;
