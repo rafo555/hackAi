@@ -31,12 +31,25 @@ const Header = ({page}) => {
                     Back
                 </div>
 
-                <div className={classes.headerNext}>
-                    <Link to={'/results'}>
-                        Next
-                        <img src={back} className={classes.nextIcon} alt='img'/>
-                    </Link>
-                </div>
+                {page === 'results' ? (
+                    <div className={classes.resultButtons}>
+                        <div className={classes.refine}>
+                            <p>Refine</p>
+                        </div>
+                        <div className={classes.share}>
+                            <p>Share</p>
+                        </div>
+                        <div className={classes.download}>
+                            <p>Download</p>
+                        </div>
+                    </div>) : (<>
+                    <div className={classes.headerNext}>
+                        <Link to={'/results'}>
+                            Next
+                            <img src={back} className={classes.nextIcon} alt='img'/>
+                        </Link>
+                    </div>
+                </>)}
             </>)}
 
         </header>
@@ -111,11 +124,53 @@ const useStyles = createUseStyles({
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 12
-    }
-//     width: 106px;
-//   height: 44px;
-//   border-radius: 4px;
-//   border: solid 1px #000000;
+    },
+    resultButtons: {
+        display: 'flex'
+    },
+    refine: {
+        width: 100,
+        height: 40,
+        borderRadius: 4,
+        border: 'solid 1px rgba(84, 93, 107, 0.29)',
+        backgroundColor: '#fff',
+        color: '#3a76e8',
+        fontSize: 13,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 8,
+        marginRight: 10,
+        cursor: 'pointer'
+    },
+    share: {
+        width: 120,
+        height: 40,
+        borderRadius: 4,
+        backgroundColor: '#818ca0',
+        color: '#fff',
+        fontSize: 13,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 8,
+        marginRight: 10,
+        cursor: 'pointer'
+    },
+    download: {
+        width: 120,
+        height: 40,
+        borderRadius: 4,
+        backgroundColor: '#3a76e8',
+        color: '#fff',
+        fontSize: 13,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 8,
+        marginRight: 10,
+        cursor: 'pointer'
+    },
 });
 
 export default memo(Header);
