@@ -1,7 +1,7 @@
-import React, {memo, useCallback} from 'react';
-import {sidebarTemplatesCategory, sidebarFTCategory} from '../data';
-import {createUseStyles} from "react-jss";
-import {useDispatch} from 'react-redux';
+import React, { memo, useCallback } from 'react';
+import { sidebarTemplatesCategory, sidebarFTCategory } from '../data';
+import { createUseStyles } from "react-jss";
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import uploadImg from '../../../../assets/svg/upload-2.svg'
 import {
@@ -9,7 +9,7 @@ import {
     CHANGE_IMAGES_SIDEBAR
 } from '../../../../store/actionTypes';
 
-const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => {
+const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -17,14 +17,14 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
         dispatch({
             type: CHANGE_TEMPLATES_SIDEBAR,
             activeTemplatesSideBar: type
-        })
+        });
     }, [dispatch]);
 
     const changeImagesCategory = useCallback((type) => {
         dispatch({
             type: CHANGE_IMAGES_SIDEBAR,
             activeImageSidebar: type
-        })
+        });
     }, [dispatch]);
 
     switch (page) {
@@ -37,7 +37,9 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                             [classes.active]: activeTemplatesSideBar === el.type,
                         })}
                         onClick={() => changeTemplateCategory(el.type)}
-                    ><p> {el.name} </p></div>
+                    >
+                        <p> {el.name} </p>
+                    </div>
                 )
             });
         case 'images':

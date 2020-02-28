@@ -1,10 +1,20 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
-
+import { useDispatch } from 'react-redux';
 import { templates } from './data';
+import { CHANGE_TEMPLATES_SIDEBAR } from '../../store/actionTypes';
 
 const Templates = () => {
     const classes = useStyles();
+
+    const dispatch = useDispatch();
+
+    const handleTemplateClick = useCallback(() => {
+        dispatch({
+            type: CHANGE_TEMPLATES_SIDEBAR,
+            templateType: 'bg'
+        });
+    }, [dispatch]);
 
     return (
         <div className={classes.mainContainer}>
@@ -13,7 +23,14 @@ const Templates = () => {
                     return (
                         <div key={el.id} className={classes.outlineDiv}>
                             <div className={classes.templateImgClass}>
-                                <img width={200} height={220} alt='img' className={classes.templateImg} src={el.url}/>
+                                <img
+                                    width={200}
+                                    height={220}
+                                    alt='img'
+                                    className={classes.templateImg}
+                                    src={el.url}
+                                    onClick={handleTemplateClick}
+                                />
                             </div>
                         </div>
                     )
@@ -42,7 +59,7 @@ const useStyles = createUseStyles({
         marginRight: 20,
         backgroundColor: 'white',
         transform: 'scale(1)',
-        transition: 'all 1s',
+        transition: 'all 0.5s',
         '&:hover': {
             transform: 'scale(1.05)',
         }
