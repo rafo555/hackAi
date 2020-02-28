@@ -6,7 +6,9 @@ import {
     TEST,
     CHANGE_TEMPLATES_SIDEBAR,
     CHANGE_IMAGES_SIDEBAR,
-    SET_TEMPLATE_TYPE
+    SET_TEMPLATE_TYPE,
+    ADD_CHOOSE_IMAGE,
+    TEMPLATE_DATA_COUNT
 } from '../actionTypes';
 
 const defaultState = {
@@ -14,13 +16,8 @@ const defaultState = {
     activeTemplatesSideBar: 'effects',
     activeImageSidebar: 'selected',
     template_type: 'bg',
-    template_data: [{
-        type: 'link',
-        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
-    }, {
-        type: 'link',
-        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
-    }]
+    template_data: [],
+    template_data_count: 0
 };
 
 const reducer = helpers(defaultState, {
@@ -48,7 +45,31 @@ const reducer = helpers(defaultState, {
             template_type: action.template_type,
         }
     },
+    [ADD_CHOOSE_IMAGE]: (state, action) => {
+        const new_template_data = state.template_data;
+        new_template_data.push(action.imageObject);
 
+        return {
+            ...state,
+            new_template_data
+        };
+    },
+    [TEMPLATE_DATA_COUNT]: (state, action) => {
+
+        return {
+            ...state,
+            template_data_count: action.template_data_count
+        };
+    },
+    // [_CHOOSE_IMAGE]: (state, action) => {
+    //     const new_template_data = state.template_data;
+    //     new_template_data.push(action.imageObject);
+    //
+    //     return {
+    //         ...state,
+    //         new_template_data
+    //     };
+    // },
 });
 
 export default reducer;
