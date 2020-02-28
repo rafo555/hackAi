@@ -26,7 +26,7 @@ const Templates = () => {
         <div className={classes.mainContainerDiv}>
             {data.map((el) => {
                 return (
-                    <div className={classes.templateImgClass}>
+                    <div key={el.id} className={classes.templateImgClass}>
                         <img alt='img' className={classes.templateImg} src={el.url}/>
                     </div>
                 )
