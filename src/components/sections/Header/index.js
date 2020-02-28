@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import {createUseStyles} from 'react-jss';
 import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
@@ -32,8 +32,10 @@ const Header = ({page}) => {
                 </div>
 
                 <div className={classes.headerNext}>
-                    Next
-                    <img src={back} className={classes.nextIcon} alt='img'/>
+                    <Link to={'/results'}>
+                        Next
+                        <img src={back} className={classes.nextIcon} alt='img'/>
+                    </Link>
                 </div>
             </>)}
 

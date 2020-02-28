@@ -8,7 +8,7 @@ import FreeToEdit from "./components/common/FreeToEdit";
 const Layout = lazy(() => import('./components/sections/Layout'));
 const Templates = lazy(() => import('./pages/Templates'));
 const Images = lazy(() => import('./pages/Images'));
-const Result = lazy(() => import('./pages/Result'));
+const Result = lazy(() => import('./pages/Results'));
 
 const Routes = () => {
     const { activeTemplatesSideBar, activeImageSidebar } = useSelector((state) => {
@@ -38,9 +38,9 @@ const Routes = () => {
                     )
                 }}/>
 
-                <Route exact path="/result" render={() => {
+                <Route exact path="/results" render={() => {
                     return (
-                        <Layout page={'result'}>
+                        <Layout page={'results'}>
                             <Result/>
                         </Layout>
                     )

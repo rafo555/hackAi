@@ -14,7 +14,13 @@ const defaultState = {
     activeTemplatesSideBar: 'effects',
     activeImageSidebar: 'selected',
     template_type: '',
-    template_data: []
+    template_data: [{
+        type: 'link',
+        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
+    }, {
+        type: 'link',
+        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
+    }]
 };
 
 const reducer = helpers(defaultState, {
