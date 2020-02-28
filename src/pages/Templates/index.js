@@ -35,7 +35,6 @@ const useStyles = createUseStyles({
         flexWrap: 'wrap',
         marginTop: 50,
         flexDirection: 'row',
-        // justifyContent: 'center',
         marginLeft: 37,
     },
     templateImgClass: {
