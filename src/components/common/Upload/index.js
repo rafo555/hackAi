@@ -8,10 +8,10 @@ const Upload = () => {
 
     return (
         <div className={classes.uploadContainer}>
-            <img src={uploadImage} className={classes.uploadImageSVG}/>
+            <img src={uploadImage} className={classes.uploadImageSVG} alt={'img'}/>
             <div className={classes.uploadImageText}>
-                <p> No Images are selected.</p>
-                <p>Please Upload images to proceed.</p>
+                <div> No Images are selected.</div>
+                <div>Please Upload images to proceed.</div>
             </div>
         </div>
     );
@@ -22,7 +22,6 @@ const useStyles = createUseStyles({
         textAlign: 'center',
         fontSize: 16,
         color: '#cad3e3',
-        marginLeft: -50,
     },
     uploadContainer: {
         top: '50%',
@@ -30,6 +29,7 @@ const useStyles = createUseStyles({
         left: '50%',
         marginTop: -75,
         marginLeft: -75,
+        textAlign: 'center'
     },
     uploadImageSVG: {
         width: 150,
