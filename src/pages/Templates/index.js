@@ -61,7 +61,6 @@ const useStyles = createUseStyles({
         marginBottom: 20,
         display: 'flex',
         flexDirection: 'row',
-        marginRight: 20,
         transform: 'scale(1)',
         transition: 'all 0.5s',
         '&:hover': {
