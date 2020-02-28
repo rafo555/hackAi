@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { createUseStyles } from "react-jss";
+import {templates} from "../Templates/data";
 
 const Editor = () => {
 
@@ -12,7 +13,20 @@ const Editor = () => {
             </aside>
 
             <aside className={classes.rightAside}>
-                right
+                <p className={classes.rightSideTxt}>Images</p>
+                {templates.map((el) => {
+                    return (
+                        <div className={classes.layerImgDiv}>
+                            <img
+                                width={89}
+                                height={82}
+                                alt='img'
+                                className={classes.layerImg}
+                                src={el.url}
+                            />
+                        </div>
+                    )
+                })}
             </aside>
 
             <main>
@@ -30,8 +44,25 @@ const useStyles = createUseStyles({
     },
     rightAside: {
         float: 'right',
-        width: 50,
+        width: 121,
+        border: 'solid 1px #e8e8f1',
         height: '100vh'
+    },
+    rightSideTxt: {
+        marginTop: 32,
+        textAlign: 'center',
+        color: '#9ba0ae'
+},
+    layerImgDiv: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        marginBottom: 8,
+        marginRight: 14,
+        marginLeft: 17
+    },
+    layerImg: {
+        borderRadius: 4
     },
     main: {
         marginLeft: 300,
