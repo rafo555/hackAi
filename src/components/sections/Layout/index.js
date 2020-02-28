@@ -1,10 +1,26 @@
 import React, { memo } from 'react';
 
-const Layout = () => {
+import Header from '../Header';
+import Siderbar from '../Sidebar';
+
+const Layout = (props) => {
+
+    const {
+        children
+    } = props;
+
     return (
-        <div>
-            Layout
-        </div>
+        <section>
+            <Header/>
+
+            <div>
+                <Siderbar/>
+
+                <section>
+                    {children}
+                </section>
+            </div>
+        </section>
     );
 };
 
