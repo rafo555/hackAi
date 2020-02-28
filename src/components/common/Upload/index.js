@@ -1,23 +1,41 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import uploadImage from '../../../assets/svg/photo.svg'
+import uploadImageSVG from '../../../assets/svg/photo.svg'
+import { readDropDownFile } from '../../../utils'
 
 const Upload = () => {
 
     const classes = useStyles();
 
+    const uploadImage = async (ev) => {
+        const fileSrc = await readDropDownFile(ev.target.files[0]);
+        console.log(fileSrc)
+    };
+
+
     return (
-        <div className={classes.uploadContainer}>
-            <img src={uploadImage} className={classes.uploadImageSVG} alt={'img'}/>
-            <div className={classes.uploadImageText}>
-                <div> No Images are selected.</div>
-                <div>Please Upload images to proceed.</div>
+        <>
+            <label htmlFor={'input'}>
+            <div
+                className={classes.uploadContainer}
+            >
+                <img src={uploadImageSVG} className={classes.uploadImageSVG} alt={'img'}/>
+                <div className={classes.uploadImageText}>
+                    <div> No Images are selected.</div>
+                    <div>Please Upload images to proceed.</div>
+                </div>
+                <input id={'input'} type={'file'} className={classes.uploadImageInput} onChange={uploadImage}/>
             </div>
-        </div>
+            </label>
+        </>
+
     );
 };
 
 const useStyles = createUseStyles({
+    uploadImageInput: {
+        display: 'none',
+    },
     uploadImageText: {
         textAlign: 'center',
         fontSize: 16,
@@ -29,7 +47,8 @@ const useStyles = createUseStyles({
         left: '50%',
         marginTop: -75,
         marginLeft: -75,
-        textAlign: 'center'
+        textAlign: 'center',
+        cursor: 'pointer'
     },
     uploadImageSVG: {
         width: 150,
