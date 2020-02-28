@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
+import Routes from "./Routes";
 import './App.css';
 
-function App() {
+const App = () => {
     return (
-        <div className="App">
-
-            App
-
-
-        </div>
+        <Routes/>
     );
 }
 
-export default App;
+export default memo(App);
