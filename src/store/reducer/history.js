@@ -2,7 +2,7 @@ import {
     ADD_TO_HISTORY, UNDO, REDO, RESET_STATE
 } from '../actionTypes';
 
-import { createReducer } from '../createReducer';
+import { helpers } from '../helpers';
 
 const defaultState = {
     appHistory: [{ historyAction: 'image_added', settings: {} , type: 'chooser_image'}],
@@ -11,7 +11,7 @@ const defaultState = {
 
 const HISTORY_LIMIT = 10;
 
-const reducer = createReducer(defaultState, {
+const reducer = helpers(defaultState, {
     [ADD_TO_HISTORY]: (state, action) => {
         let { appHistoryStep } = state;
         const appHistory = state.appHistory.map(el => el);

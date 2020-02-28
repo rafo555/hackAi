@@ -1,20 +1,45 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
+import { useHistory, Link } from "react-router-dom";
 
-import { createUseStyles } from 'react-jss';
+import {createUseStyles} from 'react-jss';
+import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
+import back from '../../../assets/svg/back.svg';
 
-const Header = () => {
+const Header = ({page}) => {
     const classes = useStyles();
 
-    return (
-        <div className={classes.header}>
-            <div className={classes.headerBack}>
-                Back
-            </div>
+    const history = useHistory();
 
-            <div className={classes.headerNext}>
-                Next
-            </div>
-        </div>
+    const handleBackClick = useCallback(() => {
+        history.goBack();
+    }, [history]);
+
+    return (
+        <header className={classes.header}>
+            {page === 'templates' ? (
+                <>
+                    <div className={classes.headerBack}>
+                        <img alt={'img'} src={PicsArtLogo}/>
+                    </div>
+
+                </>
+            ) : (<>
+                <div
+                    className={classes.headerBack}
+                    onClick={handleBackClick}>
+                    <img src={back} className={classes.backIcon} alt='img' />
+                    Back
+                </div>
+
+                <div className={classes.headerNext}>
+                    <Link to={'/results'}>
+                        Next
+                        <img src={back} className={classes.nextIcon} alt='img'/>
+                    </Link>
+                </div>
+            </>)}
+
+        </header>
     );
 };
 
@@ -26,13 +51,71 @@ const useStyles = createUseStyles({
         justifyContent: 'space-between'
     },
     headerBack: {
-        marginTop: 20,
-        marginLeft: 40
+        marginLeft: 40,
+        cursor: 'pointer',
+        fontSize: 14,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        '&:hover': {
+            color: '#2874f0',
+        }
     },
+    backIcon: {
+        marginRight: 10,
+        width: 13,
+        height: 13,
+        cursor: 'pointer',
+
+        '&:hover': {
+            color: '#2874f0',
+        }
+    },
+    nextIcon: {
+        transform: 'scaleX(-1)',
+        marginLeft: 10,
+        width: 13,
+        height: 13,
+        cursor: 'pointer',
+        '&:hover': {
+            color: '#2874f0',
+        }
+        },
     headerNext: {
-        marginTop: 20,
-        marginRight: 40
+        marginRight: 40,
+        cursor: 'pointer',
+        fontSize: 14,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        '&:hover': {
+            color: '#2874f0',
+        }
+    },
+    logIn: {
+        width: 80,
+        height: 27,
+        fontSize: 12,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    singUp: {
+        width: 80,
+        height: 27,
+        borderRadius: 4,
+        border: 'solid 1px #000000',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 12
     }
+//     width: 106px;
+//   height: 44px;
+//   border-radius: 4px;
+//   border: solid 1px #000000;
 });
 
 export default memo(Header);

@@ -1,18 +1,42 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
-
+import { useDispatch } from 'react-redux';
 import { templates } from './data';
+import { SET_TEMPLATE_TYPE } from '../../store/actionTypes';
+import { useHistory } from "react-router-dom";
 
 const Templates = () => {
     const classes = useStyles();
+
+    const dispatch = useDispatch();
+
+    const history = useHistory();
+
+    const handleTemplateClick = useCallback(() => {
+        dispatch({
+            type: SET_TEMPLATE_TYPE,
+            template_type: 'bg'
+        });
+
+        history.push("/images");
+    }, [dispatch, history]);
 
     return (
         <div className={classes.mainContainer}>
             <div className={classes.mainContainerDiv}>
                 {templates.map((el) => {
                     return (
-                        <div key={el.id} className={classes.templateImgClass}>
-                            <img width={250} height={260} alt='img' className={classes.templateImg} src={el.url}/>
+                        <div key={el.id} className={classes.outlineDiv}>
+                            <div className={classes.templateImgClass}>
+                                <img
+                                    width={200}
+                                    height={220}
+                                    alt='img'
+                                    className={classes.templateImg}
+                                    src={el.url}
+                                    onClick={handleTemplateClick}
+                                />
+                            </div>
                         </div>
                     )
                 })}
@@ -22,14 +46,9 @@ const Templates = () => {
 };
 
 const useStyles = createUseStyles({
-
     mainContainer: {
         display: 'flex',
         flexDirection: 'column'
-    },
-    heading: {
-        marginLeft: 37,
-        marginTop: 52
     },
     mainContainerDiv: {
         display: 'flex',
@@ -39,15 +58,31 @@ const useStyles = createUseStyles({
         marginLeft: 37,
     },
     templateImgClass: {
-        marginBottom: 15,
+        marginBottom: 20,
         display: 'flex',
         flexDirection: 'row',
-        marginRight: 37,
-        backgroundColor: 'white'
+        transform: 'scale(1)',
+        transition: 'all 0.5s',
+        '&:hover': {
+            transform: 'scale(1.05)',
+        }
+    },
+
+    outlineDiv: {
+        marginRight: 20,
+        marginBottom: 20,
+        backgroundColor: 'white',
+        width: 200,
+        height: 220,
+
+        '&:hover': {
+            borderRadius: 15,
+        }
     },
     templateImg: {
+        objectFit: 'cover',
         borderRadius: 12,
-        cursor: 'pointer'
+        cursor: 'pointer',
     }
 });
 
