@@ -1,6 +1,6 @@
 // import cloneDeep from 'lodash/cloneDeep';
 
-import { createReducer } from '../createReducer';
+import { helpers } from '../helpers';
 
 import {
     TEST
@@ -10,7 +10,7 @@ const defaultState = {
     test: 'test'
 };
 
-const reducer = createReducer(defaultState, {
+const reducer = helpers(defaultState, {
     [TEST]: (state, action) => {
         return {
             ...state,
