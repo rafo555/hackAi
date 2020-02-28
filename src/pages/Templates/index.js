@@ -1,45 +1,14 @@
 import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
 
-const data = [
-    {
-        id: 1,
-        type: '',
-        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
-    },
-    {
-        id: 2,
-        type: '',
-        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
-    },
-    {
-        id: 3,
-        type: '',
-        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
-    },
-    {
-        id: 4,
-        type: '',
-        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
-    },
-    {
-        id: 5,
-        type: '',
-        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
-    },
-    {
-        id: 6,
-        type: '',
-        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
-    }
-];
+import { templates } from './data';
 
 const Templates = () => {
     const classes = useStyles();
 
     return (
         <div className={classes.mainContainerDiv}>
-            {data.map((el) => {
+            {templates.map((el) => {
                 return (
                     <div key={el.id} className={classes.templateImgClass}>
                         <img alt='img' className={classes.templateImg} src={el.url}/>
@@ -73,6 +42,6 @@ const useStyles = createUseStyles({
         width: 180,
         height: 180
     }
-})
+});
 
 export default memo(Templates);
