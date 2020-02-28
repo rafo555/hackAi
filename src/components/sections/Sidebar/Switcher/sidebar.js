@@ -19,18 +19,21 @@ const SidebarSwitcher = ({page, sidebarTypeCB}) => {
                     <div
                         key={`sidebar_${el.type}`}
                         className={classNames(classes.currentCategory, {
-                            [classes.active]: activeSidebarIndex === index ,
+                            [classes.active]: activeSidebarIndex === index,
                         })}
                         onClick={() => changeCategory(el.type, index)}
                     >{el.name}</div>
                 )
             });
         case 'images':
-            return sidebarFTCategory.map(el => {
+            return sidebarFTCategory.map((el, index) => {
                 return (
                     <div
                         key={`freeToEdit_${el.type}`}
-                        className={classes.currentCategory}
+                        className={classNames(classes.currentCategory, {
+                            [classes.active]: activeSidebarIndex === index,
+                        })}
+                        onClick={() => changeCategory(el.type, index)}
                     >{el.name}</div>
                 )
             });
