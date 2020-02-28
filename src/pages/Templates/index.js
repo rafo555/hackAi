@@ -16,6 +16,21 @@ const data = [
         id: 3,
         type: '',
         url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
+    },
+    {
+        id: 4,
+        type: '',
+        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
+    },
+    {
+        id: 5,
+        type: '',
+        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
+    },
+    {
+        id: 6,
+        type: '',
+        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
     }
 ];
 
@@ -37,23 +52,26 @@ const Templates = () => {
 
 const useStyles = createUseStyles({
     mainContainerDiv: {
-        padding: '28px 35px',
         display: 'flex',
         flexWrap: 'wrap',
-        marginTop: 30,
+        marginTop: 50,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'center',
+        marginLeft: 35,
+        marginRight: 35
     },
     templateImgClass: {
-        width: 250,
-        height: 250,
-        marginBottom: 10,
+        marginBottom: 15,
         display: 'flex',
         flexDirection: 'row',
+        marginRight: 15,
+        backgroundColor: 'white'
     },
     templateImg: {
-        borderRadius: 7,
-        cursor: 'pointer'
+        borderRadius: 10,
+        cursor: 'pointer',
+        width: 180,
+        height: 180
     }
 })
 
