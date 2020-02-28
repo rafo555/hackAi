@@ -12,7 +12,7 @@ const Templates = () => {
                 {templates.map((el) => {
                     return (
                         <div key={el.id} className={classes.templateImgClass}>
-                            <img width={250} height={260} alt='img' className={classes.templateImg} src={el.url}/>
+                            <img width={200} height={220} alt='img' className={classes.templateImg} src={el.url}/>
                         </div>
                     )
                 })}
@@ -22,14 +22,9 @@ const Templates = () => {
 };
 
 const useStyles = createUseStyles({
-
     mainContainer: {
         display: 'flex',
         flexDirection: 'column'
-    },
-    heading: {
-        marginLeft: 37,
-        marginTop: 52
     },
     mainContainerDiv: {
         display: 'flex',
@@ -39,10 +34,10 @@ const useStyles = createUseStyles({
         marginLeft: 37,
     },
     templateImgClass: {
-        marginBottom: 15,
+        marginBottom: 20,
         display: 'flex',
         flexDirection: 'row',
-        marginRight: 37,
+        marginRight: 20,
         backgroundColor: 'white'
     },
     templateImg: {
