@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { data } from './data';
@@ -7,27 +7,29 @@ const FreeToEdit = () => {
 
     const classes = useStyles();
 
-    const selectImage = () => {
+    const selectImage = useCallback(() => {
 
-    };
+    }, []);
 
     return (
         <div className={classes.fteContainer}>
             <div className={classes.fteSearch}>
                 <input className={classes.fteSearch} placeholder={'Search free images'}/>
             </div>
-        <div className={classes.gridContainer}>
-            {data.map((el) => {
-                return (
-                    <div className={classes.freeToEditimageContainer}>
-                        <img alt='img'
-                             className={classes.freeToEditimage} src={el.url}
-                             onClick={() => selectImage()}
-                        />
-                    </div>
-                )
-            })}
-        </div>
+
+            <div className={classes.gridContainer}>
+
+                {data.map(el => {
+                    return (
+                        <div key={el.id} className={classes.freeToEditimageContainer}>
+                            <img alt='img'
+                                 className={classes.freeToEditimage} src={el.url}
+                                 onClick={selectImage}
+                            />
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     );
 };
