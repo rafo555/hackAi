@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
 
-const data = [{
-    id: 1,
-    type: '',
-    url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
-},
+const data = [
+    {
+        id: 1,
+        type: '',
+        url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
+    },
     {
         id: 2,
         type: '',
@@ -16,17 +17,17 @@ const data = [{
         type: '',
         url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
     }
-]
+];
 
 const Templates = () => {
+    const classes = useStyles();
 
     return (
-        <div className='mainContainerDiv'>
-            Templates
+        <div className={classes.mainContainerDiv}>
             {data.map((el) => {
                 return (
-                    <div className='templateImgClass'>
-                        <img className='templateImg' src={el.url}/>
+                    <div className={classes.templateImgClass}>
+                        <img alt='img' className={classes.templateImg} src={el.url}/>
                     </div>
                 )
             })}
