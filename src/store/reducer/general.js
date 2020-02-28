@@ -16,9 +16,31 @@ const defaultState = {
     template_type: 'bg',
     template_data: [{
         type: 'link',
+        id: 'okokokokok',
         url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
     }, {
         type: 'link',
+        id: 'vgvgvgvgvgvg',
+        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
+    },
+    {
+        type: 'link',
+        id: 'jijijij',
+        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
+    },
+    {
+        type: 'link',
+        id: 'plplplpl',
+        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
+    },
+    {
+        type: 'link',
+        id: 'huhuhuhuhu',
+        url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
+    },
+    {
+        type: 'link',
+        id: 'tftftftft',
         url: 'https://cdn130.picsart.com/320391060178201.jpg?r1024x1024'
     }]
 };

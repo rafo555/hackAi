@@ -7,6 +7,7 @@
     "crypto-js": "^4.0.0",
     "file-saver": "^2.0.2",
     "jszip": "^3.2.2",
+    "konva": "^4.1.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
@@ -21,7 +22,7 @@
     "uuid": "^7.0.1"
   },
   "scripts": {
-    "start": "HOST=picsartweb.apps PORT=4200 react-scripts start",
+    "start": "HOST=picsartweb.apps PORT=4201 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
