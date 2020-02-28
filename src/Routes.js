@@ -12,7 +12,7 @@ const Routes = () => {
 
                 <Route exact path="/images" render={() => {
                     return (
-                        <Layout>
+                        <Layout page={'images'}>
                             <Images/>
                         </Layout>
                     )
