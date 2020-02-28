@@ -13,7 +13,7 @@ const Templates = () => {
                 {templates.map((el) => {
                     return (
                         <div key={el.id} className={classes.templateImgClass}>
-                            <img alt='img' className={classes.templateImg} src={el.url}/>
+                            <img width={250} height={260} alt='img' className={classes.templateImg} src={el.url}/>
                         </div>
                     )
                 })}
@@ -47,9 +47,7 @@ const useStyles = createUseStyles({
     },
     templateImg: {
         borderRadius: 12,
-        cursor: 'pointer',
-        width: 340,
-        height: 353
+        cursor: 'pointer'
     }
 });
 
