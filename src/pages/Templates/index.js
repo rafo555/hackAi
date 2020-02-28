@@ -53,14 +53,15 @@ const useStyles = createUseStyles({
         marginBottom: 20,
         backgroundColor: 'white',
         width: 200,
-        height:220,
+        height: 220,
 
-'&:hover': {
+        '&:hover': {
             // outline: '3px solid #a5caef',
             borderRadius: 15,
-}
+        }
     },
     templateImg: {
+        objectFit: 'cover',
         borderRadius: 12,
         cursor: 'pointer',
     }
