@@ -41,6 +41,7 @@ const ZipDownload = () => {
             'oN7Um6rqEFZsVuxDXijrGVoLxFL0h3nDhk8QOYGOfFAbGBznxsc9hY4jJYSDu/wAwgOqAEAIAQEFoPNAGAgDAQBuhAG6EAYCArX6FTUK5r3' +
             'a7J4SQTG8ZaSOI4IDuyNrGta0YAGAgPQACAlACA//Z';
         img.file("smile.gif", imgData, {base64: true});
+        img.file("smile2.jpg", imgData, {base64: true});
         zip.generateAsync({type:"blob"})
             .then(function(content) {
                 const FileSaver = require('file-saver');

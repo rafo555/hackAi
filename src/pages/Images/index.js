@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
+import FreeToEdit from "../../components/common/FreeToEdit";
 
 const Images = () => {
     const classes = useStyles();
@@ -8,6 +9,7 @@ const Images = () => {
         <div className={classes.images}>
 
             Images
+            <FreeToEdit/>
 
         </div>
     );
