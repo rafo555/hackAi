@@ -22,7 +22,6 @@ const useStyles = createUseStyles({
         textAlign: 'center',
         fontSize: 16,
         color: '#cad3e3',
-        marginLeft: -50,
     },
     uploadContainer: {
         top: '50%',
