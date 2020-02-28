@@ -37,18 +37,25 @@ const useStyles = createUseStyles({
         justifyContent: 'space-between'
     },
     headerBack: {
-        marginTop: 14,
         marginLeft: 40,
         cursor: 'pointer',
+        fontSize: 14,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
 
         '&:hover': {
             color: '#2874f0',
         }
     },
     headerNext: {
-        marginTop: 18,
         marginRight: 40,
         cursor: 'pointer',
+        fontSize: 14,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
         '&:hover': {
             color: '#2874f0',
         }
@@ -56,7 +63,7 @@ const useStyles = createUseStyles({
     logIn: {
         width: 80,
         height: 27,
-        fontSize: 14,
+        fontSize: 12,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -69,7 +76,7 @@ const useStyles = createUseStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 14
+        fontSize: 12
     }
 //     width: 106px;
 //   height: 44px;
