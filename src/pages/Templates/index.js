@@ -62,7 +62,6 @@ const useStyles = createUseStyles({
         display: 'flex',
         flexDirection: 'row',
         marginRight: 20,
-        backgroundColor: 'white',
         transform: 'scale(1)',
         transition: 'all 0.5s',
         '&:hover': {
@@ -78,7 +77,6 @@ const useStyles = createUseStyles({
         height: 220,
 
         '&:hover': {
-            // outline: '3px solid #a5caef',
             borderRadius: 15,
         }
     },
