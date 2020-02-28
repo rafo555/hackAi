@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 
 import {createUseStyles} from 'react-jss';
 import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
+import back from '../../../assets/svg/back.svg';
 
 const Header = ({page}) => {
     const classes = useStyles();
@@ -17,11 +18,13 @@ const Header = ({page}) => {
                 </>
             ) : (<>
                 <div className={classes.headerBack}>
+                    <img src={back} className={classes.backIcon}/>
                     Back
                 </div>
 
                 <div className={classes.headerNext}>
                     Next
+                    <img src={back} className={classes.nextIcon}/>
                 </div>
             </>)}
 
@@ -48,6 +51,25 @@ const useStyles = createUseStyles({
             color: '#2874f0',
         }
     },
+    backIcon: {
+        marginRight: 10,
+        width: 13,
+        height: 13,
+        cursor: 'pointer',
+        '&:hover': {
+            color: '#2874f0',
+        }
+    },
+    nextIcon: {
+        transform: 'scaleX(-1)',
+        marginLeft: 10,
+        width: 13,
+        height: 13,
+        cursor: 'pointer',
+        '&:hover': {
+            color: '#2874f0',
+        }
+        },
     headerNext: {
         marginRight: 40,
         cursor: 'pointer',
