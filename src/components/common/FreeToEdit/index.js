@@ -82,7 +82,7 @@ const FreeToEdit = () => {
             <div className={classes.gridContainer}>
                 {photoData.map(el => {
                     return (
-                        <div key={el.id} className={classes.freeToEditimageContainer}>
+                        <div key={`${el.id}`} className={classes.freeToEditimageContainer}>
                             <img alt='img'
                                  width={250}
                                  height={250}
