@@ -15,7 +15,7 @@ const Header = ({page}) => {
     }, [history]);
 
     return (
-        <div className={classes.header}>
+        <header className={classes.header}>
             {page === 'templates' ? (
                 <>
                     <div className={classes.headerBack}>
@@ -39,7 +39,7 @@ const Header = ({page}) => {
                 </div>
             </>)}
 
-        </div>
+        </header>
     );
 };
 
