@@ -53,11 +53,11 @@ const FreeToEdit = () => {
 
         if (activeIndex.includes(index)) {
             const newArray = activeIndex.filter(el => el !== index);
-            return setaAtiveIndex([...newArray])([...newArray]);
+            return setAtiveIndex([...newArray]);
         }
 
-        setaAtiveIndex([...newArray])([...activeIndex, index]);
-]    }, [activeIndex]);
+        setAtiveIndex([...activeIndex, index]);
+        }, [activeIndex]);
 
     const photoData = data.map(el => {
         return {
