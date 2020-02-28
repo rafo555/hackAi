@@ -9,12 +9,13 @@ const Layout = (props) => {
         children
     } = props;
 
+
     return (
         <section>
             <Header/>
 
             <div>
-                <Siderbar/>
+                <Siderbar page={props.page}/>
 
                 <section>
                     {children}

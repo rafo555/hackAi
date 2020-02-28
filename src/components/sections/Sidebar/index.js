@@ -1,22 +1,14 @@
 import React, { memo } from 'react';
-// import { SidebarSwitcher } from './Switcher';
+import { SidebarSwitcher } from './Switcher';
 
-import { sidebarCategory } from './data';
 import { createUseStyles } from 'react-jss';
 
-const Sidebar = () => {
+const Sidebar = ({page}) => {
     const classes = useStyles();
 
     return (
         <div className={classes.sidebar}>
-            {sidebarCategory.map(el => {
-                return (
-                    <div
-                        key={`sidebar_${el.type}`}
-                        className={classes.currentCategory}
-                    >{el.name}</div>
-                )
-            })}
+            <SidebarSwitcher page={page}/>
         </div>
     )
 };

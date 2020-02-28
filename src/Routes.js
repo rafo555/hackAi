@@ -20,7 +20,7 @@ const Routes = () => {
 
                 <Route exact path="/" render={() => {
                     return (
-                        <Layout>
+                        <Layout page={'templates'}>
                             <Templates/>
                         </Layout>
                     )
