@@ -37,6 +37,7 @@ const Templates = () => {
 
 const useStyles = createUseStyles({
     mainContainerDiv: {
+        padding: '28px 35px',
         display: 'flex',
         flexWrap: 'wrap',
         marginTop: 30,
