@@ -40,17 +40,41 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                 )
             });
         case 'images':
-            return sidebarFTCategory.map(el => {
-                return (
+            return <div>
+                <div
+                    className={classes.currentUpload}
+                    onClick={() => changeImagesCategory('upload')}>
                     <div
-                        key={`freeToEdit_${el.type}`}
-                        className={classNames(classes.currentCategory, {
-                            [classes.active]: activeImageSidebar === el.type,
-                        })}
-                        onClick={() => changeImagesCategory(el.type)}
-                    ><p>{el.name}</p>   </div>
-                )
-            });
+                        className={classNames(classes.uploadImage, {
+                            [classes.active]: activeImageSidebar === 'upload',
+                        })}>
+                        Upload
+                    </div>
+                </div>
+                {
+                    sidebarFTCategory.map(el => {
+                        return (
+                            <div
+                                key={`freeToEdit_${el.type}`}
+                                className={classNames(classes.currentCategory, {
+                                    [classes.active]: activeImageSidebar === el.type,
+                                })}
+                                onClick={() => changeImagesCategory(el.type)}
+                            ><p>{el.name}</p></div>
+                        )
+                    })
+                }
+                <div
+                    className={classNames( classes.selectedImages, classes.currentCategory, {
+                        [classes.active]: activeImageSidebar === 'selected',
+                    })}
+                    onClick={() => changeImagesCategory('selected')}>
+                    <p>
+                        Selected (0)
+                    </p>
+                </div>
+            </div>;
+
         default:
             break;
     }
@@ -61,7 +85,7 @@ const useStyles = createUseStyles({
         fontSize: 14,
         color: '#41474e',
         cursor: 'pointer',
-        width: 180,
+        width: 220,
         height: 30,
         display: 'flex',
         justifyContent: 'center',
@@ -75,6 +99,35 @@ const useStyles = createUseStyles({
     },
     active: {
         color: '#2874f0'
+    },
+    uploadImage: {
+        width: 150,
+        height: 50,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow: '0 17px 41px 0 rgba(84, 93, 107, 0.12)',
+        backgroundColor: '#fff'
+
+    },
+    currentUpload: {
+        marginBottom: 40,
+        fontSize: 14,
+        color: '#41474e',
+        cursor: 'pointer',
+        width: 220,
+        height: 30,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        '&:hover': {
+            borderRadius: 7,
+            color: '#2874f0',
+        }
+    },
+    selectedImages: {
+        marginTop: 80
     }
 });
 

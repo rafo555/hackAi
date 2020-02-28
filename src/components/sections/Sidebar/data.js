@@ -15,14 +15,16 @@ export const sidebarTemplatesCategory = [
 ];
 
 export const sidebarFTCategory = [
+    // {
+    //     type: 'upload',
+    //     name: 'Upload',
+    // },
     {
-        type: 'upload',
-        name: 'Upload',
-    }, {
         type: 'freeToEdit',
         name: 'Free To Edit',
-    }, {
-        type: 'selected',
-        name: 'Selected',
     },
+    // {
+    //     type: 'selected',
+    //     name: 'Selected',
+    // },
 ];

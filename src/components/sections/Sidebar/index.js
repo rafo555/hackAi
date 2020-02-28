@@ -28,7 +28,7 @@ const Sidebar = ({page}) => {
 
 const useStyles = createUseStyles({
     sidebar: {
-        width: 200,
+        width: 220,
         float: 'left',
         marginTop: 40,
     }
