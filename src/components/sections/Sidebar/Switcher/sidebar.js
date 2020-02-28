@@ -3,6 +3,7 @@ import {sidebarTemplatesCategory, sidebarFTCategory} from '../data';
 import {createUseStyles} from "react-jss";
 import {useDispatch} from 'react-redux';
 import classNames from 'classnames';
+import uploadImg from '../../../../assets/svg/upload-2.svg'
 import {
     CHANGE_TEMPLATES_SIDEBAR,
     CHANGE_IMAGES_SIDEBAR
@@ -48,6 +49,7 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                         className={classNames(classes.uploadImage, {
                             [classes.active]: activeImageSidebar === 'upload',
                         })}>
+                        <img src={uploadImg} className={classes.uploadIcon}></img>
                         Upload
                     </div>
                 </div>
@@ -96,6 +98,12 @@ const useStyles = createUseStyles({
             color: '#2874f0',
             backgroundColor: '#f3f5ff'
         }
+    },
+    uploadIcon: {
+        marginRight: 10,
+        width: 13,
+        height: 18,
+
     },
     active: {
         color: '#2874f0'
