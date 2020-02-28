@@ -2,14 +2,17 @@ import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const data = [{
+    id: 1,
     type: '',
     url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
 },
     {
+        id: 2,
         type: '',
         url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
     },
     {
+        id: 3,
         type: '',
         url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
     }
@@ -23,7 +26,7 @@ const Templates = () => {
             {data.map((el) => {
                 return (
                     <div className='templateImgClass'>
-                        <img className='templateImg'/>
+                        <img className='templateImg' src={el.url}/>
                     </div>
                 )
             })}
