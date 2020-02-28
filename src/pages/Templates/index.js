@@ -1,16 +1,20 @@
 import React, { memo, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
-
+import { useDispatch } from 'react-redux';
 import { templates } from './data';
+import { CHANGE_TEMPLATES_SIDEBAR } from '../../store/actionTypes';
 
 const Templates = () => {
     const classes = useStyles();
 
+    const dispatch = useDispatch();
+
     const handleTemplateClick = useCallback(() => {
-
-        console.log('r');
-
-    }, []);
+        dispatch({
+            type: CHANGE_TEMPLATES_SIDEBAR,
+            templateType: 'bg'
+        });
+    }, [dispatch]);
 
     return (
         <div className={classes.mainContainer}>
