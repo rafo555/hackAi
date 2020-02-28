@@ -1,10 +1,16 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { templates } from './data';
 
 const Templates = () => {
     const classes = useStyles();
+
+    const handleTemplateClick = useCallback(() => {
+
+        console.log('r');
+
+    }, []);
 
     return (
         <div className={classes.mainContainer}>
@@ -13,7 +19,14 @@ const Templates = () => {
                     return (
                         <div key={el.id} className={classes.outlineDiv}>
                             <div className={classes.templateImgClass}>
-                                <img width={200} height={220} alt='img' className={classes.templateImg} src={el.url}/>
+                                <img
+                                    width={200}
+                                    height={220}
+                                    alt='img'
+                                    className={classes.templateImg}
+                                    src={el.url}
+                                    onClick={handleTemplateClick}
+                                />
                             </div>
                         </div>
                     )
@@ -42,7 +55,7 @@ const useStyles = createUseStyles({
         marginRight: 20,
         backgroundColor: 'white',
         transform: 'scale(1)',
-        transition: 'all 1s',
+        transition: 'all 0.5s',
         '&:hover': {
             transform: 'scale(1.05)',
         }
