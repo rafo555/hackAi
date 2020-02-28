@@ -1,23 +1,29 @@
 import React, {memo} from 'react';
 import {createUseStyles} from 'react-jss';
-import {resultData} from './data';
+import isEqual from "react-fast-compare";
+import { useSelector } from '../../store/helpers';
+import RgRemove from './bgremove';
+
 
 const Result = () => {
+    const { templateType, templateData = [] } = useSelector((state) => {
+        return {
+            templateType: state.general.template_type,
+            templateData: state.general.template_data
+        };
+    }, isEqual);;
     const classes = useStyles();
-
+    let Component = null;
+    switch (templateType) {
+        case 'bg':
+            Component = RgRemove;
+            break;
+        default:
+            break;
+    }
     return (
         <div className={classes.result}>
-            {resultData.map(el => {
-                return (
-                    <div
-                        key={`result_${el.id}`}
-                        className={classes.resultDiv}>
-                        <img
-                            src={el.url}
-                            alt=""
-                            className={classes.resultImg}/>
-                    </div>)
-            })}
+            <Component imagesSrc={templateData} />
         </div>
     );
 };
@@ -42,5 +48,4 @@ const useStyles = createUseStyles({
     }
 
 });
-
 export default memo(Result);
