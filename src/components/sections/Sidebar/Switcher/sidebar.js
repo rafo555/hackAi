@@ -1,7 +1,7 @@
 import React, {memo, useCallback} from 'react';
 import {sidebarTemplatesCategory, sidebarFTCategory} from '../data';
 import {createUseStyles} from "react-jss";
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import classNames from 'classnames';
 import {
     CHANGE_TEMPLATES_SIDEBAR,
@@ -36,21 +36,45 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                             [classes.active]: activeTemplatesSideBar === el.type,
                         })}
                         onClick={() => changeTemplateCategory(el.type)}
-                    >{el.name}</div>
+                    ><p> {el.name} </p></div>
                 )
             });
         case 'images':
-            return sidebarFTCategory.map(el => {
-                return (
+            return <div>
+                <div
+                    className={classes.currentUpload}
+                    onClick={() => changeImagesCategory('upload')}>
                     <div
-                        key={`freeToEdit_${el.type}`}
-                        className={classNames(classes.currentCategory, {
-                            [classes.active]: activeImageSidebar === el.type,
-                        })}
-                        onClick={() => changeImagesCategory(el.type)}
-                    >{el.name}</div>
-                )
-            });
+                        className={classNames(classes.uploadImage, {
+                            [classes.active]: activeImageSidebar === 'upload',
+                        })}>
+                        Upload
+                    </div>
+                </div>
+                {
+                    sidebarFTCategory.map(el => {
+                        return (
+                            <div
+                                key={`freeToEdit_${el.type}`}
+                                className={classNames(classes.currentCategory, {
+                                    [classes.active]: activeImageSidebar === el.type,
+                                })}
+                                onClick={() => changeImagesCategory(el.type)}
+                            ><p>{el.name}</p></div>
+                        )
+                    })
+                }
+                <div
+                    className={classNames( classes.selectedImages, classes.currentCategory, {
+                        [classes.active]: activeImageSidebar === 'selected',
+                    })}
+                    onClick={() => changeImagesCategory('selected')}>
+                    <p>
+                        Selected (0)
+                    </p>
+                </div>
+            </div>;
+
         default:
             break;
     }
@@ -60,17 +84,50 @@ const useStyles = createUseStyles({
     currentCategory: {
         fontSize: 14,
         color: '#41474e',
-        marginBottom: 10,
         cursor: 'pointer',
-        marginLeft: 60,
+        width: 220,
+        height: 30,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        '&:hover': {
+            borderRadius: 7,
+            color: '#2874f0',
+            backgroundColor: '#f3f5ff'
+        }
+    },
+    active: {
+        color: '#2874f0'
+    },
+    uploadImage: {
+        width: 150,
+        height: 50,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow: '0 17px 41px 0 rgba(84, 93, 107, 0.12)',
+        backgroundColor: '#fff'
+
+    },
+    currentUpload: {
+        marginBottom: 40,
+        fontSize: 14,
+        color: '#41474e',
+        cursor: 'pointer',
+        width: 220,
+        height: 30,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
 
         '&:hover': {
             borderRadius: 7,
             color: '#2874f0',
         }
     },
-    active: {
-        color: '#2874f0'
+    selectedImages: {
+        marginTop: 80
     }
 });
 

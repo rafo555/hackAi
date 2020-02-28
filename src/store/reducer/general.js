@@ -11,7 +11,7 @@ import {
 const defaultState = {
     test: 'test',
     activeTemplatesSideBar: 'effects',
-    activeImageSidebar: 'freeToEdit'
+    activeImageSidebar: 'selected'
 };
 
 const reducer = helpers(defaultState, {
