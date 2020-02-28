@@ -1,39 +1,53 @@
-import React, {memo, useCallback, useState} from 'react';
+import React, {memo, useCallback} from 'react';
 import {sidebarTemplatesCategory, sidebarFTCategory} from '../data';
 import {createUseStyles} from "react-jss";
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
+import {
+    CHANGE_TEMPLATES_SIDEBAR,
+    CHANGE_IMAGES_SIDEBAR
+} from '../../../../store/actionTypes';
 
-const SidebarSwitcher = ({page, sidebarTypeCB}) => {
+const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => {
     const classes = useStyles();
-    const [activeSidebarIndex, setActiveSidebarIndex] = useState(2);
+    const dispatch = useDispatch();
 
-    const changeCategory = useCallback((type, index) => {
-        sidebarTypeCB(type);
-        setActiveSidebarIndex(index)
-    }, [sidebarTypeCB]);
+    const changeTemplateCategory = useCallback((type) => {
+        dispatch({
+            type: CHANGE_TEMPLATES_SIDEBAR,
+            activeTemplatesSideBar: type
+        })
+    }, [dispatch]);
+
+    const changeImagesCategory = useCallback((type) => {
+        dispatch({
+            type: CHANGE_IMAGES_SIDEBAR,
+            activeImageSidebar: type
+        })
+    }, [dispatch]);
 
     switch (page) {
         case 'templates':
-            return sidebarTemplatesCategory.map((el, index) => {
+            return sidebarTemplatesCategory.map(el => {
                 return (
                     <div
                         key={`sidebar_${el.type}`}
                         className={classNames(classes.currentCategory, {
-                            [classes.active]: activeSidebarIndex === index,
+                            [classes.active]: activeTemplatesSideBar === el.type,
                         })}
-                        onClick={() => changeCategory(el.type, index)}
+                        onClick={() => changeTemplateCategory(el.type)}
                     >{el.name}</div>
                 )
             });
         case 'images':
-            return sidebarFTCategory.map((el, index) => {
+            return sidebarFTCategory.map(el => {
                 return (
                     <div
                         key={`freeToEdit_${el.type}`}
                         className={classNames(classes.currentCategory, {
-                            [classes.active]: activeSidebarIndex === index,
+                            [classes.active]: activeImageSidebar === el.type,
                         })}
-                        onClick={() => changeCategory(el.type, index)}
+                        onClick={() => changeImagesCategory(el.type)}
                     >{el.name}</div>
                 )
             });
