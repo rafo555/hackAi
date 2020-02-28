@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import useFetch from '../../../hooks/Fetch';
 import classNames from 'classnames';
-import selectedIcon from '../../../assets/svg/selected.png';
+// import selectedIcon from '../../../assets/svg/selected.png';
 
 
 import { PHOTO_SEARCH_URL } from '../../../configs';
