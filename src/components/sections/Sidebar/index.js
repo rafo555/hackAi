@@ -25,15 +25,15 @@ const useStyles = createUseStyles({
     sidebar: {
         width: 100,
         height: 200,
-        paddingTop: 40,
         paddingLeft: 60,
+        float: 'left'
     },
     currentCategory: {
         fontSize: 14,
         color: '#1d2025',
         opacity: .7,
         marginBottom: 10,
-        cursor: 'pointer'
+        cursor: 'pointer',
     }
 });
 
