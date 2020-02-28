@@ -1,7 +1,7 @@
 import React, {memo, useCallback} from 'react';
 import {sidebarTemplatesCategory, sidebarFTCategory} from '../data';
 import {createUseStyles} from "react-jss";
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import classNames from 'classnames';
 import {
     CHANGE_TEMPLATES_SIDEBAR,
@@ -36,7 +36,7 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                             [classes.active]: activeTemplatesSideBar === el.type,
                         })}
                         onClick={() => changeTemplateCategory(el.type)}
-                    >{el.name}</div>
+                    ><p> {el.name} </p></div>
                 )
             });
         case 'images':
@@ -48,7 +48,7 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                             [classes.active]: activeImageSidebar === el.type,
                         })}
                         onClick={() => changeImagesCategory(el.type)}
-                    >{el.name}</div>
+                    ><p>{el.name}</p>   </div>
                 )
             });
         default:
@@ -60,13 +60,17 @@ const useStyles = createUseStyles({
     currentCategory: {
         fontSize: 14,
         color: '#41474e',
-        marginBottom: 10,
         cursor: 'pointer',
-        marginLeft: 60,
+        width: 180,
+        height: 30,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
 
         '&:hover': {
             borderRadius: 7,
             color: '#2874f0',
+            backgroundColor: '#f3f5ff'
         }
     },
     active: {
