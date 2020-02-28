@@ -24,8 +24,10 @@ const Header = ({page}) => {
 
                 </>
             ) : (<>
-                <div className={classes.headerBack}>
-                    <img src={back} className={classes.backIcon} alt='img' onClick={handleBackClick}/>
+                <div
+                    className={classes.headerBack}
+                    onClick={handleBackClick}>
+                    <img src={back} className={classes.backIcon} alt='img' />
                     Back
                 </div>
 
@@ -63,6 +65,7 @@ const useStyles = createUseStyles({
         width: 13,
         height: 13,
         cursor: 'pointer',
+
         '&:hover': {
             color: '#2874f0',
         }
