@@ -24,7 +24,9 @@ const Result = () => {
 
 const useStyles = createUseStyles({
     result: {
-        marginRight: 150
+        marginRight: 150,
+        height: `calc(100vh - 40px)`,
+        overflow: 'auto'
     },
     resultDiv: {
         width: 240,

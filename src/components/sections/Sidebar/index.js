@@ -29,7 +29,7 @@ const Sidebar = ({page}) => {
 const useStyles = createUseStyles({
     sidebar: {
         width: 220,
-        height: 600,
+        height: `calc(100vh - 40px)`,
         float: 'left',
         marginTop: 40,
     }
