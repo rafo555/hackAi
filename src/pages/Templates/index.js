@@ -28,12 +28,13 @@ const useStyles = createUseStyles({
         flexDirection: 'column'
     },
     heading: {
-        marginLeft: 37
+        marginLeft: 37,
+        marginTop: 52
     },
     mainContainerDiv: {
         display: 'flex',
         flexWrap: 'wrap',
-        marginTop: 50,
+        marginTop: 29,
         flexDirection: 'row',
         marginLeft: 37,
     },
