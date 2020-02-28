@@ -81,8 +81,8 @@ const FreeToEdit = () => {
                     return (
                         <div key={`${el.id}`} className={classes.freeToEditimageContainer}>
                             <img alt='img'
-                                 width={250}
-                                 height={250}
+                                 width={240}
+                                 height={240}
                                  className={classNames(classes.freeToEditimage, {
                                      [classes.selectedfreeToEditimage]: activeIndex.includes(el.id)
                                  })}
@@ -111,7 +111,10 @@ const FreeToEdit = () => {
 
 const useStyles = createUseStyles({
     freeToEditimageContainer: {
-        position: 'relative'
+        position: 'relative',
+        width: 240,
+        height: 240,
+        overflow: 'hidden'
     },
     selectedIcon: {
         left: 20,
@@ -150,16 +153,13 @@ const useStyles = createUseStyles({
     freeToEditimage: {
         cursor: 'pointer',
         objectFit: 'cover',
-        borderRadius: 7,
         marginBottom: 10,
         marginRight: 10,
     },
     selectedfreeToEditimage: {
-        marginBottom: 4,
-        marginRight: 4,
-        borderRadius: 20,
-        border: 'solid 3px blue',
-        backgroundColor: '#d6e8fa',
+        transitionDuration: 300,
+        width: 250,
+        height: 250
     }
 });
 
