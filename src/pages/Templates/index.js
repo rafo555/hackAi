@@ -22,6 +22,7 @@ const Templates = () => {
 };
 
 const useStyles = createUseStyles({
+
     mainContainer: {
         display: 'flex',
         flexDirection: 'column'
