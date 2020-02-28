@@ -1,10 +1,16 @@
 import React, { memo } from 'react';
 import Routes from "./Routes";
+
+import { Provider } from 'react-redux';
+import store from './store';
+
 import './App.css';
 
 const App = () => {
     return (
-        <Routes/>
+        <Provider store={store}>
+            <Routes/>
+        </Provider>
     );
 }
 
