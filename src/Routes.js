@@ -1,7 +1,7 @@
 import React, { lazy, memo, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Main from "./pages/Main";
+import Templates from './pages/Templates';
 
 const Layout = lazy(() => import('./components/sections/Layout'));
 
@@ -12,7 +12,7 @@ const Routes = () => {
                 <Route exact path="/" render={() => {
                     return (
                         <Layout>
-                            <Main/>
+                            <Templates/>
                         </Layout>
                     )
                 }}/>
