@@ -27,7 +27,7 @@ const FreeToEdit = () => {
     }, isEqual);
 
     useEffect(() => {
-        passNextURL(`${PHOTO_SEARCH_URL}?q=origfte`, {is_remove_old_data: false});
+        passNextURL(`${PHOTO_SEARCH_URL}?q=origfte,people,person`, {is_remove_old_data: false});
     }, [passNextURL]);
 
     const onScrollSearch = useCallback(() => {
@@ -68,13 +68,12 @@ const FreeToEdit = () => {
         setAtiveIndex([...activeIndex, index]);
 
         const id = `image_${Date.now().toString(36)}`;
-
         dispatch({
             type: ADD_CHOOSE_IMAGE,
             imageObject: {
                 type: 'link',
                 id,
-                url
+                url: `${url}?r1024x1024`
             }
         });
 
