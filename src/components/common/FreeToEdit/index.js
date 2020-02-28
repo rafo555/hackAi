@@ -103,7 +103,8 @@ const useStyles = createUseStyles({
         height: 35,
         outline: 'none',
         fontSize: 15,
-        width: '80%'
+        width: '80%',
+        display: 'flex'
     },
     fteContainer: {
         padding: '28px 35px',
