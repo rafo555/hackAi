@@ -1,21 +1,30 @@
-import React, { memo } from 'react';
+import React, {memo} from 'react';
 
-import { createUseStyles } from 'react-jss';
+import {createUseStyles} from 'react-jss';
 import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
 
-const Header = () => {
+const Header = ({page}) => {
     const classes = useStyles();
 
     return (
         <div className={classes.header}>
-            <div className={classes.headerBack}>
-                <img alt={'img'} src={PicsArtLogo}/>
-            </div>
+            {page === 'templates' ? (
+                <>
+                    <div className={classes.headerBack}>
+                        <img alt={'img'} src={PicsArtLogo}/>
+                    </div>
 
-            <div className={classes.headerNext}>
-                <div className={classes.logIn}>Log In</div>
-                <div className={ classes.singUp}>Sign Up</div>
-            </div>
+                </>
+            ) : (<>
+                <div className={classes.headerBack}>
+                    Back
+                </div>
+
+                <div className={classes.headerNext}>
+                    Next
+                </div>
+            </>)}
+
         </div>
     );
 };
@@ -28,18 +37,33 @@ const useStyles = createUseStyles({
         justifyContent: 'space-between'
     },
     headerBack: {
-        marginTop: 14,
-        marginLeft: 40
+        marginLeft: 40,
+        cursor: 'pointer',
+        fontSize: 14,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        '&:hover': {
+            color: '#2874f0',
+        }
     },
     headerNext: {
-        marginTop: 18,
         marginRight: 40,
-        display: 'flex'
+        cursor: 'pointer',
+        fontSize: 14,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        '&:hover': {
+            color: '#2874f0',
+        }
     },
     logIn: {
         width: 80,
         height: 27,
-        fontSize: 14,
+        fontSize: 12,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -52,7 +76,7 @@ const useStyles = createUseStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 14
+        fontSize: 12
     }
 //     width: 106px;
 //   height: 44px;

@@ -12,7 +12,7 @@ const Layout = (props) => {
 
     return (
         <section>
-            <Header/>
+            <Header page={props.page}/>
 
             <div>
                 <Siderbar page={props.page}/>

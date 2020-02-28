@@ -49,7 +49,7 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
                         className={classNames(classes.uploadImage, {
                             [classes.active]: activeImageSidebar === 'upload',
                         })}>
-                        <img src={uploadImg} className={classes.uploadIcon}></img>
+                        <img src={uploadImg} className={classes.uploadIcon} alt={''}/>
                         Upload
                     </div>
                 </div>
@@ -84,7 +84,7 @@ const SidebarSwitcher = ({page, activeTemplatesSideBar, activeImageSidebar}) => 
 
 const useStyles = createUseStyles({
     currentCategory: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#41474e',
         cursor: 'pointer',
         width: 220,
@@ -120,7 +120,7 @@ const useStyles = createUseStyles({
     },
     currentUpload: {
         marginBottom: 40,
-        fontSize: 14,
+        fontSize: 12,
         color: '#41474e',
         cursor: 'pointer',
         width: 220,
