@@ -1,26 +1,26 @@
-import React, { memo, useCallback } from 'react';
-import { sidebarTemplatesCategory, sidebarFTCategory } from '../data';
+import React, {memo, useCallback} from 'react';
+import {sidebarTemplatesCategory, sidebarFTCategory} from '../data';
 import {createUseStyles} from "react-jss";
 
 
-const SidebarSwitcher = ({ page }) => {
+const SidebarSwitcher = ({page, sidebarTypeCB}) => {
     const classes = useStyles();
 
     const changeCategory = useCallback((type) => {
-        console.log(type);
-    }, []);
+        sidebarTypeCB(type)
+    }, [sidebarTypeCB]);
 
     switch (page) {
         case 'templates':
-        return sidebarTemplatesCategory.map(el => {
-            return (
-                <div
-                    key={`sidebar_${el.type}`}
-                    className={classes.currentCategory}
-                    onClick={() => changeCategory(el.type)}
-                >{el.name}</div>
-            )
-        });
+            return sidebarTemplatesCategory.map(el => {
+                return (
+                    <div
+                        key={`sidebar_${el.type}`}
+                        className={classes.currentCategory}
+                        onClick={() => changeCategory(el.type)}
+                    >{el.name}</div>
+                )
+            });
         case 'images':
             return sidebarFTCategory.map(el => {
                 return (
@@ -38,10 +38,15 @@ const SidebarSwitcher = ({ page }) => {
 const useStyles = createUseStyles({
     currentCategory: {
         fontSize: 14,
-        color: '#1d2025',
-        opacity: .7,
+        color: '#41474e',
         marginBottom: 10,
         cursor: 'pointer',
+        marginLeft: 60,
+
+        '&:hover': {
+            borderRadius: 7,
+            color: '#2874f0',
+        }
     }
 });
 

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { SidebarSwitcher } from './Switcher';
 
 import { createUseStyles } from 'react-jss';
@@ -6,27 +6,28 @@ import { createUseStyles } from 'react-jss';
 const Sidebar = ({page}) => {
     const classes = useStyles();
 
+    const [categoryType, setCategoryType] = useState('effects');
+
+    const sidebarTypeCB = useCallback((type) => {
+        setCategoryType(type)
+    }, []);
+
+    console.log(categoryType)
+
     return (
         <div className={classes.sidebar}>
-            <SidebarSwitcher page={page}/>
+            <SidebarSwitcher
+                page={page}
+                sidebarTypeCB={sidebarTypeCB}/>
         </div>
     )
 };
 
 const useStyles = createUseStyles({
     sidebar: {
-        width: 100,
-        height: 200,
-        paddingLeft: 60,
-        paddingTop: 40,
+        width: 200,
         float: 'left',
-    },
-    currentCategory: {
-        fontSize: 14,
-        color: '#1d2025',
-        opacity: .7,
-        marginBottom: 10,
-        cursor: 'pointer',
+        marginTop: 40,
     }
 });
 
