@@ -59,7 +59,7 @@ const FreeToEdit = () => {
         <div className={classes.fteContainer}>
             <div className={classes.fteSearch}>
                 <input
-                    className={classes.fteSearch}
+                    className={classes.fteSearchInput}
                     placeholder={'Search free images'}
                     onKeyDown={handleChangeSearch}
                     // onChange={(e) => setPhotoSearchValue(e.target.value)}
@@ -98,13 +98,21 @@ const FreeToEdit = () => {
 };
 
 const useStyles = createUseStyles({
-    fteSearch: {
+    fteSearchInput: {
+        border: 'solid 1px #d5d4e3',
+        borderRadius: 7,
+        padding: 5,
         color: '#708099',
         height: 35,
         outline: 'none',
         fontSize: 15,
-        width: '80%',
-        display: 'flex'
+        width: '50%',
+        display: 'flex',
+        paddingLeft: 25,
+        '&::placeholder': {
+            fontSize: 16,
+            color: '#dad9e7',
+        }
     },
     fteContainer: {
         padding: '28px 35px',
@@ -120,12 +128,12 @@ const useStyles = createUseStyles({
     },
     freeToEditimageContainer: {
         marginBottom: 10,
-        marginRight: 10
+        marginRight: 10,
     },
     freeToEditimage: {
         cursor: 'pointer',
         objectFit: 'cover',
-        borderRadius: 7
+        borderRadius: 7,
     }
 });
 
