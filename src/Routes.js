@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Test from "./pages/Test";
 import Main from "./pages/Main";
+import LilitTest from './pages/LilitTest';
 import ZipDownload from "./pages/ZipDownload";
 
 const Routes = () => {
@@ -16,9 +17,14 @@ const Routes = () => {
                 <Test />
             </Route>
 
+            <Route path="/lilit-test">
+                <LilitTest />
+            </Route>
+
             <Route path="/">
                 <Main />
             </Route>
+
         </Switch>
     )
 }

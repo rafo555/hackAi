@@ -13,6 +13,8 @@ const Main = () => {
             <Link to={'/test'}>Test</Link>
             <br/>
             <Link to={'/download'}>Zip Download</Link>
+            <br/>
+            <Link to={'/lilit-test'}>upload</Link>
         </div>
     );
 }

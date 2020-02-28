@@ -12,7 +12,8 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "toolchain": "git+https://github.com/mikayelpicsart/toolchain.git#master"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-dropzone": "^10.2.1"
   }
 }
