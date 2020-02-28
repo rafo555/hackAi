@@ -10,6 +10,7 @@ const Templates = lazy(() => import('./pages/Templates'));
 const Images = lazy(() => import('./pages/Images'));
 const Erase = lazy(() => import('./pages/Erase'));
 const Result = lazy(() => import('./pages/Results'));
+const Editor = lazy(() => import('./pages/Editor'));
 
 const Routes = () => {
     const { activeTemplatesSideBar, activeImageSidebar, template_data } = useSelector((state) => {
@@ -27,6 +28,12 @@ const Routes = () => {
                 <Route exact path="/erase" render={() => {
                     return (
                         <Erase />
+                    )
+                }} />
+
+                <Route exact path="/editor" render={() => {
+                    return (
+                        <Editor />
                     )
                 }} />
 
