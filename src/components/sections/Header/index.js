@@ -13,7 +13,8 @@ const Header = () => {
             </div>
 
             <div className={classes.headerNext}>
-                Next
+                <div className={classes.logIn}>Log In</div>
+                <div className={ classes.singUp}>Sign Up</div>
             </div>
         </div>
     );
@@ -27,13 +28,36 @@ const useStyles = createUseStyles({
         justifyContent: 'space-between'
     },
     headerBack: {
-        marginTop: 20,
+        marginTop: 14,
         marginLeft: 40
     },
     headerNext: {
-        marginTop: 20,
-        marginRight: 40
+        marginTop: 18,
+        marginRight: 40,
+        display: 'flex'
+    },
+    logIn: {
+        width: 80,
+        height: 27,
+        fontSize: 14,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    singUp: {
+        width: 80,
+        height: 27,
+        borderRadius: 4,
+        border: 'solid 1px #000000',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 14
     }
+//     width: 106px;
+//   height: 44px;
+//   border-radius: 4px;
+//   border: solid 1px #000000;
 });
 
 export default memo(Header);
