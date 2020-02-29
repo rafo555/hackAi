@@ -126,10 +126,6 @@ const Editor = () => {
                 </div>
             </div>
 
-            <main>
-                <div id={'editorCantainer'} style={{width: 300, height: 300}}/>
-            </main>
-
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
                 {window.stageArray.map((el, index) => {
@@ -146,11 +142,31 @@ const Editor = () => {
                     )
                 })}
             </aside>
+
+            <main>
+                <div id={'editorCantainer'}
+                     className={classes.stageContainer}
+                     style={{ width: 600, height: 600 }}
+                />
+            </main>
         </div>
     )
 }
 
 const useStyles = createUseStyles({
+    stageContainer: {
+        marginLeft: 600,
+        width: 600,
+        backgroundColor: '#f1f1f6',
+
+        '& .konvajs-content': {
+            width: '600px !important',
+
+            '& canvas': {
+                width: '600px !important',
+            }
+        }
+    },
     mainLeft: {
         float: 'left',
     },
@@ -176,13 +192,45 @@ const useStyles = createUseStyles({
     },
     slider: {
         width: 252,
-        marginLeft: 9,
+        // marginLeft: 9,
+        // cursor: 'pointer',
+        // height: 1,
+        borderRadius: 8,
         cursor: 'pointer',
+        '-webkit-appearance': 'none',
         height: 1,
+        outline: 'none',
+        opacity: .7,
+        marginTop: 15,
+        marginRight: 25.5,
+
+        '&::-webkit-slider-thumb': {
+            '-webkit-appearance': 'none',
+            appearance: 'none',
+            width: 11.2,
+            height: 11.2,
+            cursor: 'pointer',
+            borderRadius: 2.1,
+            background: 'white',
+            border: '1px solid black',
+        },
+        '&::-moz-range-thumb': {
+            '-webkit-appearance': 'none',
+            appearance: 'none',
+            width: 12,
+            height: 12,
+            cursor: 'pointer',
+            borderRadius: 2.1,
+            background: 'white',
+            border: '1px solid black'
+        },
+        '&::-moz-focus-outer': {
+            border: 'none'
+        }
     },
     sliderName: {
         color: 'white',
-        fontSize: 15.7,
+        fontSize: 14,
         marginBottom: 7,
         marginLeft: 9
     },
