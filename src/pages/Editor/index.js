@@ -7,6 +7,10 @@ import template from '../../assets/svg/template.svg';
 import text from '../../assets/svg/text.svg';
 import shape from '../../assets/svg/shape.svg';
 import canvas from '../../assets/svg/canvas.svg';
+import font from '../../assets/svg/font.svg';
+import color from '../../assets/svg/color.svg';
+import outline from '../../assets/svg/text.svg';
+import shadow from '../../assets/svg/shadow.svg';
 
 
 
@@ -37,10 +41,23 @@ const Editor = () => {
                     <img src={canvas} className={classes.icons} alt='img'/>
                     Canvas</div>
 
-
             </div>
             <div className={classes.leftAside}>
                 left
+                <div className={classes.topSettings}>
+                <div className={classes.firstSettings}>
+                    <img src={font} alt='img'/>
+                    Font</div>
+                <div className={classes.firstSettings}>
+                    <img src={color} alt='img'/>
+                    Color</div>
+                <div className={classes.firstSettings}>
+                    <img src={outline} alt='img'/>
+                    Outline</div>
+                <div className={classes.firstSettings}>
+                    <img src={shadow} alt='img'/>
+                    Shadow</div>
+                </div>
 
             </div>
             </div>
@@ -78,20 +95,19 @@ const Editor = () => {
 }
 
 const useStyles = createUseStyles({
-    mainContainer:{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
+    // mainContainer:{
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between'
+    // },
     mainLeft: {
-        display: 'flex',
-        flexDirection: 'row',
+      float: 'left'
     },
     firstPart: {
-        display: 'flex',
-        flexDirection: 'column',
         backgroundColor: 'black',
         color: 'white',
+        height: '100vh',
+        float: 'left'
     },
     templates: {
         width: 82.5,
@@ -110,7 +126,7 @@ const useStyles = createUseStyles({
         marginTop: 30
     },
     leftAside: {
-        float: 'left',
+        float: 'right',
         width: 307.3,
         height: '100vh',
         backgroundColor: 'black'
