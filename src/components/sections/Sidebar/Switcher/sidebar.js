@@ -3,7 +3,7 @@ import { sidebarTemplatesCategory, sidebarFTCategory } from '../data';
 import { createUseStyles } from "react-jss";
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-import uploadImg from '../../../../assets/svg/upload-2.svg'
+import uploadImg from '../../../../assets/svg/combined-shape.svg'
 import {
     CHANGE_TEMPLATES_SIDEBAR,
     CHANGE_IMAGES_SIDEBAR, CHOOSE_IMAGE
@@ -121,18 +121,17 @@ const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar, tem
 
 const useStyles = createUseStyles({
     currentCategory: {
-        fontSize: 12,
+        fontSize: 14,
         color: '#41474e',
         cursor: 'pointer',
-        width: 220,
+        width: 100,
         height: 30,
         display: 'flex',
         alignItems: 'center',
-        marginLeft: 40,
+        paddingLeft: 80,
 
         '&:hover': {
             borderRadius: 7,
-            color: '#2874f0',
             backgroundColor: '#f3f5ff'
         }
     },
@@ -146,14 +145,16 @@ const useStyles = createUseStyles({
         color: '#2874f0'
     },
     uploadImage: {
-        width: 150,
-        height: 50,
+        width: 140,
+        borderRadius: 6,
+        height: 41,
+        fontWeight: 600,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         boxShadow: '0 17px 41px 0 rgba(84, 93, 107, 0.12)',
-        backgroundColor: '#fff'
-
+        backgroundColor: '#fff',
+        fontSize: 14
     },
     uploadImageInput: {
         display: 'none',
@@ -161,17 +162,16 @@ const useStyles = createUseStyles({
     currentUpload: {
         marginBottom: 40,
         fontSize: 12,
-        color: '#41474e',
         cursor: 'pointer',
         width: 220,
         height: 30,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        color: '#2874f0',
 
         '&:hover': {
             borderRadius: 7,
-            color: '#2874f0',
         }
     },
     selectedImages: {

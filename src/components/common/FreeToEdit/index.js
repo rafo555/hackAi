@@ -164,15 +164,15 @@ const useStyles = createUseStyles({
         borderRadius: 7,
         padding: 5,
         color: '#708099',
-        height: 35,
+        height: 29,
         outline: 'none',
-        fontSize: 15,
+        fontSize: 14,
         width: '50%',
         display: 'flex',
         paddingLeft: 25,
-        marginTop: 3,
+        marginTop: 6,
         '&::placeholder': {
-            fontSize: 16,
+            fontSize: 14,
             color: '#dad9e7',
         }
     },
@@ -186,6 +186,7 @@ const useStyles = createUseStyles({
         display: 'flex',
         flexWrap: 'wrap',
         marginTop: 30,
+        paddingLeft: 10
     },
     freeToEditimage: {
         cursor: 'pointer',
