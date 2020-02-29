@@ -122,19 +122,19 @@ const Editor = () => {
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
-                {/*{window.stageArray.map((el, index) => {*/}
+                {window.stageArray.map((el, index) => {
                     return (
-                        {/*<div key={`stage_canvas_${index}`} className={classes.layerImgDiv}>*/}
+                        <div key={`stage_canvas_${index}`} className={classes.layerImgDiv}>
                             <img
                                 width={59.3}
                                 height={54.3}
                                 alt='img'
                                 className={classes.layerImg}
-                                // src={el.toDataURL()}
+                                src={el.toDataURL()}
                             />
-                        {/*</div>*/}
+                        </div>
                     )
-                {/*})}*/}
+                })}
             </aside>
         </div>
     )

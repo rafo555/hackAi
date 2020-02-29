@@ -20,7 +20,7 @@ const Result = () => {
     let Component = null;
     switch (templateType) {
         case 'bg':
-            Component = Ilustratr;
+            Component = RgRemove;
             break;
         default:
             break;
