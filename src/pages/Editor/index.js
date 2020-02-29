@@ -2,6 +2,7 @@ import React, { memo, useCallback } from 'react';
 import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 
+import {templates} from "../Templates/data";
 import template from '../../assets/svg/template.svg';
 import text from '../../assets/svg/text.svg';
 import shape from '../../assets/svg/shape.svg';
@@ -12,6 +13,7 @@ import outline from '../../assets/svg/text.svg';
 import shadow from '../../assets/svg/shadow.svg';
 import {useDispatch} from "react-redux";
 import {CHANGE_REFIN} from "../../store/actionTypes";
+import openSetting from '../../assets/svg/openSetting.svg'
 
 const Editor = () => {
 
@@ -56,16 +58,43 @@ const Editor = () => {
                     <div className={classes.topSettings}>
                         <div className={classes.firstSettings}>
                             <img src={font} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Font</p></div>
+                            <p className={classes.names}>Font</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
                         <div className={classes.firstSettings}>
                             <img src={color} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Color</p></div>
+                            <p className={classes.names}>Color</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
                         <div className={classes.firstSettings}>
                             <img src={outline} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Outline</p></div>
+                            <p className={classes.names}>Outline</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
                         <div className={classes.firstSettings}>
                             <img src={shadow} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Shadow</p></div>
+                            <p className={classes.names}>Shadow</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div className={classes.sliders}>Opacity
+                            <input type='range' min='1' max='100' value='50'/>
+                        </div>
+                        <div className={classes.sliders}>X Offset
+                            <input type='range' min='1' max='100' value='50'/>
+                        </div>
+                        <div className={classes.sliders}>Y Offset
+                            <input type='range' min='1' max='100' value='50'/>
+                        </div>
+                        <div className={classes.sliders}>Blur/Depth
+                            <input type='range' min='1' max='100' value='50'/>
+                        </div>
+                        <div className={classes.sliders}>Spread/Size
+                            <input type='range' min='1' max='100' value='50'/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,7 +153,7 @@ const useStyles = createUseStyles({
     },
     names: {
         fontSize: 16,
-        marginTop: 22
+        marginTop: 18
     },
     icons: {
         width: 84,
@@ -142,15 +171,23 @@ const useStyles = createUseStyles({
         marginBottom: 10,
         marginTop: 26,
         width: 280,
-        height: 64,
+        height: 55,
         color: 'white',
         backgroundColor: '#1d2025',
         display: 'flex'
     },
+    sliders: {
+        display: 'flex',
+        flexDirection: 'column',
+
+    },
     icon: {
-         float: 'left',
         marginRight: 26,
         marginLeft:16
+    },
+    openSetting: {
+        display: 'flex',
+        flexDirection: 'end'
     },
     rightAside: {
         float: 'right',
