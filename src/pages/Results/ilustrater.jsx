@@ -1,25 +1,20 @@
 import React, {memo, useEffect} from 'react';
 import {createUseStyles} from 'react-jss';
-import { genToken, AiFetch } from '../../helpers/AIFetch';
+import { AiFetch, AiUpload } from '../../helpers/AIFetch';
 import { useDispatch } from 'react-redux';
 import { loadImage, resizeIfNeededImage, upScaleImage } from '../../helpers';
 import Konva from 'konva';
 import { ADD_STAGE_POINTERS } from '../../store/actionTypes';
 
-async function removeBackground(file) {
+async function uploadToAi(file) {
     const formData = new FormData();
     formData.append('image', file);
-    const [token, sid] = genToken();
-    const options = {
-        body: formData,
-        method: 'POST',
-        headers: { sid, Authorization: `Bearer ${token}` },
-    }
-    const response = await AiFetch(`matting/${sid}`, { ...options });
-    return await response.json();
+    const [response, id] = await AiUpload(formData);
+    //const json = await response.json();
+    return id;
 }
 
-async function createPngFromMask (maskUrl, originalIMage, id) {
+async function createPngFromMask (maskUrl, originalIMage) {
     const mask = await loadImage(maskUrl);
     const maskImage = await upScaleImage(mask, originalIMage.width, originalIMage.height);
     const canvas = document.createElement('canvas');
@@ -29,37 +24,44 @@ async function createPngFromMask (maskUrl, originalIMage, id) {
     ctx.drawImage(originalIMage, 0, 0);
     ctx.globalCompositeOperation = 'destination-in';
     ctx.drawImage(maskImage, 0, 0);
-    const stage = new Konva.Stage({ container: id, width: canvas.width, height: canvas.height });
+    return canvas;
+}
+
+async function createKonva(id, hairCanvas, lipsCanvas){
+    const stage = new Konva.Stage({ container: id, width: hairCanvas.width, height: hairCanvas.height });
     const layer = new Konva.Layer();
     stage.add(layer);
-    const image = new Konva.Image({ image: canvas });
-    const rect = new Konva.Rect({ width: canvas.width, height: canvas.height, fill: '#eff5fd' });
-    const positionXRect = canvas.width - 218;
-    const positionYRect = canvas.height - 121;
-    const rectPrice = new Konva.Rect({ width: 218, height: 80, fill: '#2f303c', opacity: 0.9, x: positionXRect, y: positionYRect });
-    const text1 = new Konva.Text({ text: 'Jacket - S,M,L,XL', x: positionXRect + 31, y: positionYRect + 13, fontSize: 20, fill: 'white' });
-    const text2 = new Konva.Text({ text: '$350', x: positionXRect + 126, y: positionYRect + 45, fontSize: 25, fill: 'white' });
-    layer.add(rect);
+    const image = new Konva.Image({ image: hairCanvas });
+    const image1 = new Konva.Image({ image: lipsCanvas });
     layer.add(image);
-    layer.add(rectPrice);
-    layer.add(text1);
-    layer.add(text2);
+    layer.add(image1);
     layer.batchDraw();
     return stage;
 }
 
 async function removeBackgroundMulti(srcArray = []) {
     const imagesArray = await Promise.all(srcArray.map(item => loadImage(item.url))); // original
-    const resizedImagesArray = await Promise.all(imagesArray.map(image => resizeIfNeededImage(image, 512)));
-    const maskArray = await Promise.all(resizedImagesArray.map(blob => removeBackground(new File([blob], 'image.jpeg'))));
-    const imageDataUrlArray = await Promise.all(imagesArray
+    const resizedImagesArray = await Promise.all(imagesArray.map(image => resizeIfNeededImage(image, 1024)));
+    const imagesIds = await Promise.all(resizedImagesArray.map(blob => uploadToAi(new File([blob], 'image.jpeg'))));
+    const hairMaskUrls = Promise.all(imagesIds.map(id => getMultiMatting(id, 'hair')));
+    const lipsMaskUrls = Promise.all(imagesIds.map(id => getMultiMatting(id, 'lips')));
+    const hairCanvasSource = await Promise.all(imagesArray
         .map((image, index) => {
-            const { data: { url: maskUrl } } = maskArray[index];
-            const { id } = srcArray[index];
-            return createPngFromMask(maskUrl, image, id);
+            const { data: { url: maskUrl } } = hairMaskUrls[index];
+            return createPngFromMask(maskUrl, image, 'black');
+        })
+    );
+    const lipsCanvasSource = await Promise.all(imagesArray
+        .map((image, index) => {
+            const { data: { url: maskUrl } } = lipsMaskUrls[index];
+            return createPngFromMask(maskUrl, image, 'red');
         })
     )
-    console.log(imageDataUrlArray);
+    const stages = hairCanvasSource.map((hairCanvas, index) => {
+        const { id } = srcArray[index];
+        const lipsCanvas = lipsCanvasSource[index];
+        return createKonva(id, hairCanvas, lipsCanvas);
+    })
     return imageDataUrlArray;
 }
 
@@ -78,7 +80,7 @@ async function removeBackgroundMulti(srcArray = []) {
 //     lastPromise.then(data => { callback(data, false); callback(null, true) });
 // }
 
-const BgRemove = ({ imagesSrc }) => {
+const Ilustratr = ({ imagesSrc }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     useEffect(() => {
@@ -127,4 +129,4 @@ const useStyles = createUseStyles({
     },
 });
 
-export default memo(BgRemove);
+export default memo(Ilustratr);

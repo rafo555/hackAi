@@ -42,30 +42,24 @@ const Editor = () => {
                         <img src={canvas} className={classes.icons} alt='img'/>
                         Canvas
                     </div>
-
                 </div>
 
                 <div className={classes.leftAside}>
                     left
                     <div className={classes.topSettings}>
                         <div className={classes.firstSettings}>
-                            <img src={font} alt='img'/>
-                            Font
-                        </div>
+                            <img src={font} alt='img' className={classes.icon}/>
+                            <p className={classes.names}>Font</p></div>
                         <div className={classes.firstSettings}>
-                            <img src={color} alt='img'/>
-                            Color
-                        </div>
+                            <img src={color} alt='img' className={classes.icon}/>
+                            <p className={classes.names}>Color</p></div>
                         <div className={classes.firstSettings}>
-                            <img src={outline} alt='img'/>
-                            Outline
-                        </div>
+                            <img src={outline} alt='img' className={classes.icon}/>
+                            <p className={classes.names}>Outline</p></div>
                         <div className={classes.firstSettings}>
-                            <img src={shadow} alt='img'/>
-                            Shadow
-                        </div>
+                            <img src={shadow} alt='img' className={classes.icon}/>
+                            <p className={classes.names}>Shadow</p></div>
                     </div>
-
                 </div>
             </div>
 
@@ -102,13 +96,8 @@ const Editor = () => {
 }
 
 const useStyles = createUseStyles({
-    // mainContainer:{
-    //     display: 'flex',
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between'
-    // },
     mainLeft: {
-      float: 'left'
+      float: 'left',
     },
     firstPart: {
         backgroundColor: 'black',
@@ -126,6 +115,10 @@ const useStyles = createUseStyles({
         display: 'flex',
         flexDirection: 'column'
     },
+    names: {
+        fontSize: 16,
+        marginTop: 22
+    },
     icons: {
         width: 84,
         height: 20,
@@ -137,6 +130,20 @@ const useStyles = createUseStyles({
         width: 307.3,
         height: '100vh',
         backgroundColor: 'black'
+    },
+    firstSettings: {
+        marginBottom: 10,
+        marginTop: 26,
+        width: 280,
+        height: 64,
+        color: 'white',
+        backgroundColor: '#1d2025',
+        display: 'flex'
+    },
+    icon: {
+         float: 'left',
+        marginRight: 26,
+        marginLeft:16
     },
     rightAside: {
         float: 'right',
@@ -157,7 +164,7 @@ const useStyles = createUseStyles({
         justifyContent: 'center',
         marginBottom: 8,
         marginRight: 14,
-        marginLeft: 17
+        marginLeft: 14
     },
     layerImg: {
         borderRadius: 3,
