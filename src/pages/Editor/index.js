@@ -12,8 +12,6 @@ import color from '../../assets/svg/color.svg';
 import outline from '../../assets/svg/text.svg';
 import shadow from '../../assets/svg/shadow.svg';
 
-
-
 const Editor = () => {
 
     const classes = useStyles();
@@ -27,39 +25,48 @@ const Editor = () => {
     return (
         <div className={classes. mainContainer}>
             <div className={classes.mainLeft}>
-            <div className={classes.firstPart}>
-                <div className={classes.templates}>
-                    <img src={template} className={classes.icons} alt='img'/>
-                    Templates</div>
-                <div className={classes.templates}>
-                    <img src={text} className={classes.icons} alt='img'/>
-                    Text</div>
-                <div className={classes.templates}>
-                    <img src={shape} className={classes.icons} alt='img'/>
-                    Shape</div>
-                <div className={classes.templates}>
-                    <img src={canvas} className={classes.icons} alt='img'/>
-                    Canvas</div>
+                <div className={classes.firstPart}>
+                    <div className={classes.templates}>
+                        <img src={template} className={classes.icons} alt='img'/>
+                        Templates
+                    </div>
+                    <div className={classes.templates}>
+                        <img src={text} className={classes.icons} alt='img'/>
+                        Text
+                    </div>
+                    <div className={classes.templates}>
+                        <img src={shape} className={classes.icons} alt='img'/>
+                        Shape
+                    </div>
+                    <div className={classes.templates}>
+                        <img src={canvas} className={classes.icons} alt='img'/>
+                        Canvas
+                    </div>
 
-            </div>
-            <div className={classes.leftAside}>
-                left
-                <div className={classes.topSettings}>
-                <div className={classes.firstSettings}>
-                    <img src={font} alt='img'/>
-                    Font</div>
-                <div className={classes.firstSettings}>
-                    <img src={color} alt='img'/>
-                    Color</div>
-                <div className={classes.firstSettings}>
-                    <img src={outline} alt='img'/>
-                    Outline</div>
-                <div className={classes.firstSettings}>
-                    <img src={shadow} alt='img'/>
-                    Shadow</div>
                 </div>
 
-            </div>
+                <div className={classes.leftAside}>
+                    left
+                    <div className={classes.topSettings}>
+                        <div className={classes.firstSettings}>
+                            <img src={font} alt='img'/>
+                            Font
+                        </div>
+                        <div className={classes.firstSettings}>
+                            <img src={color} alt='img'/>
+                            Color
+                        </div>
+                        <div className={classes.firstSettings}>
+                            <img src={outline} alt='img'/>
+                            Outline
+                        </div>
+                        <div className={classes.firstSettings}>
+                            <img src={shadow} alt='img'/>
+                            Shadow
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <main>

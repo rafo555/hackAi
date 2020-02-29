@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useCallback, memo } from 'react';
 import { createUseStyles } from 'react-jss';
-import uploadImageSVG from '../../../assets/svg/photo.svg'
-import { readDropDownFile } from '../../../utils'
+import uploadImageSVG from '../../../assets/svg/photo.svg';
+import { readDropDownFile } from '../../../utils';
+
+import { useDispatch } from 'react-redux';
+import { CHOOSE_IMAGE } from "../../../store/actionTypes";
 
 const Upload = () => {
 
     const classes = useStyles();
 
-    const uploadImage = async (ev) => {
-        const fileSrc = await readDropDownFile(ev.target.files[0]);
-        console.log(fileSrc)
-    };
+    const dispatch = useDispatch();
 
+    const uploadImage = useCallback(async (ev) => {
+        const fileSrc = await readDropDownFile(ev.target.files[0]);
+
+        const id = `image_${Date.now().toString(36)}`;
+
+        dispatch({
+            type: CHOOSE_IMAGE,
+            data: [{id, url: fileSrc, type: 'link'}]
+        });
+    }, [dispatch]);
 
     return (
         <>
@@ -24,7 +34,13 @@ const Upload = () => {
                     <div> No Images are selected.</div>
                     <div>Please Upload images to proceed.</div>
                 </div>
-                <input id={'input'} type={'file'} className={classes.uploadImageInput} onChange={uploadImage}/>
+                <input
+                    id={'input'}
+                    type={'file'}
+                    className={classes.uploadImageInput}
+                    accept={'image/jpeg, image/png'}
+                    multiple={true}
+                    onChange={uploadImage}/>
             </div>
             </label>
         </>
@@ -56,4 +72,4 @@ const useStyles = createUseStyles({
     },
 });
 
-export default Upload;
+export default memo(Upload);
