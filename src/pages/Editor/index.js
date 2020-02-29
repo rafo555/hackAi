@@ -189,7 +189,7 @@ const useStyles = createUseStyles({
         width: 280,
         height: '100vh',
         backgroundColor: 'black',
-        paddingTop: 22
+        paddingTop: 10
     },
     whiteIcon: {
         width: 40,
