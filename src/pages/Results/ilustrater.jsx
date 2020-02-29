@@ -14,7 +14,7 @@ async function uploadToAi(file) {
     return id;
 }
 
-async function createPngFromMask (maskUrl, originalIMage) {
+async function createPngFromMask (maskUrl, originalIMage, color) {
     const mask = await loadImage(maskUrl);
     const maskImage = await upScaleImage(mask, originalIMage.width, originalIMage.height);
     const canvas = document.createElement('canvas');
@@ -24,15 +24,24 @@ async function createPngFromMask (maskUrl, originalIMage) {
     ctx.drawImage(originalIMage, 0, 0);
     ctx.globalCompositeOperation = 'destination-in';
     ctx.drawImage(maskImage, 0, 0);
+    ctx.globalCompositeOperation = 'source-in';
+    ctx.beginPath();
+    ctx.rect(0, 0, originalIMage.width, originalIMage.height);
+    ctx.fillStyle = color;
+    ctx.fill();
     return canvas;
 }
 
-async function createKonva(id, hairCanvas, lipsCanvas){
+// #E2B1A0 skin
+
+function createKonva(id, hairCanvas, lipsCanvas){
     const stage = new Konva.Stage({ container: id, width: hairCanvas.width, height: hairCanvas.height });
     const layer = new Konva.Layer();
     stage.add(layer);
+    const rect = new Konva.Rect({ width: hairCanvas.width, height: hairCanvas.height, fill: '#FCCFBC' });
     const image = new Konva.Image({ image: hairCanvas });
     const image1 = new Konva.Image({ image: lipsCanvas });
+    layer.add(rect);
     layer.add(image);
     layer.add(image1);
     layer.batchDraw();
@@ -48,13 +57,13 @@ async function removeBackgroundMulti(srcArray = []) {
     const hairCanvasSource = await Promise.all(imagesArray
         .map((image, index) => {
             const { url: maskUrl } = hairMaskUrls[index];
-            return createPngFromMask(maskUrl, image, 'black');
+            return createPngFromMask(maskUrl, image, '#221C1E');
         })
     );
     const lipsCanvasSource = await Promise.all(imagesArray
         .map((image, index) => {
             const { url: maskUrl } = lipsMaskUrls[index];
-            return createPngFromMask(maskUrl, image, 'red');
+            return createPngFromMask(maskUrl, image, '#B56679');
         })
     )
     const stages = hairCanvasSource.map((hairCanvas, index) => {
@@ -86,6 +95,7 @@ const Ilustratr = ({ imagesSrc }) => {
     useEffect(() => {
         (async function () {
             window.stageArray = await removeBackgroundMulti(imagesSrc);
+            console.log(window.stageArray);
         })();
         return () => null;
     }, [imagesSrc, dispatch]);
