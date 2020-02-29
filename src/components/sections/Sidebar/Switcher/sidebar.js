@@ -6,8 +6,9 @@ import classNames from 'classnames';
 import uploadImg from '../../../../assets/svg/upload-2.svg'
 import {
     CHANGE_TEMPLATES_SIDEBAR,
-    CHANGE_IMAGES_SIDEBAR
+    CHANGE_IMAGES_SIDEBAR, CHOOSE_IMAGE
 } from '../../../../store/actionTypes';
+import { readDropDownFile } from "../../../../utils";
 
 const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar, template_data_count }) => {
     const classes = useStyles();
@@ -24,6 +25,26 @@ const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar, tem
         dispatch({
             type: CHANGE_IMAGES_SIDEBAR,
             activeImageSidebar: type
+        });
+    }, [dispatch]);
+
+    const uploadImage = useCallback(async (ev) => {
+
+        Promise.all(Array.from(ev.target.files).map(async el => {
+            return await readDropDownFile(el);
+        })).then(results => {
+            const data = results.map((el, index) => {
+                return {
+                    url: el,
+                    id: `image_${Date.now().toString(36)}_${index}`,
+                    type: 'link'
+                }
+            });
+
+            dispatch({
+                type: CHOOSE_IMAGE,
+                data
+            });
         });
     }, [dispatch]);
 
@@ -51,8 +72,22 @@ const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar, tem
                         className={classNames(classes.uploadImage, {
                             [classes.active]: activeImageSidebar === 'upload',
                         })}>
+
+
+                        {/*<label htmlFor={'input'}>*/}
+
                         <img src={uploadImg} className={classes.uploadIcon} alt={''}/>
                         Upload
+
+
+                        <input
+                            id={'input'}
+                            type={'file'}
+                            className={classes.uploadImageInput}
+                            accept={'image/jpeg, image/png'}
+                            multiple={true}
+                            onChange={uploadImage}/>
+                        {/*</label>*/}
                     </div>
                 </div>
                 {
@@ -119,6 +154,9 @@ const useStyles = createUseStyles({
         boxShadow: '0 17px 41px 0 rgba(84, 93, 107, 0.12)',
         backgroundColor: '#fff'
 
+    },
+    uploadImageInput: {
+        display: 'none',
     },
     currentUpload: {
         marginBottom: 40,
