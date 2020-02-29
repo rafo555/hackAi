@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 
@@ -12,11 +12,15 @@ import outline from '../../assets/svg/text.svg';
 import shadow from '../../assets/svg/shadow.svg';
 import {useDispatch} from "react-redux";
 import {CHANGE_REFIN} from "../../store/actionTypes";
-import openSetting from '../../assets/svg/openSetting.svg'
+import openSetting from '../../assets/svg/openSetting.svg';
+
+import classNames from 'classnames';
 
 const Editor = () => {
 
     const classes = useStyles();
+
+    const [sidebar, setSidebar] = useState('text');
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -36,81 +40,121 @@ const Editor = () => {
         cloned_stage.draw();
     }, []);
 
+    const sidebarSwitcher = (type) => {
+
+        switch(type) {
+            case 'text':
+
+                return (
+                    <>
+                        <div className={classes.topSettings}>
+                            <div className={classes.firstSettings}>
+                                <img src={font} alt='img' className={classes.icon}/>
+                                <p className={classes.names}>Font</p>
+                                <img src={openSetting} alt='img' className={classes.openSetting}/>
+                            </div>
+                            <div className={classes.firstSettings}>
+                                <img src={color} alt='img' className={classes.icon}/>
+                                <p className={classes.names}>Color</p>
+                                <img src={openSetting} alt='img' className={classes.openSetting}/>
+                            </div>
+                            <div className={classes.firstSettings}>
+                                <img src={outline} alt='img' className={classes.icon}/>
+                                <p className={classes.names}>Outline</p>
+                                <img src={openSetting} alt='img' className={classes.openSetting}/>
+                            </div>
+                            <div className={classes.firstSettings}>
+                                <img src={shadow} alt='img' className={classes.icon}/>
+                                <p className={classes.names}>Shadow</p>
+                                <img src={openSetting} alt='img' className={classes.openSetting}/>
+                            </div>
+                        </div>
+
+                        <div className={classes.colorPicker}>
+                            <div className={classes.whiteIcon}/>
+                            <input type={text} className={classes.hexInput}/>
+                        </div>
+
+                        <div className={classes.mainSliderDiv}>
+                            <div className={classes.sliders}>
+                                <p className={classes.sliderName}>Opacity</p>
+                                <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                            </div>
+                            <div className={classes.sliders}>
+                                <p className={classes.sliderName}>X Offset</p>
+                                <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                            </div>
+                            <div className={classes.sliders}>
+                                <p className={classes.sliderName}>Y Offset</p>
+                                <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                            </div>
+                            <div className={classes.sliders}>
+                                <p className={classes.sliderName}>Blur/Depth</p>
+                                <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                            </div>
+                            <div className={classes.sliders}>
+                                <p className={classes.sliderName}>Spread/Size</p>
+                                <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                            </div>
+                        </div>
+                    </>
+                );
+            case 'templates':
+                return (
+                    <div>
+                        Templates
+                    </div>
+                );
+            case 'shape':
+                return (
+                  <div>Shape</div>
+                );
+            case 'canvas':
+                return (
+                    <div>canvas</div>
+                );
+            default:
+                break
+        }
+    }
+
     return (
         <div className={classes.mainContainer}>
             <div className={classes.mainLeft}>
                 <div className={classes.firstPart}>
-                    <div className={classes.templates}>
+                    <div onClick={() => setSidebar('templates')} className={classNames(classes.templates, {
+                        [classes.active]: sidebar === 'templates'
+                    })}>
                         <img src={template} className={classes.icons} alt='img'/>
                         Templates
                     </div>
-                    <div className={classes.templates}>
+
+                    <div onClick={() => setSidebar('text')} className={classNames(classes.templates, {
+                        [classes.active]: sidebar === 'text'
+                    })}>
                         <img src={text} className={classes.icons} alt='img'/>
                         Text
                     </div>
-                    <div className={classes.templates}>
+
+                    <div onClick={() => setSidebar('shape')} className={classNames(classes.templates, {
+                        [classes.active]: sidebar === 'shape'
+                    })}>
                         <img src={shape} className={classes.icons} alt='img'/>
                         Shape
                     </div>
-                    <div className={classes.templates}>
+
+                    <div onClick={() => setSidebar('canvas')} className={classNames(classes.templates, {
+                        [classes.active]: sidebar === 'canvas'
+                    })}>
                         <img src={canvas} className={classes.icons} alt='img'/>
                         Canvas
                     </div>
                 </div>
 
                 <div className={classes.leftAside}>
-                    left
-                    <div className={classes.topSettings}>
-                        <div className={classes.firstSettings}>
-                            <img src={font} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Font</p>
-                            <img src={openSetting} alt='img' className={classes.openSetting}/>
-                        </div>
-                        <div className={classes.firstSettings}>
-                            <img src={color} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Color</p>
-                            <img src={openSetting} alt='img' className={classes.openSetting}/>
-                        </div>
-                        <div className={classes.firstSettings}>
-                            <img src={outline} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Outline</p>
-                            <img src={openSetting} alt='img' className={classes.openSetting}/>
-                        </div>
-                        <div className={classes.firstSettings}>
-                            <img src={shadow} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Shadow</p>
-                            <img src={openSetting} alt='img' className={classes.openSetting}/>
-                        </div>
-                    </div>
 
-                    <div className={classes.colorPicker}>
-                        <div className={classes.whiteIcon}/>
-                        <input type={text} className={classes.hexInput}/>
-                    </div>
+                    {sidebarSwitcher(sidebar)}
 
-
-                    <div className={classes.mainSliderDiv}>
-                        <div className={classes.sliders}>
-                            <p className={classes.sliderName}>Opacity</p>
-                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
-                        </div>
-                        <div className={classes.sliders}>
-                            <p className={classes.sliderName}>X Offset</p>
-                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
-                        </div>
-                        <div className={classes.sliders}>
-                            <p className={classes.sliderName}>Y Offset</p>
-                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
-                        </div>
-                        <div className={classes.sliders}>
-                            <p className={classes.sliderName}>Blur/Depth</p>
-                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
-                        </div>
-                        <div className={classes.sliders}>
-                            <p className={classes.sliderName}>Spread/Size</p>
-                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
-                        </div>
-                    </div>
                     <div>
                         <div className={classes.cancel} onClick={handleCancel}>
                             <p>Cancel</p>
@@ -372,6 +416,9 @@ const useStyles = createUseStyles({
         cursor: 'pointer',
         float: 'left'
     },
+    active: {
+        color: 'blue',
+    }
 });
 
 export default memo(Editor);
