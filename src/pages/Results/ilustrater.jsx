@@ -90,7 +90,7 @@ async function removeBackgroundMulti(srcArray = []) {
     const eyesCanvasSource = await Promise.all(imagesArray
         .map((image, index) => {
             const { url: maskUrl } = eyesMaskUrls[index];
-            return createPngFromMask(maskUrl, image, '#6b5147');
+            return createPngFromMask(maskUrl, image, '#E2B1A');
         })
     )
     const stages = hairCanvasSource.map((hairCanvas, index) => {
