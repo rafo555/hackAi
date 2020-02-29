@@ -21,7 +21,7 @@ const Editor = () => {
     }, [history]);
 
     return (
-        <div>
+        <div className={classes. mainContainer}>
             <div className={classes.mainLeft}>
             <div className={classes.firstPart}>
                 <div className={classes.templates}>
@@ -41,8 +41,21 @@ const Editor = () => {
             </div>
             <div className={classes.leftAside}>
                 left
+
             </div>
             </div>
+
+            <main>
+                <div>
+                    <div className={classes.cancel} onClick={handleCancel}>
+                        <p>Cancel</p>
+                    </div>
+
+                    <div className={classes.apply}>
+                        <p>Apply</p>
+                    </div>
+                </div>
+            </main>
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
@@ -60,23 +73,16 @@ const Editor = () => {
                     )
                 })}
             </aside>
-
-            <main>
-                <div>
-                    <div className={classes.cancel} onClick={handleCancel}>
-                        <p>Cancel</p>
-                    </div>
-
-                    <div className={classes.apply}>
-                        <p>Apply</p>
-                    </div>
-                </div>
-            </main>
         </div>
     )
 }
 
 const useStyles = createUseStyles({
+    mainContainer:{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
     mainLeft: {
         display: 'flex',
         flexDirection: 'row',
