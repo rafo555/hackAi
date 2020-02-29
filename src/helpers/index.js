@@ -18,7 +18,7 @@ export async function resizeIfNeededImage(image, maxSize) {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, image.width * ratio, image.height * ratio);
     return await new Promise((resolve, reject) => {
-        canvas.toBlob((blob) => resolve(blob))
+        canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.95)
     });
 }
 
