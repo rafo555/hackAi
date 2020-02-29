@@ -29,8 +29,8 @@ const Templates = () => {
                         <div key={el.id} className={classes.outlineDiv}>
                             <div className={classes.templateImgClass}>
                                 <img
-                                    width={200}
-                                    height={220}
+                                    width={390}
+                                    height={390}
                                     alt='img'
                                     className={classes.templateImg}
                                     src={el.url}
@@ -58,7 +58,7 @@ const useStyles = createUseStyles({
         marginLeft: 37,
     },
     templateImgClass: {
-        marginBottom: 20,
+        // marginBottom: 20,
         display: 'flex',
         flexDirection: 'row',
         transform: 'scale(1)',
@@ -68,11 +68,12 @@ const useStyles = createUseStyles({
         }
     },
     outlineDiv: {
-        marginRight: 20,
-        marginBottom: 20,
+        // marginRight: 20,
+        // marginBottom: 20,
         backgroundColor: 'white',
-        width: 200,
-        height: 220,
+        width: 400,
+        height: 400,
+        marginLeft: 5,
 
         '&:hover': {
             borderRadius: 15,
