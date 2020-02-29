@@ -59,6 +59,7 @@ async function removeBackgroundMulti(srcArray = []) {
             return createPngFromMask(maskUrl, image, id);
         })
     )
+    console.log(imageDataUrlArray);
     return imageDataUrlArray;
 }
 

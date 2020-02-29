@@ -8,7 +8,8 @@ import {
     CHANGE_IMAGES_SIDEBAR,
     SET_TEMPLATE_TYPE,
     ADD_CHOOSE_IMAGE,
-    TEMPLATE_DATA_COUNT
+    TEMPLATE_DATA_COUNT,
+    ADD_STAGE_POINTERS
 } from '../actionTypes';
 
 const defaultState = {
@@ -17,7 +18,8 @@ const defaultState = {
     activeImageSidebar: 'selected',
     template_type: 'bg',
     template_data: [],
-    template_data_count: 0
+    template_data_count: 0,
+    stages: []
 };
 
 const reducer = helpers(defaultState, {
@@ -61,6 +63,12 @@ const reducer = helpers(defaultState, {
             template_data_count: action.template_data_count
         };
     },
+    [ADD_STAGE_POINTERS]: (state, action) => {
+        return {
+            ...state,
+            stages: action.payload
+        };
+    }
     // [_CHOOSE_IMAGE]: (state, action) => {
     //     const new_template_data = state.template_data;
     //     new_template_data.push(action.imageObject);
