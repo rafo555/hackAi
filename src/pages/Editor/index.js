@@ -155,7 +155,7 @@ const Editor = () => {
 
 const useStyles = createUseStyles({
     stageContainer: {
-        marginLeft: 350,
+        marginLeft: 600,
         width: 600,
         backgroundColor: '#f1f1f6',
 
