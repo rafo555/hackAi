@@ -73,21 +73,20 @@ const SidebarSwitcher = ({ page, activeTemplatesSideBar, activeImageSidebar, tem
                             [classes.active]: activeImageSidebar === 'upload',
                         })}>
 
-
-                        {/*<label htmlFor={'input'}>*/}
+                        <label htmlFor={'input2'}>
 
                         <img src={uploadImg} className={classes.uploadIcon} alt={''}/>
                         Upload
 
 
                         <input
-                            id={'input'}
+                            id={'input2'}
                             type={'file'}
                             className={classes.uploadImageInput}
                             accept={'image/jpeg, image/png'}
                             multiple={true}
                             onChange={uploadImage}/>
-                        {/*</label>*/}
+                        </label>
                     </div>
                 </div>
                 {
