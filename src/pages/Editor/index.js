@@ -165,12 +165,14 @@ const useStyles = createUseStyles({
         marginRight: 10
     },
     slider: {
-        width: 260
+        width: 252,
+        marginLeft: 9
     },
     sliderName: {
         color: 'white',
         fontSize: 15.7,
-        marginBottom: 10
+        marginBottom: 10,
+        marginLeft: 9
     },
     colorPicker: {
         display:'flex',
@@ -194,10 +196,11 @@ const useStyles = createUseStyles({
         height: 40,
         backgroundColor: 'white',
         marginRight:9,
-        borderRadius: 4.3
+        borderRadius: 4.3,
+        marginLeft: 9
     },
     hexInput: {
-        width:213,
+        width:204,
         height: 40,
         borderRadius: 4.3,
         backgroundColor: 'black',
@@ -205,7 +208,6 @@ const useStyles = createUseStyles({
 },
     firstSettings: {
         marginBottom: 10,
-        // marginTop: 26,
         marginLeft: 7,
         width: 259,
         height: 49,
