@@ -30,7 +30,7 @@ const Upload = () => {
                 data
             });
         });
-    }, []);
+    }, [dispatch]);
 
     return (
         <>
