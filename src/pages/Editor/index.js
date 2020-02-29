@@ -77,22 +77,32 @@ const Editor = () => {
                         </div>
                     </div>
 
+                    <div className={classes.colorPicker}>
+                        <div className={classes.whiteIcon}/>
+                        <input type={text} className={classes.hexInput}/>
+                    </div>
+
 
                     <div>
-                        <div className={classes.sliders}>Opacity
-                            <input type='range' min='1' max='100' value='50'/>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Opacity</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
                         </div>
-                        <div className={classes.sliders}>X Offset
-                            <input type='range' min='1' max='100' value='50'/>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>X Offset</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
                         </div>
-                        <div className={classes.sliders}>Y Offset
-                            <input type='range' min='1' max='100' value='50'/>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Y Offset</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
                         </div>
-                        <div className={classes.sliders}>Blur/Depth
-                            <input type='range' min='1' max='100' value='50'/>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Blur/Depth</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
                         </div>
-                        <div className={classes.sliders}>Spread/Size
-                            <input type='range' min='1' max='100' value='50'/>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Spread/Size</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
                         </div>
                     </div>
                 </div>
@@ -112,19 +122,19 @@ const Editor = () => {
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
-                {window.stageArray.map((el, index) => {
+                {/*{window.stageArray.map((el, index) => {*/}
                     return (
-                        <div key={`stage_canvas_${index}`} className={classes.layerImgDiv}>
+                        {/*<div key={`stage_canvas_${index}`} className={classes.layerImgDiv}>*/}
                             <img
                                 width={59.3}
                                 height={54.3}
                                 alt='img'
                                 className={classes.layerImg}
-                                src={el.toDataURL()}
+                                // src={el.toDataURL()}
                             />
-                        </div>
+                        {/*</div>*/}
                     )
-                })}
+                {/*})}*/}
             </aside>
         </div>
     )
@@ -132,7 +142,7 @@ const Editor = () => {
 
 const useStyles = createUseStyles({
     mainLeft: {
-      float: 'left',
+        float: 'left',
     },
     firstPart: {
         backgroundColor: 'black',
@@ -144,8 +154,6 @@ const useStyles = createUseStyles({
         width: 70,
         cursor: 'pointer',
         height: 70,
-        // textAlign: 'center',
-        // paddingTop: 15,
         fontSize: 10,
         display: 'flex',
         flexDirection: 'column',
@@ -155,6 +163,18 @@ const useStyles = createUseStyles({
         fontSize: 13,
         marginTop: 16,
         marginRight: 10
+    },
+    slider: {
+        width: 260
+    },
+    sliderName: {
+        color: 'white',
+        fontSize: 15.7,
+        marginBottom: 10
+    },
+    colorPicker: {
+        display:'flex',
+        flexDirection:'row'
     },
     icons: {
         width: 84,
@@ -169,6 +189,20 @@ const useStyles = createUseStyles({
         backgroundColor: 'black',
         paddingTop: 22
     },
+    whiteIcon: {
+        width: 40,
+        height: 40,
+        backgroundColor: 'white',
+        marginRight:9,
+        borderRadius: 4.3
+    },
+    hexInput: {
+        width:213,
+        height: 40,
+        borderRadius: 4.3,
+        backgroundColor: 'black',
+        border: 'solid 0.7px #303139'
+},
     firstSettings: {
         marginBottom: 10,
         // marginTop: 26,
@@ -178,7 +212,8 @@ const useStyles = createUseStyles({
         color: 'white',
         backgroundColor: '#1d2025',
         display: 'flex',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        borderRadius: 4.3
     },
     sliders: {
         display: 'flex',
