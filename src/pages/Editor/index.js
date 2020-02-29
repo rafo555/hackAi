@@ -83,7 +83,7 @@ const Editor = () => {
                     </div>
 
 
-                    <div>
+                    <div className={classes.mainSliderDiv}>
                         <div className={classes.sliders}>
                             <p className={classes.sliderName}>Opacity</p>
                             <input type='range' min='1' max='100' value='50' className={classes.slider}/>
@@ -105,19 +105,23 @@ const Editor = () => {
                             <input type='range' min='1' max='100' value='50' className={classes.slider}/>
                         </div>
                     </div>
+                    <div>
+                        <div className={classes.cancel} onClick={handleCancel}>
+                            <p>Cancel</p>
+                        </div>
+
+                        <div className={classes.apply}>
+                            <p>Apply</p>
+                        </div>
+                        <div className={classes.applyAll}>
+                            <p>Apply All</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <main>
-                <div>
-                    <div className={classes.cancel} onClick={handleCancel}>
-                        <p>Cancel</p>
-                    </div>
 
-                    <div className={classes.apply}>
-                        <p>Apply</p>
-                    </div>
-                </div>
             </main>
 
             <aside className={classes.rightAside}>
@@ -161,17 +165,19 @@ const useStyles = createUseStyles({
     },
     names: {
         fontSize: 13,
-        marginTop: 16,
+        marginTop: 13,
         marginRight: 10
     },
     slider: {
         width: 252,
-        marginLeft: 9
+        marginLeft: 9,
+        cursor: 'pointer',
+        height: 1,
     },
     sliderName: {
         color: 'white',
         fontSize: 15.7,
-        marginBottom: 10,
+        marginBottom: 7,
         marginLeft: 9
     },
     colorPicker: {
@@ -192,16 +198,19 @@ const useStyles = createUseStyles({
         paddingTop: 10
     },
     whiteIcon: {
-        width: 40,
-        height: 40,
+        width: 28,
+        height: 30,
         backgroundColor: 'white',
         marginRight:9,
         borderRadius: 4.3,
         marginLeft: 9
     },
+    mainSliderDiv: {
+        marginBottom: 78
+    },
     hexInput: {
-        width:204,
-        height: 40,
+        width:212,
+        height: 28,
         borderRadius: 4.3,
         backgroundColor: 'black',
         border: 'solid 0.7px #303139'
@@ -210,7 +219,7 @@ const useStyles = createUseStyles({
         marginBottom: 10,
         marginLeft: 7,
         width: 259,
-        height: 49,
+        height: 40,
         color: 'white',
         backgroundColor: '#1d2025',
         display: 'flex',
@@ -230,6 +239,9 @@ const useStyles = createUseStyles({
     openSetting: {
         display: 'flex',
         flexDirection: 'end',
+        position: 'absolute',
+        marginLeft: 228,
+        marginTop:20
     },
     rightAside: {
         float: 'right',
@@ -261,7 +273,7 @@ const useStyles = createUseStyles({
         marginRight: 50
     },
     cancel: {
-        width: 100,
+        width: 76,
         height: 36,
         borderRadius: 4,
         backgroundColor: '#818ca0',
@@ -271,12 +283,13 @@ const useStyles = createUseStyles({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 8,
-        marginRight: 10,
+        marginRight: 9,
+        marginLeft: 9,
         cursor: 'pointer',
         float: 'left'
     },
     apply: {
-        width: 100,
+        width: 76,
         height: 36,
         borderRadius: 4,
         backgroundColor: '#3a76e8',
@@ -289,7 +302,22 @@ const useStyles = createUseStyles({
         marginRight: 10,
         cursor: 'pointer',
         float: 'left'
-    }
+    },
+    applyAll: {
+        width: 76,
+        height: 36,
+        borderRadius: 4,
+        backgroundColor: '#3a76e8',
+        color: '#fff',
+        fontSize: 13,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 8,
+        marginRight: 10,
+        cursor: 'pointer',
+        float: 'left'
+    },
 });
 
 export default memo(Editor);
