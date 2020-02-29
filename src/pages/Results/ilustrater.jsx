@@ -85,12 +85,7 @@ const Ilustratr = ({ imagesSrc }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         (async function () {
-            const stage = await removeBackgroundMulti(imagesSrc);
-            console.log(stage);
-            dispatch({
-                type: ADD_STAGE_POINTERS,
-                payload: stage
-            });
+            window.stageArray = await removeBackgroundMulti(imagesSrc);
         })();
         return () => null;
     }, [imagesSrc, dispatch]);
