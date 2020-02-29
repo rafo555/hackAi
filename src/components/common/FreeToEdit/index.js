@@ -105,7 +105,11 @@ const FreeToEdit = () => {
             <div className={classes.gridContainer}>
                 {photoData.map(el => {
                     return (
-                        <div key={`${el.id}`} className={classes.freeToEditimageContainer}>
+                        <div key={`${el.id}`}
+                             className={classNames(classes.freeToEditimageContainer, {
+                                 [classes.selectedFTEContainer]: activeIndex.includes(el.id)
+                             })}
+                        >
                             <img alt='img'
                                  width={240}
                                  height={240}
@@ -137,18 +141,24 @@ const FreeToEdit = () => {
 };
 
 const useStyles = createUseStyles({
+    selectedFTEContainer: {
+        border: 'solid 5px #a5caef',
+        backgroundColor: '#d6e8fa',
+        width: 240,
+        height: 240
+    },
     freeToEditimageContainer: {
         position: 'relative',
-        width: 240,
-        height: 240,
-        overflow: 'hidden'
+        borderRadius: 20,
+        marginBottom: 10,
+        marginRight: 10,
     },
     selectedIcon: {
         left: 20,
         bottom: 20,
         width: 30,
         height: 30,
-        position: 'absolute'
+        position: 'absolute',
     },
     fteSearchInput: {
         border: 'solid 1px #d5d4e3',
@@ -182,11 +192,16 @@ const useStyles = createUseStyles({
         objectFit: 'cover',
         marginBottom: 10,
         marginRight: 10,
+        borderRadius: 20
     },
     selectedfreeToEditimage: {
-        transitionDuration: 300,
-        width: 250,
-        height: 250
+        marginBottom: 4,
+        marginRight: 4,
+        borderRadius: 20,
+        width: 220,
+        textAlign: 'center',
+        padding: 10,
+        height: 220,
     }
 });
 
