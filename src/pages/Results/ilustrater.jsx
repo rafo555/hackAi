@@ -42,18 +42,18 @@ async function createKonva(id, hairCanvas, lipsCanvas){
 async function removeBackgroundMulti(srcArray = []) {
     const imagesArray = await Promise.all(srcArray.map(item => loadImage(item.url))); // original
     const resizedImagesArray = await Promise.all(imagesArray.map(image => resizeIfNeededImage(image, 1024)));
-    const imagesIds = await Promise.all(resizedImagesArray.map(blob => uploadToAi(new File([blob], 'image.jpeg'))));
-    const hairMaskUrls = Promise.all(imagesIds.map(id => getMultiMatting(id, 'hair')));
-    const lipsMaskUrls = Promise.all(imagesIds.map(id => getMultiMatting(id, 'lips')));
+    const imagesIds = await Promise.all(resizedImagesArray.map(blob => uploadToAi(new File([blob], Date.now() + '.jpg'))));
+    const hairMaskUrls = await Promise.all(imagesIds.map(id => getMultiMatting(id, 'hair')));
+    const lipsMaskUrls = await Promise.all(imagesIds.map(id => getMultiMatting(id, 'lips')));
     const hairCanvasSource = await Promise.all(imagesArray
         .map((image, index) => {
-            const { data: { url: maskUrl } } = hairMaskUrls[index];
+            const { url: maskUrl } = hairMaskUrls[index];
             return createPngFromMask(maskUrl, image, 'black');
         })
     );
     const lipsCanvasSource = await Promise.all(imagesArray
         .map((image, index) => {
-            const { data: { url: maskUrl } } = lipsMaskUrls[index];
+            const { url: maskUrl } = lipsMaskUrls[index];
             return createPngFromMask(maskUrl, image, 'red');
         })
     )
@@ -85,12 +85,7 @@ const Ilustratr = ({ imagesSrc }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         (async function () {
-            const stage = await removeBackgroundMulti(imagesSrc);
-            console.log(stage);
-            dispatch({
-                type: ADD_STAGE_POINTERS,
-                payload: stage
-            });
+            window.stageArray = await removeBackgroundMulti(imagesSrc);
         })();
         return () => null;
     }, [imagesSrc, dispatch]);

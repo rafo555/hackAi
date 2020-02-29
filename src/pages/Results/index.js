@@ -22,6 +22,9 @@ const Result = () => {
         case 'bg':
             Component = RgRemove;
             break;
+        case 'lu':
+            Component = Ilustratr;
+            break;
         default:
             break;
     }

@@ -6,7 +6,7 @@ export const templates = [
     },
     {
         id: 2,
-        type: '',
+        type: 'lu',
         url: 'https://cdn130.picsart.com/320571728314201.jpg?type=webp&to=min&r=480',
     },
     {
