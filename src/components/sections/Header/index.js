@@ -1,5 +1,5 @@
-import React, { memo, useCallback } from 'react';
-import { useHistory, Link } from "react-router-dom";
+import React, {memo, useCallback} from 'react';
+import {useHistory, Link} from "react-router-dom";
 
 import {createUseStyles} from 'react-jss';
 import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
@@ -27,15 +27,18 @@ const Header = ({page}) => {
                 <div
                     className={classes.headerBack}
                     onClick={handleBackClick}>
-                    <img src={back} className={classes.backIcon} alt='img' />
+                    <img src={back} className={classes.backIcon} alt='img'/>
                     Back
                 </div>
 
                 {page === 'results' ? (
                     <div className={classes.resultButtons}>
-                        <div className={classes.refine}>
-                            <p>Refine</p>
-                        </div>
+                        <Link to={'/editor'} style={{ textDecoration: 'none'}}>
+                            <div className={classes.refine}>
+                                <p>Refine</p>
+                            </div>
+                        </Link>
+
                         <div className={classes.share}>
                             <p>Share</p>
                         </div>
@@ -94,7 +97,7 @@ const useStyles = createUseStyles({
         '&:hover': {
             color: '#2874f0',
         }
-        },
+    },
     headerNext: {
         marginRight: 40,
         cursor: 'pointer',
@@ -141,7 +144,7 @@ const useStyles = createUseStyles({
         alignItems: 'center',
         marginTop: 8,
         marginRight: 10,
-        cursor: 'pointer'
+        cursor: 'pointer',
     },
     share: {
         width: 120,

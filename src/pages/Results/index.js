@@ -11,7 +11,8 @@ const Result = () => {
             templateType: state.general.template_type,
             templateData: state.general.template_data
         };
-    }, isEqual);;
+    }, isEqual);
+
     const classes = useStyles();
     let Component = null;
     switch (templateType) {
@@ -21,6 +22,7 @@ const Result = () => {
         default:
             break;
     }
+
     return (
         <div className={classes.result}>
             <Component imagesSrc={templateData} />
@@ -32,7 +34,6 @@ const useStyles = createUseStyles({
     result: {
         marginRight: 150,
         height: `calc(100vh - 40px)`,
-        overflow: 'auto'
     },
     resultDiv: {
         width: 240,
