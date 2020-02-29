@@ -19,8 +19,8 @@ const Editor = () => {
                     return (
                         <div key={el.id} className={classes.layerImgDiv}>
                             <img
-                                width={89}
-                                height={82}
+                                width={59.3}
+                                height={54.3}
                                 alt='img'
                                 className={classes.layerImg}
                                 src={el.url}
@@ -53,14 +53,16 @@ const useStyles = createUseStyles({
     },
     rightAside: {
         float: 'right',
-        width: 121,
+        width: 86.8,
         border: 'solid 1px #e8e8f1',
         height: '100vh'
     },
     rightSideTxt: {
-        marginTop: 32,
         textAlign: 'center',
-        color: '#9ba0ae'
+        color: '#9ba0ae',
+        fontSize: 13,
+        display: 'flex',
+        justifyContent: 'center'
 },
     layerImgDiv: {
         display: 'flex',
@@ -71,7 +73,7 @@ const useStyles = createUseStyles({
         marginLeft: 17
     },
     layerImg: {
-        borderRadius: 4
+        borderRadius: 3
     },
     main: {
         marginLeft: 300,
