@@ -40,8 +40,10 @@ const Upload = () => {
             >
                 <img src={uploadImageSVG} className={classes.uploadImageSVG} alt={'img'}/>
                 <div className={classes.uploadImageText}>
-                    <div> No Images are selected.</div>
-                    <div>Please Upload images to proceed.</div>
+                    <div className={classes.uploadTexts}>
+                        <div> No Images are selected.</div>
+                        <div>Please Upload images to proceed.</div>
+                    </div>
                 </div>
                 <input
                     id={'input'}
@@ -58,6 +60,9 @@ const Upload = () => {
 };
 
 const useStyles = createUseStyles({
+    uploadTexts: {
+        marginTop: 15
+    },
     uploadImageInput: {
         display: 'none',
     },
@@ -67,7 +72,7 @@ const useStyles = createUseStyles({
         color: '#cad3e3',
     },
     uploadContainer: {
-        top: '50%',
+        top: '35%',
         position: 'absolute',
         left: '50%',
         marginTop: -75,

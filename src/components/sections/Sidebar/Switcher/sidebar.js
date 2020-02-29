@@ -92,8 +92,8 @@ const useStyles = createUseStyles({
         width: 220,
         height: 30,
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
+        marginLeft: 40,
 
         '&:hover': {
             borderRadius: 7,

@@ -2,7 +2,6 @@ import React, { memo, useCallback } from 'react';
 import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 
-import {templates} from "../Templates/data";
 import template from '../../assets/svg/template.svg';
 import text from '../../assets/svg/text.svg';
 import shape from '../../assets/svg/shape.svg';
@@ -11,19 +10,28 @@ import font from '../../assets/svg/font.svg';
 import color from '../../assets/svg/color.svg';
 import outline from '../../assets/svg/text.svg';
 import shadow from '../../assets/svg/shadow.svg';
+import {useDispatch} from "react-redux";
+import {CHANGE_REFIN} from "../../store/actionTypes";
+import openSetting from '../../assets/svg/openSetting.svg'
 
 const Editor = () => {
 
     const classes = useStyles();
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleCancel = useCallback(() => {
         history.goBack();
-    }, [history]);
+
+        dispatch({
+            type: CHANGE_REFIN,
+            changeRefine: false
+        })
+    }, [history, dispatch]);
 
     return (
-        <div className={classes. mainContainer}>
+        <div className={classes.mainContainer}>
             <div className={classes.mainLeft}>
                 <div className={classes.firstPart}>
                     <div className={classes.templates}>
@@ -49,16 +57,53 @@ const Editor = () => {
                     <div className={classes.topSettings}>
                         <div className={classes.firstSettings}>
                             <img src={font} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Font</p></div>
+                            <p className={classes.names}>Font</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
                         <div className={classes.firstSettings}>
                             <img src={color} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Color</p></div>
+                            <p className={classes.names}>Color</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
                         <div className={classes.firstSettings}>
                             <img src={outline} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Outline</p></div>
+                            <p className={classes.names}>Outline</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
                         <div className={classes.firstSettings}>
                             <img src={shadow} alt='img' className={classes.icon}/>
-                            <p className={classes.names}>Shadow</p></div>
+                            <p className={classes.names}>Shadow</p>
+                            <img src={openSetting} alt='img' className={classes.openSetting}/>
+                        </div>
+                    </div>
+
+                    <div className={classes.colorPicker}>
+                        <div className={classes.whiteIcon}/>
+                        <input type={text} className={classes.hexInput}/>
+                    </div>
+
+
+                    <div>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Opacity</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                        </div>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>X Offset</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                        </div>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Y Offset</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                        </div>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Blur/Depth</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                        </div>
+                        <div className={classes.sliders}>
+                            <p className={classes.sliderName}>Spread/Size</p>
+                            <input type='range' min='1' max='100' value='50' className={classes.slider}/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,19 +122,19 @@ const Editor = () => {
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
-                {templates.map(el => {
+                {/*{window.stageArray.map((el, index) => {*/}
                     return (
-                        <div key={el.id} className={classes.layerImgDiv}>
+                        {/*<div key={`stage_canvas_${index}`} className={classes.layerImgDiv}>*/}
                             <img
                                 width={59.3}
                                 height={54.3}
                                 alt='img'
                                 className={classes.layerImg}
-                                src={el.url}
+                                // src={el.toDataURL()}
                             />
-                        </div>
+                        {/*</div>*/}
                     )
-                })}
+                {/*})}*/}
             </aside>
         </div>
     )
@@ -97,7 +142,7 @@ const Editor = () => {
 
 const useStyles = createUseStyles({
     mainLeft: {
-      float: 'left',
+        float: 'left',
     },
     firstPart: {
         backgroundColor: 'black',
@@ -106,18 +151,32 @@ const useStyles = createUseStyles({
         float: 'left'
     },
     templates: {
-        width: 82.5,
+        width: 70,
         cursor: 'pointer',
-        height: 82.5,
-        textAlign: 'center',
-        paddingTop: 15,
+        height: 70,
         fontSize: 10,
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        alignItems: 'center'
     },
     names: {
-        fontSize: 16,
-        marginTop: 22
+        fontSize: 13,
+        marginTop: 16,
+        marginRight: 10
+    },
+    slider: {
+        width: 252,
+        marginLeft: 9
+    },
+    sliderName: {
+        color: 'white',
+        fontSize: 15.7,
+        marginBottom: 10,
+        marginLeft: 9
+    },
+    colorPicker: {
+        display:'flex',
+        flexDirection:'row'
     },
     icons: {
         width: 84,
@@ -127,23 +186,50 @@ const useStyles = createUseStyles({
     },
     leftAside: {
         float: 'right',
-        width: 307.3,
+        width: 280,
         height: '100vh',
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        paddingTop: 10
     },
+    whiteIcon: {
+        width: 40,
+        height: 40,
+        backgroundColor: 'white',
+        marginRight:9,
+        borderRadius: 4.3,
+        marginLeft: 9
+    },
+    hexInput: {
+        width:204,
+        height: 40,
+        borderRadius: 4.3,
+        backgroundColor: 'black',
+        border: 'solid 0.7px #303139'
+},
     firstSettings: {
         marginBottom: 10,
-        marginTop: 26,
-        width: 280,
-        height: 64,
+        marginLeft: 7,
+        width: 259,
+        height: 49,
         color: 'white',
         backgroundColor: '#1d2025',
-        display: 'flex'
+        display: 'flex',
+        cursor: 'pointer',
+        borderRadius: 4.3
+    },
+    sliders: {
+        display: 'flex',
+        flexDirection: 'column',
+
     },
     icon: {
-         float: 'left',
-        marginRight: 26,
-        marginLeft:16
+        marginRight: 23,
+        marginLeft: 12,
+        width: 17
+    },
+    openSetting: {
+        display: 'flex',
+        flexDirection: 'end',
     },
     rightAside: {
         float: 'right',
