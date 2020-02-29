@@ -1,6 +1,6 @@
 import React, {memo, useEffect} from 'react';
 import {createUseStyles} from 'react-jss';
-import { AiFetch, AiUpload } from '../../helpers/AIFetch';
+import { getMultiMatting, AiUpload } from '../../helpers/AIFetch';
 import { useDispatch } from 'react-redux';
 import { loadImage, resizeIfNeededImage, upScaleImage } from '../../helpers';
 import Konva from 'konva';
@@ -62,7 +62,7 @@ async function removeBackgroundMulti(srcArray = []) {
         const lipsCanvas = lipsCanvasSource[index];
         return createKonva(id, hairCanvas, lipsCanvas);
     })
-    return imageDataUrlArray;
+    return stages;
 }
 
 // async function removeBackgroundBulk (srcArray = [], callback) {

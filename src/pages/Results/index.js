@@ -3,6 +3,7 @@ import {createUseStyles} from 'react-jss';
 import isEqual from "react-fast-compare";
 import { useSelector } from '../../store/helpers';
 import RgRemove from './bgremove';
+import Ilustratr from './ilustrater';
 
 
 const Result = () => {
@@ -17,7 +18,7 @@ const Result = () => {
     let Component = null;
     switch (templateType) {
         case 'bg':
-            Component = RgRemove;
+            Component = Ilustratr;
             break;
         default:
             break;

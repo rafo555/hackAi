@@ -42,10 +42,9 @@ export async function AiFetch(url, options) {
 
 export async function AiUpload(formData) {
     const id = uuidV1();
-    const response = await fetchWithTimeout(`https://aihackathon.picsart.com/photos/${id}`, {
+    const response = await fetchWithTimeout(`http://192.168.12.95:3400/photos/${id}`, {
         body: formData,
-        method: 'POST',
-        headers: { Authorization: `Bearer 5HBZmENO488Lky5m4XuF1uqGFEvemHw2` },
+        method: 'POST'
     });
     if (!response.ok) throw new Error(`response status is ${response.status}`);
     return [response, id];
@@ -53,9 +52,7 @@ export async function AiUpload(formData) {
 
 
 export async function getMultiMatting(id, type) {
-    const response = await fetchWithTimeout(`https://aihackathon.picsart.com/multiMatting/${id}?segmentation_class=${type}`, {
-        headers: { Authorization: `Bearer 5HBZmENO488Lky5m4XuF1uqGFEvemHw2` },
-    });
+    const response = await fetchWithTimeout(`http://192.168.12.95:3400/multiMatting/${id}?segmentation_class=${type}`, {});
     if (!response.ok) throw new Error(`response status is ${response.status}`);
     return await response.json();
 }
