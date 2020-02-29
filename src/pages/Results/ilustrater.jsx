@@ -38,8 +38,8 @@ function createKonva(id, hairCanvas, lipsCanvas){
     const layer = new Konva.Layer();
     stage.add(layer);
     const rect = new Konva.Rect({ width: hairCanvas.width, height: hairCanvas.height, fill: '#FCCFBC' });
-    const image = new Konva.Image({ image: hairCanvas });
-    const image1 = new Konva.Image({ image: lipsCanvas });
+    const image = new Konva.Image({ image: hairCanvas, draggable: true });
+    const image1 = new Konva.Image({ image: lipsCanvas, draggable: true });
     layer.add(rect);
     layer.add(image);
     layer.add(image1);
