@@ -13,21 +13,21 @@ export const templates = [
     {
         id: 3,
         type: '',
-        url: 'alex-perez-vlp-lo-gtr-ie-unsplash-copy-2.jpg',
+        url: 'Image from iOS (4).jpg',
     },
     {
         id: 4,
         type: '',
-        url: 'alec-favale-bsuf-7-b-2-a-9-z-4-unsplash-copy-3.jpg',
+        url: 'Image from iOS (5).jpg',
     },
     {
         id: 5,
         type: '',
-        url: 'alex-perez-vlp-lo-gtr-ie-unsplash-copy-3.jpg',
+        url: 'Image from iOS .jpg',
     },
     {
         id: 6,
         type: '',
-        url: 'alex-perez-vlp-lo-gtr-ie-unsplash-copy-4.jpg',
+        url: 'Image from iOS (5.jpg',
     }
 ];
