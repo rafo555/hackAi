@@ -12,7 +12,7 @@ const Editor = () => {
 
     const handleCancel = useCallback(() => {
         history.goBack();
-    }, []);
+    }, [history]);
 
     return (
         <div>
