@@ -32,13 +32,13 @@ async function createPngFromMask (maskUrl, originalIMage, id) {
     const stage = new Konva.Stage({ container: id, width: canvas.width, height: canvas.height });
     const layer = new Konva.Layer();
     stage.add(layer);
-    const image = new Konva.Image({ image: canvas });
+    const image = new Konva.Image({ image: canvas, draggable: true });
     const rect = new Konva.Rect({ width: canvas.width, height: canvas.height, fill: '#eff5fd' });
     const positionXRect = canvas.width - 218;
     const positionYRect = canvas.height - 121;
-    const rectPrice = new Konva.Rect({ width: 218, height: 80, fill: '#2f303c', opacity: 0.9, x: positionXRect, y: positionYRect });
-    const text1 = new Konva.Text({ text: 'Jacket - S,M,L,XL', x: positionXRect + 31, y: positionYRect + 13, fontSize: 20, fill: 'white' });
-    const text2 = new Konva.Text({ text: '$350', x: positionXRect + 126, y: positionYRect + 45, fontSize: 25, fill: 'white' });
+    const rectPrice = new Konva.Rect({ width: 218, height: 80, fill: '#2f303c', opacity: 0.9, x: positionXRect, y: positionYRect, draggable: true });
+    const text1 = new Konva.Text({ text: 'Jacket - S,M,L,XL', x: positionXRect + 31, y: positionYRect + 13, fontSize: 20, fill: 'white', draggable: true });
+    const text2 = new Konva.Text({ text: '$350', x: positionXRect + 126, y: positionYRect + 45, fontSize: 25, fill: 'white', draggable: true });
     layer.add(rect);
     layer.add(image);
     layer.add(rectPrice);

@@ -110,7 +110,7 @@ const useStyles = createUseStyles({
         justifyContent: 'space-between'
     },
     headerBack: {
-        marginLeft: 40,
+        marginLeft: 73,
         cursor: 'pointer',
         fontSize: 14,
         display: 'flex',
@@ -142,12 +142,13 @@ const useStyles = createUseStyles({
         }
     },
     headerNext: {
-        marginRight: 40,
+        marginRight: 73,
         cursor: 'pointer',
         fontSize: 14,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        textDecoration: 'none',
 
         '&:hover': {
             color: '#2874f0',

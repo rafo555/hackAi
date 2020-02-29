@@ -72,7 +72,7 @@ const useStyles = createUseStyles({
         color: '#cad3e3',
     },
     uploadContainer: {
-        top: '35%',
+        top: '40%',
         position: 'absolute',
         left: '50%',
         marginTop: -75,
@@ -81,8 +81,8 @@ const useStyles = createUseStyles({
         cursor: 'pointer'
     },
     uploadImageSVG: {
-        width: 150,
-        height: 150
+        width: 130,
+        height: 130
     },
 });
 
