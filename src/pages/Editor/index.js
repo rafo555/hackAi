@@ -1,11 +1,18 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { createUseStyles } from "react-jss";
+import { useHistory } from "react-router-dom";
 
 import {templates} from "../Templates/data";
 
 const Editor = () => {
 
     const classes = useStyles();
+
+    const history = useHistory();
+
+    const handleCancel = useCallback(() => {
+        history.goBack();
+    }, []);
 
     return (
         <div>
@@ -32,7 +39,7 @@ const Editor = () => {
 
             <main>
                 <div>
-                    <div className={classes.cancel}>
+                    <div className={classes.cancel} onClick={handleCancel}>
                         <p>Cancel</p>
                     </div>
 
@@ -73,7 +80,8 @@ const useStyles = createUseStyles({
         marginLeft: 17
     },
     layerImg: {
-        borderRadius: 3
+        borderRadius: 3,
+        cursor: 'pointer'
     },
     main: {
         marginLeft: 300,
