@@ -33,14 +33,16 @@ async function createPngFromMask (maskUrl, originalIMage, color) {
 
 // #E2B1A0 skin
 
-function createKonva(id, hairCanvas, lipsCanvas){
+function createKonva(id, hairCanvas, lipsCanvas, clothesCanvas){
     const stage = new Konva.Stage({ container: id, width: hairCanvas.width, height: hairCanvas.height });
     const layer = new Konva.Layer();
     stage.add(layer);
     const rect = new Konva.Rect({ width: hairCanvas.width, height: hairCanvas.height, fill: '#FCCFBC' });
+    const imageClothes = new Konva.Image({ image: clothesCanvas, draggable: true });
     const image = new Konva.Image({ image: hairCanvas, draggable: true });
     const image1 = new Konva.Image({ image: lipsCanvas, draggable: true });
     layer.add(rect);
+    layer.add(imageClothes);
     layer.add(image);
     layer.add(image1);
     layer.batchDraw();
@@ -53,6 +55,7 @@ async function removeBackgroundMulti(srcArray = []) {
     const imagesIds = await Promise.all(resizedImagesArray.map(blob => uploadToAi(new File([blob], Date.now() + '.jpg'))));
     const hairMaskUrls = await Promise.all(imagesIds.map(id => getMultiMatting(id, 'hair')));
     const lipsMaskUrls = await Promise.all(imagesIds.map(id => getMultiMatting(id, 'lips')));
+    const clothesMaskUrls = await Promise.all(imagesIds.map(id => getMultiMatting(id, 'clothes')));
     const hairCanvasSource = await Promise.all(imagesArray
         .map((image, index) => {
             const { url: maskUrl } = hairMaskUrls[index];
@@ -65,10 +68,17 @@ async function removeBackgroundMulti(srcArray = []) {
             return createPngFromMask(maskUrl, image, '#B56679');
         })
     )
+    const clothesCanvasSource = await Promise.all(imagesArray
+        .map((image, index) => {
+            const { url: maskUrl } = clothesMaskUrls[index];
+            return createPngFromMask(maskUrl, image, 'white');
+        })
+    )
     const stages = hairCanvasSource.map((hairCanvas, index) => {
         const { id } = srcArray[index];
         const lipsCanvas = lipsCanvasSource[index];
-        return createKonva(id, hairCanvas, lipsCanvas);
+        const clothesCanvas = clothesCanvasSource[index];
+        return createKonva(id, hairCanvas, lipsCanvas, clothesCanvas);
     })
     return stages;
 }
