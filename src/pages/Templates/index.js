@@ -67,7 +67,6 @@ const useStyles = createUseStyles({
             transform: 'scale(1.05)',
         }
     },
-
     outlineDiv: {
         marginRight: 20,
         marginBottom: 20,
