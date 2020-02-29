@@ -12,10 +12,10 @@ const Templates = () => {
 
     const history = useHistory();
 
-    const handleTemplateClick = useCallback(() => {
+    const handleTemplateClick = useCallback((type) => {
         dispatch({
             type: SET_TEMPLATE_TYPE,
-            template_type: 'bg'
+            template_type: type
         });
 
         history.push("/images");
@@ -34,7 +34,7 @@ const Templates = () => {
                                     alt='img'
                                     className={classes.templateImg}
                                     src={el.url}
-                                    onClick={handleTemplateClick}
+                                    onClick={() => handleTemplateClick(el.type)}
                                 />
                             </div>
                         </div>

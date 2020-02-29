@@ -192,13 +192,45 @@ const useStyles = createUseStyles({
     },
     slider: {
         width: 252,
-        marginLeft: 9,
+        // marginLeft: 9,
+        // cursor: 'pointer',
+        // height: 1,
+        borderRadius: 8,
         cursor: 'pointer',
+        '-webkit-appearance': 'none',
         height: 1,
+        outline: 'none',
+        opacity: .7,
+        marginTop: 15,
+        marginRight: 25.5,
+
+        '&::-webkit-slider-thumb': {
+            '-webkit-appearance': 'none',
+            appearance: 'none',
+            width: 11.2,
+            height: 11.2,
+            cursor: 'pointer',
+            borderRadius: 2.1,
+            background: 'white',
+            border: '1px solid black',
+        },
+        '&::-moz-range-thumb': {
+            '-webkit-appearance': 'none',
+            appearance: 'none',
+            width: 12,
+            height: 12,
+            cursor: 'pointer',
+            borderRadius: 2.1,
+            background: 'white',
+            border: '1px solid black'
+        },
+        '&::-moz-focus-outer': {
+            border: 'none'
+        }
     },
     sliderName: {
         color: 'white',
-        fontSize: 15.7,
+        fontSize: 14,
         marginBottom: 7,
         marginLeft: 9
     },

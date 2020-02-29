@@ -77,7 +77,9 @@ app.post('*', upload.single('image'), async (req, res) => {
 
 app.get('*', async (req, res) => {
 
-    const response = await app.locals.request.get('https://aihackathon.picsart.com/' + req.path, {
+    console.log(req.path);
+
+    const response = await app.locals.request.get('https://aihackathon.picsart.com/' + req.path + '?segmentation_class=' + req.query.segmentation_class, {
         json: true,
         // mode: 'no-cors',
         headers: {
