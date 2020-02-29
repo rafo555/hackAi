@@ -2,7 +2,6 @@ import React, { memo, useCallback } from 'react';
 import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 
-import {templates} from "../Templates/data";
 import template from '../../assets/svg/template.svg';
 import text from '../../assets/svg/text.svg';
 import shape from '../../assets/svg/shape.svg';
@@ -142,14 +141,15 @@ const useStyles = createUseStyles({
         float: 'left'
     },
     templates: {
-        width: 82.5,
+        width: 70,
         cursor: 'pointer',
-        height: 82.5,
-        textAlign: 'center',
-        paddingTop: 15,
+        height: 70,
+        // textAlign: 'center',
+        // paddingTop: 15,
         fontSize: 10,
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        alignItems: 'center'
     },
     names: {
         fontSize: 13,
@@ -166,12 +166,14 @@ const useStyles = createUseStyles({
         float: 'right',
         width: 280,
         height: '100vh',
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        paddingTop: 22
     },
     firstSettings: {
         marginBottom: 10,
-        marginTop: 26,
-        width: 265,
+        // marginTop: 26,
+        marginLeft: 7,
+        width: 259,
         height: 49,
         color: 'white',
         backgroundColor: '#1d2025',
@@ -190,7 +192,7 @@ const useStyles = createUseStyles({
     },
     openSetting: {
         display: 'flex',
-        flexDirection: 'end'
+        flexDirection: 'end',
     },
     rightAside: {
         float: 'right',
