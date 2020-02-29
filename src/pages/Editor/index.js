@@ -3,6 +3,12 @@ import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 
 import {templates} from "../Templates/data";
+import template from '../../assets/svg/template.svg';
+import text from '../../assets/svg/text.svg';
+import shape from '../../assets/svg/shape.svg';
+import canvas from '../../assets/svg/canvas.svg';
+
+
 
 const Editor = () => {
 
@@ -16,9 +22,27 @@ const Editor = () => {
 
     return (
         <div>
-            <aside className={classes.leftAside}>
+            <div className={classes.mainLeft}>
+            <div className={classes.firstPart}>
+                <div className={classes.templates}>
+                    <img src={template} className={classes.icons}/>
+                    Templates</div>
+                <div className={classes.templates}>
+                    <img src={text} className={classes.icons}/>
+                    Text</div>
+                <div className={classes.templates}>
+                    <img src={shape} className={classes.icons}/>
+                    Shape</div>
+                <div className={classes.templates}>
+                    <img src={canvas} className={classes.icons}/>
+                    Canvas</div>
+
+
+            </div>
+            <div className={classes.leftAside}>
                 left
-            </aside>
+            </div>
+            </div>
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
@@ -53,10 +77,37 @@ const Editor = () => {
 }
 
 const useStyles = createUseStyles({
+    mainLeft: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    firstPart: {
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'black',
+        color: 'white',
+    },
+    templates: {
+        width: 82.5,
+        cursor: 'pointer',
+        height: 82.5,
+        textAlign: 'center',
+        paddingTop: 15,
+        fontSize: 10,
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    icons: {
+        width: 84,
+        height: 20,
+        marginBottom: 7,
+        marginTop: 30
+    },
     leftAside: {
         float: 'left',
-        width: 300,
-        height: '100vh'
+        width: 307.3,
+        height: '100vh',
+        backgroundColor: 'black'
     },
     rightAside: {
         float: 'right',
