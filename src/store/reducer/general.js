@@ -10,6 +10,7 @@ import {
     ADD_CHOOSE_IMAGE,
     TEMPLATE_DATA_COUNT,
     ADD_STAGE_POINTERS,
+    CHANGE_REFIN,
     CHOOSE_IMAGE
 } from '../actionTypes';
 
@@ -20,7 +21,8 @@ const defaultState = {
     template_type: 'bg',
     template_data: [],
     template_data_count: 0,
-    stages: []
+    stages: [],
+    changeRefine: false
 };
 
 const reducer = helpers(defaultState, {
@@ -79,6 +81,21 @@ const reducer = helpers(defaultState, {
             template_data_count: state.template_data_count + 1
         };
     },
+    [CHANGE_REFIN]: (state, action) => {
+        return {
+            ...state,
+            changeRefine: action.changeRefine
+        };
+    }
+    // [_CHOOSE_IMAGE]: (state, action) => {
+    //     const new_template_data = state.template_data;
+    //     new_template_data.push(action.imageObject);
+    //
+    //     return {
+    //         ...state,
+    //         new_template_data
+    //     };
+    // },
 });
 
 export default reducer;

@@ -4,11 +4,22 @@ import {useHistory, Link} from "react-router-dom";
 import {createUseStyles} from 'react-jss';
 import PicsArtLogo from '../../../../src/assets/PicsArt.svg';
 import back from '../../../assets/svg/back.svg';
+import {useDispatch} from "react-redux";
+import {CHANGE_REFIN} from "../../../store/actionTypes";
+import {useSelector} from "../../../store/helpers";
+import isEqual from "react-fast-compare";
 
 const Header = ({page}) => {
     const classes = useStyles();
 
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    const {changeRefine} = useSelector((state) => {
+        return {
+            changeRefine: state.general.changeRefine
+        };
+    }, isEqual);
 
     const handleBackClick = useCallback(() => {
         history.goBack();
@@ -22,58 +33,72 @@ const Header = ({page}) => {
             const basePic = imageData.replace(/^data:image\/(png|jpg);base64,/, "");
             img.file(`image${i}.jpg`, basePic, {base64: true});
         }
-        zip.generateAsync({type:"blob"})
-            .then(function(content) {
+        zip.generateAsync({type: "blob"})
+            .then(function (content) {
                 const FileSaver = require('file-saver');
                 FileSaver.saveAs(content, "templateBulk.zip");
             });
     }, []);
 
+    const changeRefineHandle = useCallback(() => {
+        dispatch({
+            type: CHANGE_REFIN,
+            changeRefine: true
+        })
+    }, [dispatch]);
+
     return (
-        <header className={classes.header}>
-            {page === 'templates' ? (
+        <>
+            {!changeRefine ? (
                 <>
-                    <div className={classes.headerBack}>
-                        <img alt={'img'} src={PicsArtLogo}/>
-                    </div>
+                    <header className={classes.header}>
+                        {page === 'templates' ? (
+                            <>
+                                <div className={classes.headerBack}>
+                                    <img alt={'img'} src={PicsArtLogo}/>
+                                </div>
 
-                </>
-            ) : (<>
-                <div
-                    className={classes.headerBack}
-                    onClick={handleBackClick}>
-                    <img src={back} className={classes.backIcon} alt='img'/>
-                    Back
-                </div>
-
-                {page === 'results' ? (
-                    <div className={classes.resultButtons}>
-                        <Link to={'/editor'} style={{ textDecoration: 'none'}}>
-                            <div className={classes.refine}>
-                                <p>Refine</p>
+                            </>
+                        ) : (<>
+                            <div
+                                className={classes.headerBack}
+                                onClick={handleBackClick}>
+                                <img src={back} className={classes.backIcon} alt='img'/>
+                                Back
                             </div>
-                        </Link>
 
-                        <div className={classes.share}>
-                            <p>Share</p>
-                        </div>
-                        <div
-                            className={classes.download}
-                            onClick={downloadImagesToZip}
-                        >
-                            <p>Download</p>
-                        </div>
-                    </div>) : (<>
-                    <div className={classes.headerNext}>
-                        <Link to={'/results'}>
-                            Next
-                            <img src={back} className={classes.nextIcon} alt='img'/>
-                        </Link>
-                    </div>
-                </>)}
-            </>)}
+                            {page === 'results' ? (
+                                <div className={classes.resultButtons}>
+                                    {/*<Link to={'/editor'} style={{ textDecoration: 'none'}}>*/}
+                                    <div
+                                        className={classes.refine}
+                                        onClick={changeRefineHandle}>
+                                        <p>Refine</p>
+                                    </div>
+                                    {/*</Link>*/}
 
-        </header>
+                                    <div className={classes.share}>
+                                        <p>Share</p>
+                                    </div>
+                                    <div
+                                        className={classes.download}
+                                        onClick={downloadImagesToZip}
+                                    >
+                                        <p>Download</p>
+                                    </div>
+                                </div>) : (<>
+                                <div className={classes.headerNext}>
+                                    <Link to={'/results'}>
+                                        Next
+                                        <img src={back} className={classes.nextIcon} alt='img'/>
+                                    </Link>
+                                </div>
+                            </>)}
+                        </>)}
+
+                    </header>
+                </>) : <></>}
+        </>
     );
 };
 

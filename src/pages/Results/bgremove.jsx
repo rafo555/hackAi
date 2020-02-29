@@ -4,7 +4,7 @@ import { genToken, AiFetch } from '../../helpers/AIFetch';
 import { useDispatch } from 'react-redux';
 import { loadImage, resizeIfNeededImage, upScaleImage } from '../../helpers';
 import Konva from 'konva';
-import { ADD_STAGE_POINTERS } from '../../store/actionTypes';
+// import { ADD_STAGE_POINTERS } from '../../store/actionTypes';
 
 async function removeBackground(file) {
     const formData = new FormData();

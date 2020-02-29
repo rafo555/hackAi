@@ -2,7 +2,6 @@ import React, { memo, useCallback } from 'react';
 import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 
-import {templates} from "../Templates/data";
 import template from '../../assets/svg/template.svg';
 import text from '../../assets/svg/text.svg';
 import shape from '../../assets/svg/shape.svg';
@@ -11,19 +10,27 @@ import font from '../../assets/svg/font.svg';
 import color from '../../assets/svg/color.svg';
 import outline from '../../assets/svg/text.svg';
 import shadow from '../../assets/svg/shadow.svg';
+import {useDispatch} from "react-redux";
+import {CHANGE_REFIN} from "../../store/actionTypes";
 
 const Editor = () => {
 
     const classes = useStyles();
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleCancel = useCallback(() => {
         history.goBack();
-    }, [history]);
+
+        dispatch({
+            type: CHANGE_REFIN,
+            changeRefine: false
+        })
+    }, [history, dispatch]);
 
     return (
-        <div className={classes. mainContainer}>
+        <div className={classes.mainContainer}>
             <div className={classes.mainLeft}>
                 <div className={classes.firstPart}>
                     <div className={classes.templates}>
@@ -77,15 +84,15 @@ const Editor = () => {
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
-                {templates.map(el => {
+                {window.stageArray.map((el, index) => {
                     return (
-                        <div key={el.id} className={classes.layerImgDiv}>
+                        <div key={`stage_canvas_${index}`} className={classes.layerImgDiv}>
                             <img
                                 width={59.3}
                                 height={54.3}
                                 alt='img'
                                 className={classes.layerImg}
-                                src={el.url}
+                                src={el.toDataURL()}
                             />
                         </div>
                     )

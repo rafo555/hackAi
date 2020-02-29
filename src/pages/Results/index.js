@@ -1,15 +1,17 @@
 import React, {memo} from 'react';
 import {createUseStyles} from 'react-jss';
 import isEqual from "react-fast-compare";
-import { useSelector } from '../../store/helpers';
+import {useSelector} from '../../store/helpers';
 import RgRemove from './bgremove';
+import Editor from "../Editor";
 
 
 const Result = () => {
-    const { templateType, templateData = [] } = useSelector((state) => {
+    const {templateType, templateData = [], changeRefine} = useSelector((state) => {
         return {
             templateType: state.general.template_type,
-            templateData: state.general.template_data
+            templateData: state.general.template_data,
+            changeRefine: state.general.changeRefine
         };
     }, isEqual);
 
@@ -24,9 +26,15 @@ const Result = () => {
     }
 
     return (
-        <div className={classes.result}>
-            <Component imagesSrc={templateData} />
-        </div>
+        <>
+            <div
+                className={classes.result}
+                style={{display: changeRefine ? 'none' : 'block'}}>
+                <Component imagesSrc={templateData}/>
+            </div>
+            {changeRefine ? <Editor/> : <></>}
+
+        </>
     );
 };
 
