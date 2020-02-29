@@ -4,12 +4,11 @@ import { getMultiMatting, AiUpload } from '../../helpers/AIFetch';
 import { useDispatch } from 'react-redux';
 import { loadImage, resizeIfNeededImage, upScaleImage } from '../../helpers';
 import Konva from 'konva';
-import { ADD_STAGE_POINTERS } from '../../store/actionTypes';
 
 async function uploadToAi(file) {
     const formData = new FormData();
     formData.append('image', file);
-    const [response, id] = await AiUpload(formData);
+    const [, id] = await AiUpload(formData);
     //const json = await response.json();
     return id;
 }
