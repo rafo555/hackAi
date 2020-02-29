@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { createUseStyles } from "react-jss";
 import { useHistory } from "react-router-dom";
 
@@ -29,6 +29,12 @@ const Editor = () => {
             changeRefine: false
         })
     }, [history, dispatch]);
+
+    useEffect(() => {
+        const cloned_stage = window.stageArray[0].clone();
+        cloned_stage.setContainer("editorCantainer");
+        cloned_stage.draw();
+    }, []);
 
     return (
         <div className={classes.mainContainer}>
@@ -121,7 +127,7 @@ const Editor = () => {
             </div>
 
             <main>
-
+                <div id={'editorCantainer'} style={{width: 300, height: 300}}/>
             </main>
 
             <aside className={classes.rightAside}>
