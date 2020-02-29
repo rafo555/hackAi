@@ -13,15 +13,24 @@ const Upload = () => {
     const dispatch = useDispatch();
 
     const uploadImage = useCallback(async (ev) => {
-        const fileSrc = await readDropDownFile(ev.target.files[0]);
 
-        const id = `image_${Date.now().toString(36)}`;
+        Promise.all(Array.from(ev.target.files).map(async el => {
+            return await readDropDownFile(el);
+        })).then(results => {
+            const data = results.map((el, index) => {
+                return {
+                    url: el,
+                    id: `image_${Date.now().toString(36)}_${index}`,
+                    type: 'link'
+                }
+            });
 
-        dispatch({
-            type: CHOOSE_IMAGE,
-            data: [{id, url: fileSrc, type: 'link'}]
+            dispatch({
+                type: CHOOSE_IMAGE,
+                data
+            });
         });
-    }, [dispatch]);
+    }, []);
 
     return (
         <>
