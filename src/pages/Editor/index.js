@@ -152,8 +152,9 @@ const useStyles = createUseStyles({
         flexDirection: 'column'
     },
     names: {
-        fontSize: 16,
-        marginTop: 18
+        fontSize: 13,
+        marginTop: 16,
+        marginRight: 10
     },
     icons: {
         width: 84,
@@ -163,18 +164,19 @@ const useStyles = createUseStyles({
     },
     leftAside: {
         float: 'right',
-        width: 307.3,
+        width: 280,
         height: '100vh',
         backgroundColor: 'black'
     },
     firstSettings: {
         marginBottom: 10,
         marginTop: 26,
-        width: 280,
-        height: 55,
+        width: 265,
+        height: 49,
         color: 'white',
         backgroundColor: '#1d2025',
-        display: 'flex'
+        display: 'flex',
+        cursor: 'pointer'
     },
     sliders: {
         display: 'flex',
@@ -182,8 +184,9 @@ const useStyles = createUseStyles({
 
     },
     icon: {
-        marginRight: 26,
-        marginLeft:16
+        marginRight: 23,
+        marginLeft: 12,
+        width: 17
     },
     openSetting: {
         display: 'flex',
