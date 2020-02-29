@@ -25,16 +25,16 @@ const Editor = () => {
             <div className={classes.mainLeft}>
             <div className={classes.firstPart}>
                 <div className={classes.templates}>
-                    <img src={template} className={classes.icons}/>
+                    <img src={template} className={classes.icons} alt='img'/>
                     Templates</div>
                 <div className={classes.templates}>
-                    <img src={text} className={classes.icons}/>
+                    <img src={text} className={classes.icons} alt='img'/>
                     Text</div>
                 <div className={classes.templates}>
-                    <img src={shape} className={classes.icons}/>
+                    <img src={shape} className={classes.icons} alt='img'/>
                     Shape</div>
                 <div className={classes.templates}>
-                    <img src={canvas} className={classes.icons}/>
+                    <img src={canvas} className={classes.icons} alt='img'/>
                     Canvas</div>
 
 
