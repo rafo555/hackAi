@@ -82,12 +82,12 @@ const BgRemove = ({ imagesSrc }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         (async function () {
-            const stage = await removeBackgroundMulti(imagesSrc);
-            console.log(stage);
-            dispatch({
-                type: ADD_STAGE_POINTERS,
-                payload: stage
-            });
+            window.stageArray = await removeBackgroundMulti(imagesSrc);
+            // console.log(stage);
+            // dispatch({
+            //     type: ADD_STAGE_POINTERS,
+            //     payload: stage
+            // });
         })();
         return () => null;
     }, [imagesSrc, dispatch]);
