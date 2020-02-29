@@ -126,10 +126,6 @@ const Editor = () => {
                 </div>
             </div>
 
-            <main>
-                <div id={'editorCantainer'} style={{width: 300, height: 300}}/>
-            </main>
-
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
                 {window.stageArray.map((el, index) => {
@@ -146,11 +142,31 @@ const Editor = () => {
                     )
                 })}
             </aside>
+
+            <main>
+                <div id={'editorCantainer'}
+                     className={classes.stageContainer}
+                     style={{ width: 600, height: 600 }}
+                />
+            </main>
         </div>
     )
 }
 
 const useStyles = createUseStyles({
+    stageContainer: {
+        marginLeft: 350,
+        width: 600,
+        backgroundColor: '#f1f1f6',
+
+        '& .konvajs-content': {
+            width: '600px !important',
+
+            '& canvas': {
+                width: '600px !important',
+            }
+        }
+    },
     mainLeft: {
         float: 'left',
     },
