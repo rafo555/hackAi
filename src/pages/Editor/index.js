@@ -202,12 +202,15 @@ const useStyles = createUseStyles({
         marginLeft: 600,
         width: 600,
         backgroundColor: '#f1f1f6',
+        height: '600px !important',
 
         '& .konvajs-content': {
             width: '600px !important',
+            height: '600px !important',
 
             '& canvas': {
                 width: '600px !important',
+                height: '600px !important',
             }
         }
     },

@@ -15,17 +15,17 @@ async function uploadToAi(file) {
 
 async function createPngFromMask (maskUrl, originalIMage, color) {
     const mask = await loadImage(maskUrl);
-    const maskImage = await upScaleImage(mask, originalIMage.width, originalIMage.height);
+    const maskImage = await upScaleImage(mask, 600, 600);
     const canvas = document.createElement('canvas');
     canvas.width = originalIMage.width;
     canvas.height = originalIMage.height;
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(originalIMage, 0, 0);
+    ctx.drawImage(originalIMage, 0, 0, originalIMage.width, originalIMage.height, 0,0, 600, 600);
     ctx.globalCompositeOperation = 'destination-in';
     ctx.drawImage(maskImage, 0, 0);
     ctx.globalCompositeOperation = 'source-in';
     ctx.beginPath();
-    ctx.rect(0, 0, originalIMage.width, originalIMage.height);
+    ctx.rect(0, 0, 600, 600);
     ctx.fillStyle = color;
     ctx.fill();
     return canvas;
@@ -34,10 +34,10 @@ async function createPngFromMask (maskUrl, originalIMage, color) {
 // #E2B1A0 skin
 
 function createKonva(id, hairCanvas, lipsCanvas, clothesCanvas){
-    const stage = new Konva.Stage({ container: id, width: hairCanvas.width, height: hairCanvas.height });
+    const stage = new Konva.Stage({ container: id, width: 600, height: 600 });
     const layer = new Konva.Layer();
     stage.add(layer);
-    const rect = new Konva.Rect({ width: hairCanvas.width, height: hairCanvas.height, fill: '#FCCFBC' });
+    const rect = new Konva.Rect({ width: 600, height: 600, fill: '#FCCFBC' });
     const imageClothes = new Konva.Image({ image: clothesCanvas, draggable: true });
     const image = new Konva.Image({ image: hairCanvas, draggable: true });
     const image1 = new Konva.Image({ image: lipsCanvas, draggable: true });

@@ -21,21 +21,21 @@ async function removeBackground(file) {
 
 async function createPngFromMask (maskUrl, originalIMage, id) {
     const mask = await loadImage(maskUrl);
-    const maskImage = await upScaleImage(mask, originalIMage.width, originalIMage.height);
+    const maskImage = await upScaleImage(mask, 600, 600);
     const canvas = document.createElement('canvas');
-    canvas.width = originalIMage.width;
-    canvas.height = originalIMage.height;
+    canvas.width = 600;
+    canvas.height = 600;
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(originalIMage, 0, 0);
+    ctx.drawImage(originalIMage, 0, 0, originalIMage.width, originalIMage.height, 0,0, 600, 600);
     ctx.globalCompositeOperation = 'destination-in';
     ctx.drawImage(maskImage, 0, 0);
-    const stage = new Konva.Stage({ container: id, width: canvas.width, height: canvas.height });
+    const stage = new Konva.Stage({ container: id, width: 600, height: 600 });
     const layer = new Konva.Layer();
     stage.add(layer);
     const image = new Konva.Image({ image: canvas, draggable: true });
-    const rect = new Konva.Rect({ width: canvas.width, height: canvas.height, fill: '#eff5fd' });
-    const positionXRect = canvas.width - 218;
-    const positionYRect = canvas.height - 121;
+    const rect = new Konva.Rect({ width: 600, height: 600, fill: '#eff5fd' });
+    const positionXRect = 600 - 218;
+    const positionYRect = 600 - 121;
     const rectPrice = new Konva.Rect({ width: 218, height: 80, fill: '#2f303c', opacity: 0.9, x: positionXRect, y: positionYRect, draggable: true });
     const text1 = new Konva.Text({ text: 'Jacket - S,M,L,XL', x: positionXRect + 31, y: positionYRect + 13, fontSize: 20, fill: 'white', draggable: true });
     const text2 = new Konva.Text({ text: '$350', x: positionXRect + 126, y: positionYRect + 45, fontSize: 25, fill: 'white', draggable: true });
