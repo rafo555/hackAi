@@ -33,7 +33,7 @@ async function createPngFromMask (maskUrl, originalIMage, id) {
     const layer = new Konva.Layer();
     stage.add(layer);
     const image = new Konva.Image({ image: canvas, draggable: true });
-    const rect = new Konva.Rect({ width: 600, height: 600, fill: '#eff5fd' });
+    const rect = new Konva.Rect({ width: 600, height: 600, fill: '#4C4D5D' });
     const positionXRect = 600 - 218;
     const positionYRect = 600 - 121;
     const rectPrice = new Konva.Rect({ width: 218, height: 80, fill: '#2f303c', opacity: 0.9, x: positionXRect, y: positionYRect, draggable: true });

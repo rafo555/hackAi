@@ -16,6 +16,8 @@ import openSetting from '../../assets/svg/openSetting.svg';
 
 import classNames from 'classnames';
 
+let cloned_stage;
+
 const Editor = () => {
 
     const classes = useStyles();
@@ -35,10 +37,32 @@ const Editor = () => {
     }, [history, dispatch]);
 
     useEffect(() => {
-        const cloned_stage = window.stageArray[0].clone();
+        cloned_stage = window.stageArray[0].clone();
         cloned_stage.setContainer("editorCantainer");
         cloned_stage.draw();
     }, []);
+
+    const changeColor = (color) => {
+        switch(color) {
+            case 'white':
+                break;
+            case 'red':
+                break;
+            case 'green':
+                break;
+            case 'kakashka':
+                color = '#4C4D5D';
+                break;
+            default:
+                break;
+        }
+
+        const rect = cloned_stage.findOne('Rect');
+
+        rect.fill(color);
+
+        cloned_stage.children[0].batchDraw();
+    }
 
     const sidebarSwitcher = (type) => {
 
@@ -111,7 +135,16 @@ const Editor = () => {
                 );
             case 'canvas':
                 return (
-                    <div>canvas</div>
+                    <>
+                        <div className={classes.color}>
+                            <div onClick={() => changeColor('white')} className={classes.whiteIcon}/>
+                            <div onClick={() => changeColor('red')} className={classes.redIcon}/>
+                            <div onClick={() => changeColor('green')} className={classes.greenIcon}/>
+                            <div onClick={() => changeColor('kakashka')} className={classes.kakashkaIcon}/>
+                        </div>
+
+                        <div style={{clear: 'both'}}/>
+                    </>
                 );
             default:
                 break
@@ -306,6 +339,30 @@ const useStyles = createUseStyles({
         borderRadius: 4.3,
         marginLeft: 9
     },
+    redIcon: {
+        width: 28,
+        height: 30,
+        backgroundColor: 'red',
+        marginRight:9,
+        borderRadius: 4.3,
+        marginLeft: 9
+    },
+    greenIcon: {
+        width: 28,
+        height: 30,
+        backgroundColor: '#16D676',
+        marginRight:9,
+        borderRadius: 4.3,
+        marginLeft: 9
+    },
+    kakashkaIcon: {
+        width: 28,
+        height: 30,
+        backgroundColor: '#4C4D5D',
+        marginRight:9,
+        borderRadius: 4.3,
+        marginLeft: 9
+    },
     mainSliderDiv: {
         marginBottom: 78
     },
@@ -315,7 +372,7 @@ const useStyles = createUseStyles({
         borderRadius: 4.3,
         backgroundColor: 'black',
         border: 'solid 0.7px #303139'
-},
+    },
     firstSettings: {
         marginBottom: 10,
         marginLeft: 7,
@@ -421,6 +478,13 @@ const useStyles = createUseStyles({
     },
     active: {
         color: 'blue',
+    },
+    color: {
+        '& > div': {
+            float: 'left',
+            marginRight: '4px',
+            cursor: 'pointer'
+        }
     }
 });
 
