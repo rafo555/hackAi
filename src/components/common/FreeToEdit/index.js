@@ -170,6 +170,7 @@ const useStyles = createUseStyles({
         width: '50%',
         display: 'flex',
         paddingLeft: 25,
+        marginTop: 3,
         '&::placeholder': {
             fontSize: 16,
             color: '#dad9e7',
