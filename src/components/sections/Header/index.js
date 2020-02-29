@@ -13,6 +13,21 @@ const Header = ({page}) => {
     const handleBackClick = useCallback(() => {
         history.goBack();
     }, [history]);
+    const downloadImagesToZip = useCallback(async () => {
+        const JSZip = require("jszip");
+        const zip = new JSZip();
+        const img = zip.folder("images");
+        for (let i = 0; i < window.stageArray.length; i++) {
+            const imageData = window.stageArray[i].toDataURL();
+            const basePic = imageData.replace(/^data:image\/(png|jpg);base64,/, "");
+            img.file(`image${i}.jpg`, basePic, {base64: true});
+        }
+        zip.generateAsync({type:"blob"})
+            .then(function(content) {
+                const FileSaver = require('file-saver');
+                FileSaver.saveAs(content, "templateBulk.zip");
+            });
+    }, []);
 
     return (
         <header className={classes.header}>
@@ -42,7 +57,10 @@ const Header = ({page}) => {
                         <div className={classes.share}>
                             <p>Share</p>
                         </div>
-                        <div className={classes.download}>
+                        <div
+                            className={classes.download}
+                            onClick={downloadImagesToZip}
+                        >
                             <p>Download</p>
                         </div>
                     </div>) : (<>

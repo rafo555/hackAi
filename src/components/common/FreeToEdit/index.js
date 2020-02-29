@@ -141,10 +141,10 @@ const FreeToEdit = () => {
 
 const useStyles = createUseStyles({
     selectedFTEContainer: {
-        border: 'solid 5px #a5caef',
+        border: 'solid 3px #a5caef',
         backgroundColor: '#d6e8fa',
-        width: 240,
-        height: 240
+        width: 243,
+        height: 243
     },
     freeToEditimageContainer: {
         position: 'relative',
@@ -155,8 +155,8 @@ const useStyles = createUseStyles({
     selectedIcon: {
         left: 20,
         bottom: 20,
-        width: 30,
-        height: 30,
+        width: 25,
+        height: 25,
         position: 'absolute',
     },
     fteSearchInput: {
@@ -191,12 +191,12 @@ const useStyles = createUseStyles({
         objectFit: 'cover',
         marginBottom: 10,
         marginRight: 10,
-        borderRadius: 20
+        borderRadius: 18
     },
     selectedfreeToEditimage: {
         marginBottom: 4,
         marginRight: 4,
-        borderRadius: 20,
+        borderRadius: 18,
         width: 220,
         textAlign: 'center',
         padding: 10,
