@@ -186,7 +186,6 @@ const useStyles = createUseStyles({
         display: 'flex',
         flexWrap: 'wrap',
         marginTop: 30,
-        paddingLeft: 10
     },
     freeToEditimage: {
         cursor: 'pointer',
