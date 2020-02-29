@@ -7,8 +7,10 @@ import template from '../../assets/svg/template.svg';
 import text from '../../assets/svg/text.svg';
 import shape from '../../assets/svg/shape.svg';
 import canvas from '../../assets/svg/canvas.svg';
-
-
+import font from '../../assets/svg/font.svg';
+import color from '../../assets/svg/color.svg';
+import outline from '../../assets/svg/text.svg';
+import shadow from '../../assets/svg/shadow.svg';
 
 const Editor = () => {
 
@@ -21,28 +23,63 @@ const Editor = () => {
     }, [history]);
 
     return (
-        <div>
+        <div className={classes. mainContainer}>
             <div className={classes.mainLeft}>
-            <div className={classes.firstPart}>
-                <div className={classes.templates}>
-                    <img src={template} className={classes.icons}/>
-                    Templates</div>
-                <div className={classes.templates}>
-                    <img src={text} className={classes.icons}/>
-                    Text</div>
-                <div className={classes.templates}>
-                    <img src={shape} className={classes.icons}/>
-                    Shape</div>
-                <div className={classes.templates}>
-                    <img src={canvas} className={classes.icons}/>
-                    Canvas</div>
+                <div className={classes.firstPart}>
+                    <div className={classes.templates}>
+                        <img src={template} className={classes.icons} alt='img'/>
+                        Templates
+                    </div>
+                    <div className={classes.templates}>
+                        <img src={text} className={classes.icons} alt='img'/>
+                        Text
+                    </div>
+                    <div className={classes.templates}>
+                        <img src={shape} className={classes.icons} alt='img'/>
+                        Shape
+                    </div>
+                    <div className={classes.templates}>
+                        <img src={canvas} className={classes.icons} alt='img'/>
+                        Canvas
+                    </div>
 
+                </div>
 
+                <div className={classes.leftAside}>
+                    left
+                    <div className={classes.topSettings}>
+                        <div className={classes.firstSettings}>
+                            <img src={font} alt='img'/>
+                            Font
+                        </div>
+                        <div className={classes.firstSettings}>
+                            <img src={color} alt='img'/>
+                            Color
+                        </div>
+                        <div className={classes.firstSettings}>
+                            <img src={outline} alt='img'/>
+                            Outline
+                        </div>
+                        <div className={classes.firstSettings}>
+                            <img src={shadow} alt='img'/>
+                            Shadow
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div className={classes.leftAside}>
-                left
-            </div>
-            </div>
+
+            <main>
+                <div>
+                    <div className={classes.cancel} onClick={handleCancel}>
+                        <p>Cancel</p>
+                    </div>
+
+                    <div className={classes.apply}>
+                        <p>Apply</p>
+                    </div>
+                </div>
+            </main>
 
             <aside className={classes.rightAside}>
                 <p className={classes.rightSideTxt}>Images</p>
@@ -60,32 +97,24 @@ const Editor = () => {
                     )
                 })}
             </aside>
-
-            <main>
-                <div>
-                    <div className={classes.cancel} onClick={handleCancel}>
-                        <p>Cancel</p>
-                    </div>
-
-                    <div className={classes.apply}>
-                        <p>Apply</p>
-                    </div>
-                </div>
-            </main>
         </div>
     )
 }
 
 const useStyles = createUseStyles({
+    // mainContainer:{
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between'
+    // },
     mainLeft: {
-        display: 'flex',
-        flexDirection: 'row',
+      float: 'left'
     },
     firstPart: {
-        display: 'flex',
-        flexDirection: 'column',
         backgroundColor: 'black',
         color: 'white',
+        height: '100vh',
+        float: 'left'
     },
     templates: {
         width: 82.5,
@@ -104,7 +133,7 @@ const useStyles = createUseStyles({
         marginTop: 30
     },
     leftAside: {
-        float: 'left',
+        float: 'right',
         width: 307.3,
         height: '100vh',
         backgroundColor: 'black'

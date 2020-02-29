@@ -9,7 +9,8 @@ import {
     SET_TEMPLATE_TYPE,
     ADD_CHOOSE_IMAGE,
     TEMPLATE_DATA_COUNT,
-    ADD_STAGE_POINTERS
+    ADD_STAGE_POINTERS,
+    CHOOSE_IMAGE
 } from '../actionTypes';
 
 const defaultState = {
@@ -48,16 +49,15 @@ const reducer = helpers(defaultState, {
         }
     },
     [ADD_CHOOSE_IMAGE]: (state, action) => {
-        const new_template_data = state.template_data;
-        new_template_data.push(action.imageObject);
+        const template_data = state.template_data;
+        template_data.push(action.imageObject);
 
         return {
             ...state,
-            new_template_data
+            template_data
         };
     },
     [TEMPLATE_DATA_COUNT]: (state, action) => {
-
         return {
             ...state,
             template_data_count: action.template_data_count
@@ -68,16 +68,17 @@ const reducer = helpers(defaultState, {
             ...state,
             stages: action.payload
         };
-    }
-    // [_CHOOSE_IMAGE]: (state, action) => {
-    //     const new_template_data = state.template_data;
-    //     new_template_data.push(action.imageObject);
-    //
-    //     return {
-    //         ...state,
-    //         new_template_data
-    //     };
-    // },
+    },
+    [CHOOSE_IMAGE]: (state, action) => {
+        let template_data = state.template_data;
+        template_data = [...template_data, ...action.data ];
+
+        return {
+            ...state,
+            template_data,
+            template_data_count: state.template_data_count + 1
+        };
+    },
 });
 
 export default reducer;
